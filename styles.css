@@ -216,8 +216,15 @@ h6 {
 @media (max-width: 768px) {
     .hero {
         background-attachment: scroll !important;
-        height: auto;
-        min-height: 600px;
+        height: 100vh;
+        /* Force full height */
+        min-height: -webkit-fill-available;
+        /* Fix for iOS Safari address bar */
+        clip-path: none;
+        /* Remove jagged edge to prevent gaps */
+        margin-top: 0;
+        padding-top: 80px;
+        /* Account for navbar */
     }
 }
 
