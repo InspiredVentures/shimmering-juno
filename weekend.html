@@ -12,22 +12,52 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&display=swap"
         rel="stylesheet">
     <style>
-        .agenda-hour {
-            font-weight: 700;
-            color: var(--color-primary);
-            min-width: 100px;
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto 4rem auto;
+            padding: 2rem 0;
         }
 
-        .agenda-row {
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #333;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: #121212;
+            border: 2px solid var(--color-primary);
+            border-radius: 50%;
             display: flex;
-            padding: 1rem 0;
-            border-bottom: 1px solid #333;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+            font-weight: bold;
+            font-family: 'Oswald', sans-serif;
+            z-index: 1;
         }
 
-        .packing-check {
+        .time {
             color: var(--color-primary);
-            margin-right: 0.5rem;
-            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
         }
     </style>
 </head>
@@ -64,96 +94,367 @@
         </div>
     </header>
 
-    <div class="container" style="position: relative; z-index: 2; background-color: #121212; padding-top: 2rem;">
-        <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">03. HARD
-                SHELL LAYERS:</span> <span style="color: #999;">Weather turns fast at 9,000ft. Bring a
-                waterproof rain shell and a puffer/mid-layer. <strong>No cotton.</strong></span></div>
-        <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">04.
-                HYDRATION:</span> <span style="color: #999;">2 Liters minimum capacity. Water bladder
-                (CamelBak) or Nalgene bottles.</span></div>
-        <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">05. SUN
-                PROTECTION:</span> <span style="color: #999;">High altitude sun is unforgiving.
-                Sunglasses, hat, and sunscreen are mandatory.</span></div>
-        <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">06.
-                TREKKING POLES (OPTIONAL):</span> <span style="color: #999;">Helpful for the descent if
-                you have bad knees, but not required.</span></div>
-        <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">07.
-                TRAIL FUEL:</span> <span style="color: #999;">Energy gels, bars, or nuts. High calorie,
-                easy to eat while moving.</span></div>
-        <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">08.
-                BLISTER KIT:</span> <span style="color: #999;">Moleskin or Compeed. Address hotspots
-                immediately before they become problems.</span></div>
-    </div>
+    <main class="container"
+        style="background-color: #121212; position: relative; z-index: 2; padding: 4rem 2rem; margin-top: -2rem;">
 
-    <div class="container" style="background-color: #121212;">
-        <h4 style="color: #fff; margin-bottom: 1rem; border-bottom: 1px solid #333; padding-bottom: 0.5rem;">
-            BASE CAMP & EVENING</h4>
-        <div style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
-            <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">01.
-                    MOUNTAIN CASUAL:</span> <span style="color: #999;">Technical pants, flannels,
-                    comfortable shoes. We prioritize warmth and mobility over style.</span></div>
-            <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">02.
-                    ANALOG TOOLS:</span> <span style="color: #999;">A dedicated notebook and pen. You will
-                    be writing a lot.</span></div>
-            <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">03.
-                    RECOVERY:</span> <span style="color: #999;">Any personal supplements or recovery tools
-                    (foam roller, etc) you swear by.</span></div>
-            <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">04.
-                    SWIMWEAR:</span> <span style="color: #999;">The lodge has heated outdoor pools. You will
-                    want to use them.</span></div>
-            <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">05.
-                    EVENING WARMTH:</span> <span style="color: #999;">A beanie or warm hat for the evenings
-                    around the fire.</span></div>
+        <!-- Timeline (Restored from Original Agenda) -->
+        <div class="timeline">
+            <!-- Day One -->
+            <div class="timeline-item">
+                <div class="timeline-marker">D1</div>
+                <div class="timeline-content">
+                    <h3 style="color: #fff; text-transform: uppercase;">DAY ONE: CONTEXT & FOUNDATION</h3>
+                    <p class="time">FRIDAY NIGHT</p>
+                    <p style="margin-bottom: 1rem; color: #ccc;">You’ll hear from a small group of keynote speakers
+                        who’ve built real things and navigated real transitions. Honest stories about what worked, what
+                        didn’t, and what they learned the hard way.</p>
+                    <p style="margin-bottom: 1rem; color: #ccc;">Then we set the weekend up properly: how the SUMMITS
+                        methodology works, how your trail groups will run, and how to use these three days to get clear
+                        on what matters next.</p>
+
+                    <div style="margin: 1.5rem 0; border-top: 1px solid #333;">
+                        <!-- Item -->
+                        <div
+                            style="display: grid; grid-template-columns: 80px 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px dashed #333;">
+                            <div class="text-primary"
+                                style="font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.1rem;">16:00
+                            </div>
+                            <div>
+                                <strong style="color: #fff; display: block; margin-bottom: 0.2rem;">Check-in & Gear
+                                    Drop</strong>
+                                <span style="font-size: 0.9rem; color: #777;">Get settled in your room and pick up your
+                                    gear pack at the main lodge.</span>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div
+                            style="display: grid; grid-template-columns: 80px 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px dashed #333;">
+                            <div class="text-primary"
+                                style="font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.1rem;">18:00
+                            </div>
+                            <div>
+                                <strong style="color: #fff; display: block; margin-bottom: 0.2rem;">Welcome Dinner: "The
+                                    False Summit"</strong>
+                                <span style="font-size: 0.9rem; color: #777;">Casual dining where we break the ice and
+                                    set the tone for the weekend.</span>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div
+                            style="display: grid; grid-template-columns: 80px 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px dashed #333;">
+                            <div class="text-primary"
+                                style="font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.1rem;">20:00
+                            </div>
+                            <div>
+                                <strong style="color: #fff; display: block; margin-bottom: 0.2rem;">Fireside Session:
+                                    Mark Pattison</strong>
+                                <span style="font-size: 0.9rem; color: #777;">Mark shares his personal journey and the
+                                    origin of the SUMMITS methodology.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        style="background: #222; padding: 1.5rem; border-left: 3px solid var(--color-primary); margin-top: 1.5rem;">
+                        <h4 style="color: #fff; margin-bottom: 1rem; text-transform: uppercase;">YOU’LL WALK AWAY WITH:
+                        </h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 0.8rem; color: #ccc;">• A clear understanding of the SUMMITS
+                                roadmap and how we’ll apply it across the weekend</li>
+                            <li style="margin-bottom: 0.8rem; color: #ccc;">• Your first draft of an Everest worth
+                                pursuing now, in business, life, or both</li>
+                            <li style="margin-bottom: 0.8rem; color: #ccc;">• Your trail group and pace track (Beginner
+                                / Intermediate / Advanced)</li>
+                            <li style="margin-bottom: 0.8rem; color: #ccc;">• The rhythm for the weekend so you know
+                                exactly what’s coming and how to show up well</li>
+                        </ul>
+                        <p style="margin-top: 1rem; color: #fff; font-style: italic;">The speakers don’t disappear after
+                            they talk. You’ll spend real time with them on the trails the next day.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day Two -->
+            <div class="timeline-item">
+                <div class="timeline-marker">D2</div>
+                <div class="timeline-content">
+                    <h3 style="color: #fff; text-transform: uppercase;">DAY TWO: CONNECTION & MOMENTUM</h3>
+                    <p class="time">SATURDAY</p>
+                    <p style="margin-bottom: 1rem; color: #ccc;">Saturday is where the Summit becomes different. The
+                        morning happens on the trails: guided hikes from Sun Valley Lodge with beginner, intermediate,
+                        and advanced options. Each group is led by a keynote speaker, so the conversations continue
+                        outside the room, where people are more present and less performative.</p>
+                    <p style="margin-bottom: 1rem; color: #ccc;">In the afternoon we bring it back inside and turn what
+                        surfaced into something practical: priorities, systems, and a plan you can execute when you get
+                        home.</p>
+
+                    <div style="margin: 1.5rem 0; border-top: 1px solid #333;">
+                        <!-- Item -->
+                        <div
+                            style="display: grid; grid-template-columns: 80px 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px dashed #333;">
+                            <div class="text-primary"
+                                style="font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.1rem;">08:30
+                            </div>
+                            <div>
+                                <strong style="color: #fff; display: block; margin-bottom: 0.2rem;">HIKE 1: THE
+                                    CONNECTION HIKE</strong>
+                                <span style="font-size: 0.9rem; color: #777;">A non-technical but rigorous ascent to get
+                                    blood moving and barriers down.</span>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div
+                            style="display: grid; grid-template-columns: 80px 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px dashed #333;">
+                            <div class="text-primary"
+                                style="font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.1rem;">12:00
+                            </div>
+                            <div>
+                                <strong style="color: #fff; display: block; margin-bottom: 0.2rem;">Lunch at
+                                    Altitude</strong>
+                                <span style="font-size: 0.9rem; color: #777;">Refuel with a high-performance meal at the
+                                    roundhouse.</span>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div
+                            style="display: grid; grid-template-columns: 80px 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px dashed #333;">
+                            <div class="text-primary"
+                                style="font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.1rem;">14:00
+                            </div>
+                            <div>
+                                <strong style="color: #fff; display: block; margin-bottom: 0.2rem;">Workshop: Defining
+                                    Your Everest</strong>
+                                <span style="font-size: 0.9rem; color: #777;">Interactive session to identify your
+                                    personal or professional 'Everest'.</span>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div
+                            style="display: grid; grid-template-columns: 80px 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px dashed #333;">
+                            <div class="text-primary"
+                                style="font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.1rem;">19:00
+                            </div>
+                            <div>
+                                <strong style="color: #fff; display: block; margin-bottom: 0.2rem;">Team Dinner</strong>
+                                <span style="font-size: 0.9rem; color: #777;">Reflecting on the day's work with your
+                                    trail group.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        style="background: #222; padding: 1.5rem; border-left: 3px solid var(--color-primary); margin-top: 1.5rem;">
+                        <h4 style="color: #fff; margin-bottom: 1rem; text-transform: uppercase;">YOU’LL WALK AWAY WITH:
+                        </h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 0.8rem; color: #ccc;">• Time with a keynote speaker in a small
+                                group setting, not a quick hello after a session</li>
+                            <li style="margin-bottom: 0.8rem; color: #ccc;">• Real connection with peers you’ll actually
+                                want to stay in touch with</li>
+                            <li style="margin-bottom: 0.8rem; color: #ccc;">• A clearer sense of what’s been stalling
+                                you and what needs to change</li>
+                            <li style="margin-bottom: 0.8rem; color: #ccc;">• A draft 90-day Summit plan: priorities,
+                                next steps, and simple metrics to stay honest</li>
+                        </ul>
+                        <p style="margin-top: 1rem; color: #fff; font-style: italic;">The goal isn’t to impress anyone.
+                            It’s to leave with momentum you can measure.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day Three -->
+            <div class="timeline-item">
+                <div class="timeline-marker">D3</div>
+                <div class="timeline-content">
+                    <h3 style="color: #fff; text-transform: uppercase;">DAY THREE: COMMITMENT & THE RETURN</h3>
+                    <p class="time">SUNDAY</p>
+                    <p style="margin-bottom: 1rem; color: #ccc;">Sunday is about integration. We begin with an optional
+                        early reset, then we bring the group together to lock in your commitments and make the plan
+                        real.</p>
+                    <p style="margin-bottom: 1rem; color: #ccc;">This is where you choose what you’re taking back into
+                        everyday life: what you’ll protect, what you’ll stop, and what you’ll do next. We close by
+                        building your rope team for the months ahead, so you leave with support, not just inspiration.
+                    </p>
+
+                    <div style="margin: 1.5rem 0; border-top: 1px solid #333;">
+                        <!-- Item -->
+                        <div
+                            style="display: grid; grid-template-columns: 80px 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px dashed #333;">
+                            <div class="text-primary"
+                                style="font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.1rem;">08:00
+                            </div>
+                            <div>
+                                <strong style="color: #fff; display: block; margin-bottom: 0.2rem;">HIKE 2: THE CLARITY
+                                    HIKE</strong>
+                                <span style="font-size: 0.9rem; color: #777;">Solidifying the plan. Silence and
+                                    focus.</span>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div
+                            style="display: grid; grid-template-columns: 80px 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px dashed #333;">
+                            <div class="text-primary"
+                                style="font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.1rem;">10:00
+                            </div>
+                            <div>
+                                <strong style="color: #fff; display: block; margin-bottom: 0.2rem;">Final Workshop: The
+                                    Traverse Plan</strong>
+                                <span style="font-size: 0.9rem; color: #777;">Mapping out the specific steps to traverse
+                                    from where you are to where you want to be.</span>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div
+                            style="display: grid; grid-template-columns: 80px 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px dashed #333;">
+                            <div class="text-primary"
+                                style="font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.1rem;">12:00
+                            </div>
+                            <div>
+                                <strong style="color: #fff; display: block; margin-bottom: 0.2rem;">Closing Lunch &
+                                    Departure</strong>
+                                <span style="font-size: 0.9rem; color: #777;">One last meal together before we
+                                    depart.</span>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div
+                            style="display: grid; grid-template-columns: 80px 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px dashed #333;">
+                            <div class="text-primary"
+                                style="font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.1rem;">14:00
+                            </div>
+                            <div>
+                                <strong style="color: #fff; display: block; margin-bottom: 0.2rem;">The Descent:
+                                    Application Workshop</strong>
+                                <span style="font-size: 0.9rem; color: #777;">Practical application tools for when you
+                                    return to 'sea level'.</span>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div
+                            style="display: grid; grid-template-columns: 80px 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px dashed #333;">
+                            <div class="text-primary"
+                                style="font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.1rem;">16:00
+                            </div>
+                            <div>
+                                <strong style="color: #fff; display: block; margin-bottom: 0.2rem;">Closing Ceremony &
+                                    Departure</strong>
+                                <span style="font-size: 0.9rem; color: #777;">Final remarks and commitment to the rope
+                                    team.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        style="background: #222; padding: 1.5rem; border-left: 3px solid var(--color-primary); margin-top: 1.5rem;">
+                        <h4 style="color: #fff; margin-bottom: 1rem; text-transform: uppercase;">YOU’LL WALK AWAY WITH:
+                        </h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 0.8rem; color: #ccc;">• Your final 90-day plan, tightened and
+                                committed</li>
+                            <li style="margin-bottom: 0.8rem; color: #ccc;">• Your rope team: the people you’ll stay
+                                accountable to after Sun Valley</li>
+                            <li style="margin-bottom: 0.8rem; color: #ccc;">• A clear set of non-negotiables around
+                                focus, energy, and follow-through</li>
+                            <li style="margin-bottom: 0.8rem; color: #ccc;">• A sense of direction that holds when the
+                                noise comes back</li>
+                        </ul>
+                        <p style="margin-top: 1rem; color: #fff; font-style: italic;">The weekend ends, but the point is
+                            what happens next.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <!-- FAQ -->
-    <div class="container" style="background-color: #121212; padding-bottom: 4rem;">
-        <h3 class="text-primary" style="font-size: 1.8rem; margin-bottom: 2rem; text-transform: uppercase;">
-            Field Notes (FAQ)</h3>
+        <h2 class="text-center text-primary" style="margin-bottom: 3rem;">ESSENTIAL GEAR</h2>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem;">
+            <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">01. BROKEN-IN
+                    BOOTS:</span> <span style="color: #999;">New boots = blisters. Bring what you trust.</span></div>
+            <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">02. DAY PACK
+                    (20-30L):</span> <span style="color: #999;">For water, layers, and snacks.</span></div>
+            <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">03. HARD SHELL
+                    LAYERS:</span> <span style="color: #999;">Weather turns fast at 9,000ft. Bring a waterproof rain
+                    shell and a puffer/mid-layer. <strong>No cotton.</strong></span></div>
+            <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">04.
+                    HYDRATION:</span> <span style="color: #999;">2 Liters minimum capacity. Water bladder (CamelBak) or
+                    Nalgene bottles.</span></div>
+            <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">05. SUN
+                    PROTECTION:</span> <span style="color: #999;">High altitude sun is unforgiving. Sunglasses, hat, and
+                    sunscreen are mandatory.</span></div>
+            <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">06. TREKKING POLES
+                    (OPTIONAL):</span> <span style="color: #999;">Helpful for the descent if you have bad knees, but not
+                    required.</span></div>
+            <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">07. TRAIL
+                    FUEL:</span> <span style="color: #999;">Energy gels, bars, or nuts. High calorie, easy to eat while
+                    moving.</span></div>
+            <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">08. BLISTER
+                    KIT:</span> <span style="color: #999;">Moleskin or Compeed. Address hotspots immediately before they
+                    become problems.</span></div>
+        </div>
+
+        <h4 style="color: #fff; margin-bottom: 1rem; border-bottom: 1px solid #333; padding-bottom: 0.5rem;">BASE CAMP &
+            EVENING</h4>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 3rem;">
+            <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">01. MOUNTAIN
+                    CASUAL:</span> <span style="color: #999;">Technical pants, flannels, comfortable shoes. We
+                    prioritize warmth and mobility over style.</span></div>
+            <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">02. ANALOG
+                    TOOLS:</span> <span style="color: #999;">A dedicated notebook and pen. You will be writing a
+                    lot.</span></div>
+            <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">03. RECOVERY:</span>
+                <span style="color: #999;">Any personal supplements or recovery tools (foam roller, etc) you swear
+                    by.</span>
+            </div>
+            <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">04. SWIMWEAR:</span>
+                <span style="color: #999;">The lodge has heated outdoor pools. You will want to use them.</span>
+            </div>
+            <div style="color: #ccc;"><span style="color: var(--color-primary); font-weight: bold;">05. EVENING
+                    WARMTH:</span> <span style="color: #999;">A beanie or warm hat for the evenings around the
+                    fire.</span></div>
+        </div>
+
+        <!-- FAQ -->
+        <h3 class="text-primary" style="font-size: 1.8rem; margin-bottom: 2rem; text-transform: uppercase;">Field Notes
+            (FAQ)</h3>
 
         <div style="margin-bottom: 2rem; border-left: 2px solid #333; padding-left: 1.5rem;">
             <h4 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">How fit do I need to be?</h4>
-            <p style="color: #999;">You should be comfortable walking 3-5 miles on uneven terrain. We have
-                pace groups for all levels, but this is an active weekend. If you can walk an 18-hole golf
-                course, you can do this.</p>
-        </div>
-
-        <div style="margin-bottom: 2rem; border-left: 2px solid #333; padding-left: 1.5rem;">
-            <h4 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">Is altitude a factor?</h4>
-            <p style="color: #999;">Yes. Sun Valley is at 5,900ft. Hydration starts on the plane ride here.
-                Drink plenty of water before you arrive.</p>
-        </div>
-
-        <div style="border-left: 2px solid #333; padding-left: 1.5rem; margin-bottom: 2rem;">
-            <h4 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">What is the dress code?</h4>
-            <p style="color: #999;">"Mountain Ready". Hiking pants, technical layers, and functional
-                footwear. We want you comfortable and ready to move. We recommend leaving the denim at home.
+            <p style="color: #999;">You should be comfortable walking 3-5 miles on uneven terrain. We have pace groups
+                for all levels, but this is an active weekend. If you can walk an 18-hole golf course, you can do this.
             </p>
         </div>
 
         <div style="margin-bottom: 2rem; border-left: 2px solid #333; padding-left: 1.5rem;">
-            <h4 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">Will I have cell service?
-            </h4>
-            <p style="color: #999;">Yes, but we strongly encourage you to disconnect. Use this time to look
-                up, not down.</p>
+            <h4 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">Is altitude a factor?</h4>
+            <p style="color: #999;">Yes. Sun Valley is at 5,900ft. Hydration starts on the plane ride here. Drink plenty
+                of water before you arrive.</p>
+        </div>
+
+        <div style="border-left: 2px solid #333; padding-left: 1.5rem; margin-bottom: 2rem;">
+            <h4 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">What is the dress code?</h4>
+            <p style="color: #999;">"Mountain Ready". Hiking pants, technical layers, and functional footwear. We want
+                you comfortable and ready to move. We recommend leaving the denim at home.</p>
+        </div>
+
+        <div style="margin-bottom: 2rem; border-left: 2px solid #333; padding-left: 1.5rem;">
+            <h4 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">Will I have cell service?</h4>
+            <p style="color: #999;">Yes, but we strongly encourage you to disconnect. Use this time to look up, not
+                down.</p>
         </div>
 
         <div style="margin-bottom: 2rem; border-left: 2px solid #333; padding-left: 1.5rem;">
             <h4 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">What if it rains?</h4>
-            <p style="color: #999;">We hike. Unless there is lightning or severe danger, the schedule holds.
-                Bring a waterproof shell.</p>
+            <p style="color: #999;">We hike. Unless there is lightning or severe danger, the schedule holds. Bring a
+                waterproof shell.</p>
         </div>
 
         <div style="border-left: 2px solid #333; padding-left: 1.5rem;">
             <h4 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">Dietary Restrictions?</h4>
-            <p style="color: #999;">We cater to all standard requirements (GF, DF, V). You will be able to
-                specify this during registration.</p>
+            <p style="color: #999;">We cater to all standard requirements (GF, DF, V). You will be able to specify this
+                during registration.</p>
         </div>
-    </div>
-    </div>
 
-    </div>
+    </main>
 
     <footer>
         <div class="container">
