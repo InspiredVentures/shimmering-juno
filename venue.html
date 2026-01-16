@@ -36,7 +36,7 @@
 
     <!-- Header -->
     <header class="section-padding"
-        style="min-height: 70vh; display: flex; align-items: center; justify-content: center; padding-top: 150px; padding-bottom: 6rem; text-align: center; background: url('assets/hero_gen_venue.png') center/cover; position: relative;">
+        style="min-height: 70vh; display: flex; align-items: center; justify-content: center; padding-top: 150px; padding-bottom: 6rem; text-align: center; background: url('assets/Sun valley Lodge.webp') center/cover; position: relative;">
         <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.5);"></div>
         <div class="container" style="position: relative; z-index: 2;">
             <h1 class="text-primary" style="font-size: 5rem;">An Iconic American Escape</h1>
@@ -122,8 +122,8 @@
                                         prioritize physical maintenance.</p>
                                 </div>
                                 <div class="box-shadow" style="border: 1px solid #333; height: 300px;">
-                                    <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-                                        alt="The Spa" style="width: 100%; height: 100%; object-fit: cover;">
+                                    <img src="assets/venue_pool.jpg" alt="The Spa"
+                                        style="width: 100%; height: 100%; object-fit: cover;">
                                 </div>
                             </div>
                         </div>
@@ -160,24 +160,18 @@
                 <div class="grid-3" style="grid-template-rows: 300px;">
                     <!-- Image 1 -->
                     <div style="background: #222; border: 1px solid #333; position: relative; overflow: hidden;">
-                        <div
-                            style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #666;">
-                            [Venue Image 1]
-                        </div>
+                        <img src="assets/176795438.jpg" alt="Venue Atmosphere"
+                            style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <!-- Image 2 -->
                     <div style="background: #222; border: 1px solid #333; position: relative; overflow: hidden;">
-                        <div
-                            style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #666;">
-                            [Venue Image 2]
-                        </div>
+                        <img src="assets/412635772_1598101514333724_2036675649438560741_n.jpg" alt="Venue Experience"
+                            style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <!-- Image 3 -->
                     <div style="background: #222; border: 1px solid #333; position: relative; overflow: hidden;">
-                        <div
-                            style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #666;">
-                            [Venue Image 3]
-                        </div>
+                        <img src="assets/7ebf4390-ceba-4e0f-8ba3-d0682b2273c0.jpeg" alt="Venue Detail"
+                            style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                 </div>
             </div>
@@ -220,6 +214,40 @@
 
         </div>
     </main>
+
+    <!-- Register Interest Modal -->
+    <div class="modal-overlay" id="register-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="text-center">
+                <h2 class="text-primary" style="font-size: 2rem; margin-bottom: 1rem;">Claim Your Spot</h2>
+                <p style="color: #999; margin-bottom: 2rem;">Applications are reviewed on a rolling basis. Tell us who
+                    you are.</p>
+            </div>
+            <form id="interest-form" action="https://formsubmit.co/mark@markpattisonnfl.com" method="POST">
+                <!-- Honey Pot (Avoid Spam) -->
+                <input type="text" name="_honey" style="display:none">
+                <!-- Disable Captcha -->
+                <input type="hidden" name="_captcha" value="false">
+                <!-- Success Page -->
+                <input type="hidden" name="_next" value="http://localhost:8083/index.html">
+
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="name" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="email" required placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label>What is your Everest? (Optional)</label>
+                    <textarea name="message" rows="3" placeholder="Briefly, what are you trying to conquer?"></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Submit Interest</button>
+            </form>
+        </div>
+    </div>
 
     <footer>
         <div class="container">

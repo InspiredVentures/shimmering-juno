@@ -402,6 +402,11 @@
                         <p>Aligning with the 'Summit' mindset of helping others up the mountain.</p>
                     </div>
                 </div>
+
+                <div style="margin: 3rem auto; max-width: 800px;">
+                    <img src="assets/nlf-player-climbing-the-seven-summit.png" alt="Climbing for a Cause"
+                        style="width: 100%; height: auto; border: 1px solid #444; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+                </div>
                 <a href="charity.html" class="btn" style="margin-top: 2rem;">Learn
                     About Their Mission</a>
             </div>
@@ -417,18 +422,25 @@
                 <p style="color: #999; margin-bottom: 2rem;">Applications are reviewed on a rolling basis. Tell us who
                     you are.</p>
             </div>
-            <form id="interest-form">
+            <form id="interest-form" action="https://formsubmit.co/mark@markpattisonnfl.com" method="POST">
+                <!-- Honey Pot (Avoid Spam) -->
+                <input type="text" name="_honey" style="display:none">
+                <!-- Disable Captcha -->
+                <input type="hidden" name="_captcha" value="false">
+                <!-- Success Page -->
+                <input type="hidden" name="_next" value="http://localhost:8083/index.html">
+
                 <div class="form-group">
                     <label>Full Name</label>
-                    <input type="text" required placeholder="John Doe">
+                    <input type="text" name="name" required placeholder="John Doe">
                 </div>
                 <div class="form-group">
                     <label>Email Address</label>
-                    <input type="email" required placeholder="john@example.com">
+                    <input type="email" name="email" required placeholder="john@example.com">
                 </div>
                 <div class="form-group">
                     <label>What is your Everest? (Optional)</label>
-                    <textarea rows="3" placeholder="Briefly, what are you trying to conquer?"></textarea>
+                    <textarea name="message" rows="3" placeholder="Briefly, what are you trying to conquer?"></textarea>
                 </div>
                 <button type="submit" class="btn" style="width: 100%;">Submit Interest</button>
             </form>

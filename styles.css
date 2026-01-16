@@ -436,6 +436,15 @@ footer {
     letter-spacing: 1px;
 }
 
+/* Agenda Row Styles */
+.agenda-row {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px dashed #333;
+}
+
 /* Responsive Updates */
 @media (max-width: 768px) {
 
@@ -452,11 +461,20 @@ footer {
 
     /* Global Typography adjustments */
     h1 {
-        font-size: 3rem !important;
+        font-size: 2.5rem !important;
     }
 
     h2 {
-        font-size: 2.5rem !important;
+        font-size: 2rem !important;
+    }
+
+    .agenda-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .agenda-row .text-primary {
+        margin-bottom: 0.25rem;
     }
 
     h3 {
