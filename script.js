@@ -98,3 +98,18 @@ accordions.forEach(acc => {
         }
     });
 });
+
+// Scroll Video Autoplay
+const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.play();
+        } else {
+            entry.target.pause();
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.scroll-play-video').forEach(video => {
+    videoObserver.observe(video);
+});
