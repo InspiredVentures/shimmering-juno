@@ -223,15 +223,15 @@ h6 {
         clip-path: none;
         /* Remove jagged edge to prevent gaps */
         margin-top: 0;
-        padding-top: 140px;
-        /* Increased padding to prevent navbar overlap */
+        padding-top: 120px;
+        /* Increased padding to push header down from navbar */
         justify-content: flex-start;
         /* Align content to top instead of center */
     }
 
     .hero-content {
         margin-top: 2rem;
-        /* Additional spacing from top */
+        /* Additional spacing to push text down */
     }
 }
 
