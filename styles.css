@@ -216,26 +216,27 @@ h6 {
 @media (max-width: 768px) {
     .hero {
         background-attachment: scroll !important;
-        height: 100vh;
-        /* Force full height */
-        min-height: -webkit-fill-available;
-        /* Fix for iOS Safari address bar */
+        height: auto;
+        /* Auto height to fit content */
+        min-height: 100vh;
+        /* Minimum full viewport height */
         clip-path: none;
         /* Remove jagged edge to prevent gaps */
         margin-top: 0;
-        margin-bottom: -5vh;
-        /* Pull next section up to eliminate dark gap */
+        margin-bottom: 0;
+        /* No gap */
         padding-top: 120px;
-        /* Increased padding to push header down from navbar */
-        padding-bottom: 5vh;
-        /* Add bottom padding to compensate */
+        /* Space for navbar */
+        padding-bottom: 3rem;
+        /* Bottom padding for content */
         justify-content: flex-start;
-        /* Align content to top instead of center */
+        /* Align content to top */
     }
 
     .hero-content {
         margin-top: 2rem;
-        /* Additional spacing to push text down */
+        margin-bottom: 3rem;
+        /* Ensure content has bottom spacing */
     }
 }
 
