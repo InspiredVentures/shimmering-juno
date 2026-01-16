@@ -223,8 +223,12 @@ h6 {
         clip-path: none;
         /* Remove jagged edge to prevent gaps */
         margin-top: 0;
+        margin-bottom: -5vh;
+        /* Pull next section up to eliminate dark gap */
         padding-top: 120px;
         /* Increased padding to push header down from navbar */
+        padding-bottom: 5vh;
+        /* Add bottom padding to compensate */
         justify-content: flex-start;
         /* Align content to top instead of center */
     }
