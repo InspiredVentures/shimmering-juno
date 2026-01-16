@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Venue | Find Your Everest</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo"><img src="assets/logo.png" alt="7 Summits Summit"></a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="methodology.html">The Methodology</a></li>
+                <li><a href="weekend.html">The Weekend</a></li>
+                <li><a href="venue.html" style="color: var(--color-primary);">Venue</a></li>
+                <li><a href="charity.html">Higher Ground</a></li>
+                <li><a href="#" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Register Interest</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="section-padding"
+        style="min-height: 70vh; display: flex; align-items: center; justify-content: center; padding-top: 150px; padding-bottom: 6rem; text-align: center; background: url('assets/hero_gen_venue.png') center/cover; position: relative;">
+        <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.5);"></div>
+        <div class="container" style="position: relative; z-index: 2;">
+            <h1 class="text-primary" style="font-size: 5rem;">An Iconic American Escape</h1>
+            <p class="subtitle" style="color: #fff; font-size: 1.5rem; max-width: 800px; margin: 1rem auto;">
+                Luxury meets legacy in the heart of Idaho.</p>
+        </div>
+    </header>
+
+    <main class="section-padding" style="background: #000;">
+        <div class="container">
+
+            <!-- Intro / History -->
+            <div class="grid-2" style="margin-bottom: 8rem; align-items: center;">
+                <div>
+                    <h2 class="text-primary" style="font-size: 3rem; margin-bottom: 2rem; line-height: 1;">An
+                        Iconic<br>American Escape</h2>
+                    <p style="margin-bottom: 1.5rem; color: #fff; font-size: 1.25rem; line-height: 1.6;">
+                        Founded in 1936 as America's first destination ski resort, Sun Valley has always attracted those
+                        who push boundaries. From Ernest Hemingway finishing <em>For Whom the Bell Tolls</em> in Suite
+                        206 to Olympic champions training on its slopes, the energy here is different.
+                    </p>
+                    <p style="margin-bottom: 2rem; color: #999; font-size: 1.1rem;">
+                        It’s not just a hotel; it’s a legend. We chose this location because the environment you're in
+                        dictates the thoughts you think. When you're surrounded by this kind of history, you don't just
+                        dream—you plan.
+                    </p>
+                    <div style="border-left: 2px solid var(--color-primary); padding-left: 1.5rem;">
+                        <p style="color: #ccc; font-style: italic;">"The mountains are calling and I must go." — John
+                            Muir</p>
+                    </div>
+                </div>
+                <div class="box-shadow" style="border: 1px solid #333; height: 500px;">
+                    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+                        alt="Sun Valley Lodge Historic" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+
+            <!-- The Experience / Amenities -->
+            <div style="margin-bottom: 8rem;">
+                <div class="section-header text-center" style="margin-bottom: 4rem;">
+                    <h2 style="font-size: 2.5rem; color: #fff; text-transform: uppercase;">The Experience</h2>
+                    <p style="color: #666; max-width: 600px; margin: 1rem auto;">Five-star comfort meets rugged
+                        adventure.</p>
+                </div>
+
+                <div class="accordion">
+                    <!-- Lodge Item -->
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title">The Lodge</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body grid-2">
+                                <div>
+                                    <p style="color: #ccc; margin-bottom: 1rem;">Completely renovated in 2015, the
+                                        guestrooms are spacious, warm, and appointed with every modern amenity while
+                                        retaining their classic charm.</p>
+                                    <p style="color: #999;">Relax by the fire after a long day on the mountain, or catch
+                                        up on work in a space designed for focus.</p>
+                                </div>
+                                <div class="box-shadow" style="border: 1px solid #333; height: 300px;">
+                                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+                                        alt="The Lodge" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Spa Item -->
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title">The Spa</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body grid-2">
+                                <div>
+                                    <p style="color: #ccc; margin-bottom: 1rem;">A 20,000 sq. ft. sanctuary. After a day
+                                        on the trails, the heated outdoor pools and world-class treatments are not a
+                                        luxury—they're recovery.</p>
+                                    <p style="color: #999;">From deep tissue massage to cold plunge therapy, we
+                                        prioritize physical maintenance.</p>
+                                </div>
+                                <div class="box-shadow" style="border: 1px solid #333; height: 300px;">
+                                    <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+                                        alt="The Spa" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dining Item -->
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="accordion-title">Dining</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body grid-2">
+                                <div>
+                                    <p style="color: #ccc; margin-bottom: 1rem;">From the historic Ram Restaurant to the
+                                        casual Duchin Lounge, the culinary experience is designed to fuel your body and
+                                        your conversations.</p>
+                                    <p style="color: #999;">Locally sourced ingredients, protein-rich menus, and an
+                                        atmosphere that encourages connection.</p>
+                                </div>
+                                <div class="box-shadow" style="border: 1px solid #333; height: 300px;">
+                                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+                                        alt="Dining" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Section (Placeholder) -->
+            <div style="margin-bottom: 8rem;">
+                <h2 class="text-primary" style="font-size: 2rem; margin-bottom: 2rem;">Venue Gallery</h2>
+                <div class="grid-3" style="grid-template-rows: 300px;">
+                    <!-- Image 1 -->
+                    <div style="background: #222; border: 1px solid #333; position: relative; overflow: hidden;">
+                        <div
+                            style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #666;">
+                            [Venue Image 1]
+                        </div>
+                    </div>
+                    <!-- Image 2 -->
+                    <div style="background: #222; border: 1px solid #333; position: relative; overflow: hidden;">
+                        <div
+                            style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #666;">
+                            [Venue Image 2]
+                        </div>
+                    </div>
+                    <!-- Image 3 -->
+                    <div style="background: #222; border: 1px solid #333; position: relative; overflow: hidden;">
+                        <div
+                            style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #666;">
+                            [Venue Image 3]
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Getting Here -->
+            <div style="background: #111; padding: 4rem; border-top: 2px solid var(--color-primary);">
+                <div class="grid-2" style="gap: 4rem; align-items: start;">
+                    <div>
+                        <h2 style="color: #fff; font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1;">Arrival
+                            Protocol</h2>
+                        <p style="color: #ccc; font-size: 1.1rem;">Getting to Sun Valley is the first step of the
+                            journey. Plan ahead.</p>
+                    </div>
+
+                    <div>
+                        <div style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); font-size: 1.3rem; margin-bottom: 0.5rem;">✈️
+                                Friedman Memorial Airport (SUN)</h3>
+                            <p style="color: #999;">The closest option. 20 minutes from the Lodge.</p>
+                            <p style="color: #fff; margin-top: 0.5rem;">Direct Flights: SEA, SLC, DEN, SFO, LAX, ORD.
+                            </p>
+                        </div>
+
+                        <div style="margin-bottom: 2.5rem;">
+                            <h3 style="color: var(--color-primary); font-size: 1.3rem; margin-bottom: 0.5rem;">🚙 Boise
+                                Airport (BOI)</h3>
+                            <p style="color: #999;">A scenic 2.5-hour drive. More flight options, but requires a rental
+                                car or shuttle connection.</p>
+                        </div>
+
+                        <div>
+                            <h3 style="color: var(--color-primary); font-size: 1.3rem; margin-bottom: 0.5rem;">Add-On:
+                                Resort Shuttle</h3>
+                            <p style="color: #999;">Guests of the Lodge receive complimentary shuttle service from SUN.
+                                Coordinate with the concierge.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand / Partnership -->
+                <div class="footer-col">
+                    <a href="index.html"><img src="assets/logo.png" alt="Seven Summits"
+                            style="height: 50px; margin-bottom: 1.5rem;"></a>
+                    <p style="color: #999; line-height: 1.6; margin-bottom: 2rem;">
+                        The arena is outside. Boardrooms don't build character; mountains do.
+                    </p>
+                    <div class="partnership-lockup">
+                        <span style="color: #666; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">In
+                            Proud Partnership<br>With</span>
+                        <a href="#" target="_blank"><img src="assets/inspired_logo.png" alt="Inspired"
+                                style="height: 35px;"></a>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="index.html">The Summit</a></li>
+                        <li><a href="methodology.html">Methodology</a></li>
+                        <li><a href="weekend.html">The Weekend</a></li>
+                        <li><a href="venue.html">The Venue</a></li>
+                        <li><a href="charity.html">Higher Ground</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:mark@markpattisonnfl.com">mark@markpattisonnfl.com</a></li>
+                        <li>Sun Valley, Idaho</li>
+                    </ul>
+                    <div class="social-links" style="margin-top: 1.5rem;">
+                        <a href="#">IG</a>
+                        <a href="#">LI</a>
+                        <a href="#">X</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Seven Summits Event. All Rights Reserved.</p>
+                <div style="display: flex; gap: 2rem;">
+                    <a href="#" style="color: #666; text-decoration: none;">Privacy Policy</a>
+                    <a href="#" style="color: #666; text-decoration: none;">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
