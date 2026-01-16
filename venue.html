@@ -29,6 +29,7 @@
                 <li><a href="weekend.html">The Weekend</a></li>
                 <li><a href="venue.html" style="color: var(--color-primary);">Venue</a></li>
                 <li><a href="charity.html">Higher Ground</a></li>
+                <li><a href="about.html">About Us</a></li>
                 <li><a href="sponsorship.html">Partnerships</a></li>
                 <li><a href="#register" class="btn btn-book">Book Now</a></li>
             </ul>
@@ -178,50 +179,7 @@
             </div>
         </div>
 
-        <!-- Interactive Route Map -->
-        <div class="map-section" style="margin-bottom: 8rem;">
-            <div class="text-center" style="margin-bottom: 3rem;">
-                <h2 style="font-size: 2.5rem; color: #fff; text-transform: uppercase;">The Route</h2>
-                <p style="color: #666;">From the Valley Floor (5,920') to the Summit (9,150')</p>
-            </div>
-            <div class="map-container">
-                <!-- Simple Topo Pattern Background (CSS or Image) -->
-                <div
-                    style="position: absolute; inset: 0; opacity: 0.1; background-image: repeating-linear-gradient(45deg, #333 0, #333 1px, transparent 0, transparent 50%); background-size: 20px 20px;">
-                </div>
 
-                <svg class="map-svg" viewBox="0 0 1000 562" xmlns="http://www.w3.org/2000/svg">
-                    <!-- The Path -->
-                    <path class="map-path" d="M100,500 C300,500 400,400 500,300 S700,100 900,100" fill="none"
-                        stroke="#FFD700" stroke-width="3" stroke-linecap="round" />
-
-                    <!-- Start Point: The Lodge -->
-                    <g class="map-point">
-                        <circle cx="100" cy="500" r="5" fill="#fff" />
-                        <text x="120" y="505" fill="#fff" font-family="Oswald" font-size="14"
-                            style="text-transform: uppercase;">The Lodge (Basecamp)</text>
-                    </g>
-
-                    <!-- Waypoint: Mid-Mountain -->
-                    <g class="map-point">
-                        <circle cx="500" cy="300" r="5" fill="#fff" />
-                        <!-- Tooltip Group -->
-                        <g class="map-tooltip" transform="translate(500, 270)">
-                            <rect x="-60" y="-30" width="120" height="30" rx="4" fill="#000" stroke="#333" />
-                            <text x="0" y="-10" text-anchor="middle" fill="#FFD700" font-family="Inter"
-                                font-size="12">Mid-Mountain Checkpoint</text>
-                        </g>
-                    </g>
-
-                    <!-- End Point: The Summit -->
-                    <g class="map-point">
-                        <circle cx="900" cy="100" r="5" fill="#fff" />
-                        <text x="820" y="90" fill="#fff" font-family="Oswald" font-size="18"
-                            style="text-transform: uppercase; font-weight: bold;">The Summit</text>
-                    </g>
-                </svg>
-            </div>
-        </div>
 
         <!-- Getting Here -->
         <div style="background: #111; padding: 4rem; border-top: 2px solid var(--color-primary);">
