@@ -907,3 +907,19 @@ footer {
         text-align: center;
     }
 }
+/* Sponsorship Page Utilities */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.bg-granite {
+    background-color: #1a1a1a;
+}
+
+@media (max-width: 900px) {
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+}

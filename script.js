@@ -55,7 +55,7 @@ if (modal) {
     openModalBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             // Check if it's the register button specifically
-            if (btn.textContent.toLowerCase().includes('register') || btn.getAttribute('href') === '#register' || btn.textContent.toLowerCase().includes('claim')) {
+            if (btn.textContent.toLowerCase().includes('register') || btn.getAttribute('href') === '#register' || btn.textContent.toLowerCase().includes('claim') || btn.textContent.toLowerCase().includes('book')) {
                 e.preventDefault();
                 modal.classList.add('active');
             }
