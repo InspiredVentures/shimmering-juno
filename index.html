@@ -36,9 +36,15 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero"
-        style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('assets/fusyy68w0wxm6nyjmrog.webp') center/cover no-repeat fixed; position: relative;">
-        <div class="overlay" style="position: absolute; inset: 0; background: rgba(0,0,0,0.4);"></div>
+    <header class="hero" style="position: relative; overflow: hidden; background: #000;">
+        <!-- Video Background -->
+        <video autoplay muted loop playsinline poster="assets/fusyy68w0wxm6nyjmrog.webp"
+            style="position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; z-index: 0; transform: translate(-50%, -50%); object-fit: cover; opacity: 0.6;">
+            <!-- Placeholder Video: User to replace 'assets/hero_video.mp4' with actual file -->
+            <source src="assets/hero_video.mp4" type="video/mp4">
+        </video>
+
+        <div class="overlay" style="position: absolute; inset: 0; background: rgba(0,0,0,0.3); z-index: 1;"></div>
         <div class="container hero-content" style="position: relative; z-index: 2;">
             <h1>WHAT’S YOUR EVEREST?</h1>
             <p style="text-transform: uppercase; font-weight: 600; letter-spacing: 1px; color: #fff;">
@@ -47,6 +53,25 @@
             <a href="#register" class="btn">Register Interest / Reserve Your Spot</a>
         </div>
     </header>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar bg-granite" style="border-bottom: 1px solid #333; padding: 2rem 0;">
+        <div class="container text-center">
+            <p
+                style="color: #666; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem;">
+                As Seen In</p>
+            <div
+                style="display: flex; justify-content: center; gap: 3rem; align-items: center; flex-wrap: wrap; opacity: 0.6;">
+                <h3 style="color: #fff; font-family: 'Oswald', sans-serif; font-size: 1.5rem; margin: 0;">NFL</h3>
+                <h3 style="color: #fff; font-family: 'Oswald', sans-serif; font-size: 1.5rem; margin: 0;">ESPN</h3>
+                <h3 style="color: #fff; font-family: 'Oswald', sans-serif; font-size: 1.5rem; margin: 0;">SPORTS
+                    ILLUSTRATED</h3>
+                <h3 style="color: #fff; font-family: 'Oswald', sans-serif; font-size: 1.5rem; margin: 0;">FORBES</h3>
+                <h3 style="color: #fff; font-family: 'Oswald', sans-serif; font-size: 1.5rem; margin: 0;">CBS SPORTS
+                </h3>
+            </div>
+        </div>
+    </div>
 
     <!-- Placeholder Sections for Next Task -->
     <main>
