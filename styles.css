@@ -974,3 +974,27 @@ footer {
     opacity: 1;
 }
 
+
+/* Motion Design */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+    will-change: opacity, transform;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Parallax Optimization */
+.hero {
+    will-change: background-position;
+}
+
+/* Global Parallax for Headers */
+header[style*='url'] {
+    background-attachment: fixed !important;
+    background-position: center center !important;
+    background-size: cover !important;
+}
