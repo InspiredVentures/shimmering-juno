@@ -213,6 +213,14 @@ h6 {
     /* Subtle jagged edge */
 }
 
+@media (max-width: 768px) {
+    .hero {
+        background-attachment: scroll !important;
+        height: auto;
+        min-height: 600px;
+    }
+}
+
 .hero-content {
     position: relative;
     z-index: 10;
