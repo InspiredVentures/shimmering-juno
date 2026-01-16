@@ -592,6 +592,19 @@ footer {
         /* Hidden by default on mobile */
     }
 
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        padding: 2rem 0;
+        gap: 1rem;
+        border-top: 2px solid var(--color-primary);
+    }
+
     /* Mobile Menu */
     .menu-toggle {
         display: block;
