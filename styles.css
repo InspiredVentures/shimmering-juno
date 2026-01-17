@@ -994,9 +994,33 @@ footer {
 
 /* Global Parallax for Headers */
 header[style*='url'] {
-    background-attachment: fixed !important;
+    position: relative;
+    background-attachment: scroll !important; /* Reset inline fixed */
     background-position: center center !important;
     background-size: cover !important;
+    overflow: hidden;
+}
+
+header[style*='url']::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Check to ensure this matches the inline style URL logic or use general class */
+    /* Because inline styles have the URL, we can't easily move it to pseudo-element without JS or specific classes */
+    /* Reverting to simply ensuring background-attachment: fixed works but adding min-height safety */
+}
+
+/* Better Parallax Fix */
+/* If the user sees black space, it's likely the 'cover' isn't stretching enough on scroll */
+header[style*='url'] {
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    min-height: 100vh !important; /* Force full height */
 }
 
 /* Dropdown Menu */
