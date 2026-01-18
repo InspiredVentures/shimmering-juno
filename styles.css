@@ -1702,23 +1702,24 @@ body.epic-theme p {
         opacity: 1;
         /* Base of Triangle */
         width: 24px;
-        margin: 5px auto;
-        transform: translateY(0);
+        transform: none;
+        /* Stays in place */
     }
 
     .menu-toggle.is-active .bar:nth-child(1) {
         /* Left Slope */
-        width: 16px;
-        transform-origin: right top;
-        /* Pivot from center-ish */
-        transform: translate(-10px, 3px) rotate(-60deg);
+        width: 24px;
+        transform-origin: 0% 100%;
+        /* Bottom Left Pivot */
+        transform: translateY(8px) rotate(-60deg);
     }
 
     .menu-toggle.is-active .bar:nth-child(3) {
         /* Right Slope */
-        width: 16px;
-        transform-origin: left bottom;
-        transform: translate(11px, -20px) rotate(60deg);
+        width: 24px;
+        transform-origin: 100% 100%;
+        /* Bottom Right Pivot */
+        transform: translateY(-8px) rotate(60deg);
     }
 
     /* Mobile Nav Drawer */
