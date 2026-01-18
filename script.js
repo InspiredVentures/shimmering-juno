@@ -56,41 +56,51 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Mobile menu element not found!");
     }
 
-    // Modal Logic
-    const modal = document.getElementById('register-modal');
-    // Verify modal exists before adding listeners (it wasn't in script.js before but index.html had it inline/merged)
-    // The previous view of script.js showed "const observer = ... if (modal) {...}" inside the observer?? 
-    // Wait, the previous file view lines 55-80 had modal logic INSIDE the intersection observer callback?? 
-    // That looks like a copy-paste error from a previous merge. 
-    // I will pull the modal logic OUT of the observer and put it here in the main scope.
-
-    if (modal) {
-        const openModalBtns = document.querySelectorAll('a[href="#register"], .btn-book');
-        const closeModalBtn = modal.querySelector('.close-modal');
-
-        // Open Modal
-        openModalBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                // Check if it's the register button specifically or broadly
-                e.preventDefault();
-                modal.classList.add('active');
-            });
-        });
-
-        // Close Modal
-        if (closeModalBtn) {
-            closeModalBtn.addEventListener('click', () => {
-                modal.classList.remove('active');
-            });
+    // Generic Modal Logic (Global Scope for inline onclicks)
+    window.openModal = function (modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.style.display = 'flex';
+            // Force reflow for transition
+            void modal.offsetWidth;
+            modal.classList.add('active');
+        } else {
+            console.error('Modal not found:', modalId);
         }
+    };
 
-        // Close on outside click
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-            }
+    window.closeModal = function (modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300); // Match CSS transition
+        }
+    };
+
+    // Close on outside click (Generic)
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('modal-overlay')) {
+            closeModal(e.target.id);
+        }
+    });
+
+    // Close on Close Button Click (Generic)
+    document.querySelectorAll('.close-modal').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const modal = this.closest('.modal-overlay');
+            if (modal) closeModal(modal.id);
         });
-    }
+    });
+
+    // Trigger Register Custom Link
+    document.querySelectorAll('a[href="#register"]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.openModal('register-modal');
+        });
+    });
 
     // Animations on Scroll & Observer
     const observerOptions = {

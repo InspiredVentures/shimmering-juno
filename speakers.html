@@ -91,7 +91,7 @@
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
 
                         <!-- Mariel Hemingway -->
-                        <div class="speaker-card">
+                        <div class="speaker-card" onclick="openModal('mariel-modal')" style="cursor: pointer;">
                             <img src="assets/20130909rfcmarielbio300x250.jpg" alt="Mariel Hemingway"
                                 class="speaker-img">
                             <h4 style="color: #fff; margin-top: 1.5rem; margin-bottom: 0.5rem;">MARIEL HEMINGWAY</h4>
@@ -100,6 +100,8 @@
                                 Oscar-nominated actress and mental health advocate sharing her powerful journey of
                                 resilience.
                             </p>
+                            <!-- Mobile Read More -->
+                            <span class="btn-read-more">Read More</span>
                         </div>
 
                         <!-- Tom Flick -->
@@ -123,19 +125,61 @@
                             <h4 style="color: #ccc; margin-top: 1.5rem; margin-bottom: 0.5rem;">SPECIAL GUEST</h4>
                             <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">TO BE ANNOUNCED</p>
                         </div>
-
                     </div>
                 </div>
 
             </div>
         </section>
-
     </main>
+
+    <!-- Mariel Bio Modal -->
+    <div class="modal-overlay" id="mariel-modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <span class="close-modal" onclick="closeModal('mariel-modal')">&times;</span>
+            <div class="text-center" style="margin-bottom: 2rem;">
+                <h2 class="text-primary" style="font-size: 2.5rem; margin-bottom: 0.5rem;">Mariel Hemingway</h2>
+                <h3 style="color: #fff; font-size: 1.5rem;">Actress, Author & Wellness Advocate</h3>
+            </div>
+            <div
+                style="color: #ccc; line-height: 1.8; text-align: left; max-height: 60vh; overflow-y: auto; padding-right: 1rem;">
+                <p style="margin-bottom: 1.5rem;">
+                    As the granddaughter of illustrious author, Ernest Hemingway, Mariel was always destined to be
+                    well-known and publicly recognized. However, at the young age of 13, Mariel became famous in her own
+                    right when she made her silver screen debut in <em>Lipstick</em>. Four years later her work in Woody
+                    Allen's <em>Manhattan</em> earned her an Oscar® nomination. She has since made 30 films and numerous
+                    television appearances in series and as a host of several environmental and humanitarian
+                    documentaries.
+                </p>
+                <p style="margin-bottom: 1.5rem;">
+                    Now at the age of 50, Mariel is the mother of two daughters, Dree (24) and Langley (23). For over 20
+                    years, she has been pursuing her passion for yoga and health and is now seen as a voice of holistic
+                    and balanced health and well-being. As part of that role she has led wellness retreats all over
+                    America, sharing her insights about movement, silence, nutrition, and home.
+                </p>
+                <p style="margin-bottom: 1.5rem;">
+                    In 2003, she published her powerful bestselling memoir, <em>Finding My Balance</em>. A truly
+                    insightful and inspiring story, of her life's journey through the eyes of yoga and meditation.
+                    Mariel's second book called <em>Mariel Hemingway's Healthy Living from the Inside Out</em> (Harper
+                    Collins San Francisco 2007), is a how-to guide to finding one's balance and health through
+                    self-empowering lifestyle techniques and is a huge success for Mariel and especially for those whom
+                    incorporate her inspiring advice. Her gluten-free, sugar-free cookbook is called <em>Mariel's
+                        Kitchen</em> and her latest book is called <em>Running With Nature</em>.
+                </p>
+                <p>
+                    Mariel's passion is her love of the outdoors...connecting with nature and becoming younger through
+                    food, breath, exercise and nature. She has partnered with Robert Williams, an eco adventurer whose
+                    life has been dedicated to adventure, healing and nature in a new book and lifestyle company called
+                    The WillingWay. They are traveling all over the country sharing what they know about anti-aging,
+                    having fun and feeling great.
+                </p>
+            </div>
+        </div>
+    </div>
 
     <!-- Register Interest Modal -->
     <div class="modal-overlay" id="register-modal">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
+            <span class="close-modal" onclick="closeModal('register-modal')">&times;</span>
             <div class="text-center">
                 <h2 class="text-primary" style="font-size: 2rem; margin-bottom: 1rem;">Claim Your Spot</h2>
                 <p style="color: #999; margin-bottom: 2rem;">Applications are reviewed on a rolling basis. Tell us who
