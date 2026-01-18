@@ -1483,3 +1483,66 @@ body.epic-theme p {
         transform: translateY(-50%);
     }
 }
+
+/* Final SUMMITS Lockup */
+.summit-lockup {
+    text-align: center;
+    margin-top: 8rem;
+    position: relative;
+    z-index: 10;
+}
+
+.summit-lockup span {
+    display: inline-block;
+    font-family: 'Saira Stencil One', sans-serif;
+    font-size: 5rem;
+    color: #fff;
+    margin: 0 0.5rem;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: letter-reveal 0.8s forwards;
+}
+
+.summit-lockup.active span:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.summit-lockup.active span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.summit-lockup.active span:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.summit-lockup.active span:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.summit-lockup.active span:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.summit-lockup.active span:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+.summit-lockup.active span:nth-child(7) {
+    animation-delay: 0.7s;
+}
+
+/* The S */
+
+@keyframes letter-reveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .summit-lockup span {
+        font-size: 3rem;
+        margin: 0 0.1rem;
+    }
+}
