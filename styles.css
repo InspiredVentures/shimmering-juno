@@ -1321,3 +1321,165 @@ body.epic-theme p {
     font-size: clamp(3rem, 8vw, 7rem);
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
+
+/* =========================================
+   SUMMIT PATH VISUALIZATION (Methodology)
+   ========================================= */
+
+.summit-path-container {
+    position: relative;
+    padding: 6rem 0;
+    margin-top: 4rem;
+    overflow: hidden;
+    /* Optional: distinct background or keep global dark */
+    background: linear-gradient(to bottom, #000 0%, #0a0a0a 100%);
+}
+
+/* The Mountain Background */
+.summit-bg-layer {
+    position: absolute;
+    inset: 0;
+    background-image: url('assets/hero_trekking.png');
+    /* Reusing existing asset */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Parallax feel */
+    opacity: 0.4;
+    /* Strong visibility for 'Journey' feel */
+    z-index: 0;
+}
+
+/* The Connecting Rope */
+.summit-rope {
+    position: absolute;
+    top: 5rem;
+    bottom: 5rem;
+    left: 50%;
+    width: 6px;
+    background: repeating-linear-gradient(to bottom,
+            var(--color-primary) 0,
+            var(--color-primary) 15px,
+            transparent 15px,
+            transparent 30px);
+    /* Dashed trail look */
+    transform: translateX(-50%);
+    z-index: 1;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.8));
+}
+
+/* The Step Container */
+.summit-step {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 6rem;
+    /* Spacing between steps */
+}
+
+/* Content Box */
+.summit-card {
+    background: rgba(20, 20, 20, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    width: 45%;
+    /* Desktop width */
+    position: relative;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.summit-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-primary);
+}
+
+/* The Acronym Letter Marker */
+.summit-marker {
+    position: absolute;
+    top: 50%;
+    width: 80px;
+    height: 80px;
+    background: #000;
+    border: 3px solid var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Saira Stencil One', sans-serif;
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    z-index: 10;
+    box-shadow: 0 0 20px rgba(220, 53, 69, 0.3);
+    /* Positioning calculated relative to center line */
+}
+
+/* DESKTOP: ZIG-ZAG LAYOUT */
+@media (min-width: 900px) {
+
+    /* Odd Items (Left) */
+    .summit-step:nth-child(odd) .summit-card {
+        margin-right: 50%;
+        /* Push to left */
+        border-right: 3px solid var(--color-primary);
+        text-align: right;
+        padding-right: 4rem;
+        /* Space for marker */
+    }
+
+    .summit-step:nth-child(odd) .summit-marker {
+        right: -40px;
+        /* Half width to sit on center line */
+        left: auto;
+        transform: translateY(-50%);
+    }
+
+    /* Even Items (Right) */
+    .summit-step:nth-child(even) .summit-card {
+        margin-left: 50%;
+        /* Push to right */
+        border-left: 3px solid var(--color-primary);
+        text-align: left;
+        padding-left: 4rem;
+    }
+
+    .summit-step:nth-child(even) .summit-marker {
+        left: -40px;
+        right: auto;
+        transform: translateY(-50%);
+    }
+}
+
+/* MOBILE: STRAIGHT CLIMB */
+@media (max-width: 899px) {
+    .summit-rope {
+        left: 30px;
+        /* Align rope to left side */
+    }
+
+    .summit-step {
+        justify-content: flex-start;
+        padding-left: 80px;
+        /* Space for rope/marker */
+    }
+
+    .summit-card {
+        width: 100%;
+        text-align: left !important;
+        border: 1px solid #333 !important;
+        border-left: 3px solid var(--color-primary) !important;
+        padding: 1.5rem;
+    }
+
+    .summit-marker {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        left: 5px;
+        /* Align with rope */
+        transform: translateY(-50%);
+    }
+}
