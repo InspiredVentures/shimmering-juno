@@ -518,6 +518,12 @@ footer {
         margin-bottom: 2rem !important;
     }
 
+    /* Massive Headline Override */
+    .big-impact-headline {
+        font-size: clamp(3.5rem, 12vw, 5rem) !important;
+        line-height: 0.9 !important;
+    }
+
     h3 {
         font-size: 1.5rem !important;
     }
