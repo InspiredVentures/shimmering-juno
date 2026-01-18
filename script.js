@@ -34,121 +34,105 @@ const observerOptions = {
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('section, .timeline-item, .hero-content').forEach(el => {
-    el.classList.add('fade-in');
-    observer.observe(el);
-});
-
-// Modal Logic
-const modal = document.querySelector('#register-modal');
-const openModalBtns = document.querySelectorAll('.register-btn, a[href="#register"], .btn'); // Target all potential buttons
-const closeModalBtn = document.querySelector('.close-modal');
-
-if (modal) {
-    // Open Modal
-    openModalBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            // Check if it's the register button specifically
-            if (btn.textContent.toLowerCase().includes('register') || btn.getAttribute('href') === '#register' || btn.textContent.toLowerCase().includes('claim') || btn.textContent.toLowerCase().includes('book')) {
-                e.preventDefault();
-                modal.classList.add('active');
-            }
-        });
-    });
-
-    // Close Modal
-    closeModalBtn.addEventListener('click', () => {
-        modal.classList.remove('active');
-    });
-
-    // Close on outside click
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.classList.remove('active');
-        }
-    });
-}
-
-// Accordion Logic
-const accordions = document.querySelectorAll('.accordion-header');
-
-accordions.forEach(acc => {
-    acc.addEventListener('click', function () {
-        this.classList.toggle('active');
-        const content = this.nextElementSibling;
-
-        if (content.style.maxHeight) {
-            content.style.maxHeight = null;
-        } else {
-            // Optional: Close other accordions
-            accordions.forEach(otherAcc => {
-                if (otherAcc !== this) {
-                    otherAcc.classList.remove('active');
-                    otherAcc.nextElementSibling.style.maxHeight = null;
-                }
+        if (modal) {
+            // Open Modal
+            openModalBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    // Check if it's the register button specifically
+                    if (btn.textContent.toLowerCase().includes('register') || btn.getAttribute('href') === '#register' || btn.textContent.toLowerCase().includes('claim') || btn.textContent.toLowerCase().includes('book')) {
+                        e.preventDefault();
+                        modal.classList.add('active');
+                    }
+                });
             });
 
-            content.style.maxHeight = content.scrollHeight + "px";
+            // Close Modal
+            closeModalBtn.addEventListener('click', () => {
+                modal.classList.remove('active');
+            });
+
+            // Close on outside click
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
         }
-    });
-});
 
-// Scroll Video Autoplay
-const videoObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.play();
-        } else {
-            entry.target.pause();
-        }
-    });
-}, { threshold: 0.5 });
+        // Accordion Logic
+        const accordions = document.querySelectorAll('.accordion-header');
 
-document.querySelectorAll('.scroll-play-video').forEach(video => {
-    videoObserver.observe(video);
-});
+        accordions.forEach(acc => {
+            acc.addEventListener('click', function () {
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
 
-// Scroll Reveal Logic
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            // Optional: Stop observing once revealed
-            revealObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.15 });
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    // Optional: Close other accordions
+                    accordions.forEach(otherAcc => {
+                        if (otherAcc !== this) {
+                            otherAcc.classList.remove('active');
+                            otherAcc.nextElementSibling.style.maxHeight = null;
+                        }
+                    });
 
-// Auto-tag elements for reveal
-document.querySelectorAll('section h2, section p, .grid-2 > div, .grid-3 > div, .accordion-item').forEach(el => {
-    el.classList.add('reveal');
-    revealObserver.observe(el);
-});
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        });
 
-// Parallax Effect
-window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    document.querySelectorAll('.hero, header[style*="background"]').forEach(hero => {
-        // Simple parallax: move background at half speed
-        // Check if element is in view to save performance
-        const rect = hero.getBoundingClientRect();
-        if (rect.bottom > 0 && rect.top < window.innerHeight) {
-             // Only apply if it has a background image defined inline or in CSS
-             // We'll use a CSS variable or direct style
-             // Note: Direct background-position manipulation might conflict with 'center/cover'
-             // Best to use background-attachment: fixed where possible, or this JS tweak:
-             // hero.style.backgroundPositionY = \\px\; 
-             // BUT 'center/cover' makes this tricky. 
-             // Let's stick to standard background-attachment: fixed for now via CSS class if preferred, 
-             // OR use the 'transform' approach on a child. 
-             // Given the existing code, let's try a safe JS approach for background-position-y deviation.
-        }
-    });
-});
+        // Scroll Video Autoplay
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.play();
+                } else {
+                    entry.target.pause();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.scroll-play-video').forEach(video => {
+            videoObserver.observe(video);
+        });
+
+        // Scroll Reveal Logic
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Optional: Stop observing once revealed
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        // Auto-tag elements for reveal
+        document.querySelectorAll('section h2, section p, .grid-2 > div, .grid-3 > div, .accordion-item').forEach(el => {
+            el.classList.add('reveal');
+            revealObserver.observe(el);
+        });
+
+        // Parallax Effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            document.querySelectorAll('.hero, header[style*="background"]').forEach(hero => {
+                // Simple parallax: move background at half speed
+                // Check if element is in view to save performance
+                const rect = hero.getBoundingClientRect();
+                if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                    // Only apply if it has a background image defined inline or in CSS
+                    // We'll use a CSS variable or direct style
+                    // Note: Direct background-position manipulation might conflict with 'center/cover'
+                    // Best to use background-attachment: fixed where possible, or this JS tweak:
+                    // hero.style.backgroundPositionY = \\px\; 
+                    // BUT 'center/cover' makes this tricky. 
+                    // Let's stick to standard background-attachment: fixed for now via CSS class if preferred, 
+                    // OR use the 'transform' approach on a child. 
+                    // Given the existing code, let's try a safe JS approach for background-position-y deviation.
+                }
+            });
+        });
 

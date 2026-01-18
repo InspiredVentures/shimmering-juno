@@ -33,6 +33,18 @@
             font-weight: 300;
         }
 
+        /* Animation Utilities from Homepage Option 3 */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Hero Refinements */
         .hero h1 {
             font-size: 4rem;
@@ -136,7 +148,7 @@
     </style>
 </head>
 
-<body class="epic-theme">
+<body class="bg-black epic-theme">
 
     <!-- Navigation (Consistent) -->
     <nav class="navbar">
@@ -495,6 +507,23 @@
                     }
                 }, 1500);
             }
+
+            // Manual Reveal Logic (Since auto-fade was removed from global script)
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
         });
     </script>
 </body>
