@@ -1855,3 +1855,114 @@ body.epic-theme p {
         /* Smaller menu text */
     }
 }
+
+/* Dropdown Menu Styles */
+.nav-links li {
+    position: relative;
+    /* Ensure dropdown is positioned relative to the parent link */
+}
+
+/* Desktop Dropdown */
+@media (min-width: 901px) {
+    .dropdown-menu {
+        display: block;
+        /* Use opacity/visibility for transition */
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(10px);
+        background: #0a0a0a;
+        border: 1px solid #333;
+        min-width: 220px;
+        padding: 0.5rem 0;
+        z-index: 1000;
+        border-radius: 4px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        pointer-events: none;
+        /* Prevent accidental clicks when hidden */
+    }
+
+    .nav-links li:hover .dropdown-menu,
+    .nav-links li:focus-within .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+        pointer-events: auto;
+    }
+
+    /* Triangle/Arrow */
+    .dropdown-menu::before {
+        content: '';
+        position: absolute;
+        top: -6px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-bottom: 6px solid #333;
+    }
+
+    .dropdown-menu li {
+        margin: 0;
+        display: block;
+        text-align: center;
+    }
+
+    .dropdown-menu a {
+        display: block;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+        color: #ccc;
+        font-weight: 400;
+        white-space: nowrap;
+        transition: all 0.2s;
+        border-bottom: 1px solid #111;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .dropdown-menu a:hover {
+        background: #111;
+        color: var(--color-primary);
+        padding-left: 1.5rem;
+    }
+
+    .dropdown-menu li:last-child a {
+        border-bottom: none;
+    }
+}
+
+/* Mobile Dropdown (Inline) */
+@media (max-width: 900px) {
+    .dropdown-menu {
+        display: block;
+        position: static;
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: none;
+        border: none;
+        width: 100%;
+        margin-top: 0.5rem;
+        transform: none;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .dropdown-menu li {
+        margin: 0;
+    }
+
+    .dropdown-menu a {
+        padding: 0.8rem 0;
+        font-size: 1rem;
+        color: #bbb;
+        border-bottom: none;
+    }
+
+    .dropdown-menu a:hover {
+        color: var(--color-primary);
+    }
+}

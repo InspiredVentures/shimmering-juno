@@ -163,8 +163,14 @@
                 <li><a href="methodology.html">The Framework</a></li>
                 <li><a href="weekend.html">The Weekend</a></li>
                 <li><a href="venue.html">Venue</a></li>
-                <li><a href="charity.html">Higher Ground</a></li>
-                <li><a href="about.html">About Us</a></li>
+                <li><a href="speakers.html">Key Speakers</a></li>
+                <li>
+                    <a href="about.html">About Us</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="charity.html">Higher Ground</a></li>
+                    </ul>
+                </li>
                 <li><a href="#register" class="btn btn-book">Book Now</a></li>
             </ul>
         </div>
@@ -172,7 +178,7 @@
 
     <!-- CINEMATIC HERO (From Option 3) -->
     <header class="hero"
-        style="min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+        style="min-height: 130vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
         <video id="hero-video" autoplay muted loop playsinline poster="assets/fusyy68w0wxm6nyjmrog.webp"
             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5;">
             <source src="assets/hero_video.mp4" type="video/mp4">
@@ -195,9 +201,23 @@
         </div>
 
         <div class="container text-center" style="position: relative; z-index: 10; margin-top: 15vh;">
-            <h1 style="color: #fff; margin-bottom: 1rem;">WHAT'S YOUR <span class="highlight">EVEREST</span>?</h1>
+            <!-- SWAPPED HEADER: THIS FALL WE RISE -->
+            <div class="text-center">
+                <style>
+                    /* Local Override for Slow Rise */
+                    .rise-text {
+                        transition: transform 3s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 3s ease !important;
+                    }
+                </style>
+                <h1 class="big-impact-headline"
+                    style="font-size: clamp(3rem, 10vw, 8rem); line-height: 0.9; color: #fff; margin-bottom: 0;">
+                    THIS FALL<br>
+                    <span class="rise-container"><span id="we-rise" class="rise-text text-primary">WE
+                            RISE</span></span>
+                </h1>
+            </div>
 
-            <p style="font-size: 1.2rem; color: #ddd; max-width: 600px; margin: 0 auto 2rem; letter-spacing: 1px;">
+            <p style="font-size: 1.2rem; color: #ddd; max-width: 600px; margin: 2rem auto 2rem; letter-spacing: 1px;">
                 THE SUMMIT • SUN VALLEY, IDAHO • SEPT 18-20, 2026
             </p>
 
@@ -224,23 +244,15 @@
             style="background: #050505; min-height: 100vh; display: flex; align-items: center;">
             <div class="container">
 
-                <!-- Headline -->
+                <!-- Headline SWAPPED: WHAT'S YOUR EVEREST? -->
                 <div class="text-center" style="margin-bottom: 6rem;">
-                    <style>
-                        /* Local Override for Slow Rise */
-                        .rise-text {
-                            transition: transform 3s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 3s ease !important;
-                        }
-                    </style>
                     <h2 class="big-impact-headline"
-                        style="font-size: clamp(3rem, 10vw, 8rem); line-height: 0.9; color: #fff; margin-bottom: 0;">
-                        THIS FALL<br>
-                        <span class="rise-container"><span id="we-rise" class="rise-text text-primary">WE
-                                RISE</span></span>
+                        style="font-size: clamp(3rem, 8vw, 7rem); line-height: 0.9; color: #fff; margin-bottom: 0;">
+                        WHAT'S YOUR <span class="highlight">EVEREST</span>?
                     </h2>
                     <h3 class="reveal-on-scroll"
                         style="font-size: 1.5rem; color: #666; font-weight: 300; letter-spacing: 4px; margin-top: 1rem;">
-                        JOIN US IN SEPTEMBER TO FIND OUT: WHAT'S YOUR EVEREST?
+                        JOIN US IN SEPTEMBER TO FIND OUT.
                     </h3>
                 </div>
 
@@ -331,78 +343,7 @@
             </div>
         </section>
 
-        <!-- GUIDE & SPEAKERS (From Option 3) -->
-        <section class="bg-black" style="padding: 4rem 0 var(--spacing-xl) 0; border-top: 1px solid #111;">
-            <div class="container">
-
-                <!-- Your Guide: Mark Pattison -->
-                <div class="grid-2 reveal-on-scroll" style="align-items: center; gap: 4rem; margin-bottom: 6rem;">
-                    <div>
-                        <h2 class="text-primary" style="font-size: 3rem; margin-bottom: 1rem;">YOUR GUIDE</h2>
-                        <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 2rem;">MARK PATTISON • NFL VETERAN • 7
-                            SUMMITS CLIMBER</h3>
-                        <p style="color: #ccc; margin-bottom: 2rem; font-size: 1.1rem;">
-                            After a career in the NFL, Mark set a new goal: to climb the Seven Summits. Now, he
-                            translates the discipline, grit, and team dynamics of elite sports into a framework for
-                            leaders.
-                        </p>
-                        <a href="about.html" class="btn">Meet The Host</a>
-                    </div>
-                    <div style="position: relative;">
-                        <img src="assets/Mark-Pattison.jpg" alt="Mark Pattison"
-                            style="width: 100%; border-radius: 4px; filter: grayscale(100%); transition: filter 0.5s;">
-                        <div
-                            style="position: absolute; inset: 0; border: 1px solid var(--color-primary); transform: translate(15px, 15px); z-index: -1;">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- NEW: The Speakers -->
-                <div class="reveal-on-scroll">
-                    <h2 class="text-center text-primary" style="font-size: 2.5rem; margin-bottom: 3rem;">THE SPEAKERS
-                    </h2>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-
-                        <!-- Mariel Hemingway -->
-                        <div class="speaker-card">
-                            <!-- Placeholder for Mariel, using a generic confident style -->
-                            <div class="speaker-img"
-                                style="display: flex; align-items: center; justify-content: center; background: #111; color: #333;">
-                                <span style="font-family: 'Oswald'; font-size: 5rem; opacity: 0.3;">MH</span>
-                            </div>
-                            <h4 style="color: #fff; margin-top: 1.5rem; margin-bottom: 0.5rem;">MARIEL HEMINGWAY</h4>
-                            <p class="highlight" style="font-size: 0.9rem; margin-bottom: 1rem;">ACTRESS & AUTHOR</p>
-                            <p style="color: #999; padding: 0 1.5rem; font-size: 0.95rem;">
-                                Oscar-nominated actress and mental health advocate sharing her powerful journey of
-                                resilience.
-                            </p>
-                        </div>
-
-                        <!-- TBA 1 -->
-                        <div class="speaker-card" style="opacity: 0.7;">
-                            <div class="speaker-img"
-                                style="display: flex; align-items: center; justify-content: center; background: #080808; color: #222;">
-                                <span style="font-family: 'Oswald'; font-size: 3rem; opacity: 0.3;">?</span>
-                            </div>
-                            <h4 style="color: #ccc; margin-top: 1.5rem; margin-bottom: 0.5rem;">SPECIAL GUEST</h4>
-                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">TO BE ANNOUNCED</p>
-                        </div>
-
-                        <!-- TBA 2 -->
-                        <div class="speaker-card" style="opacity: 0.7;">
-                            <div class="speaker-img"
-                                style="display: flex; align-items: center; justify-content: center; background: #080808; color: #222;">
-                                <span style="font-family: 'Oswald'; font-size: 3rem; opacity: 0.3;">?</span>
-                            </div>
-                            <h4 style="color: #ccc; margin-top: 1.5rem; margin-bottom: 0.5rem;">SPECIAL GUEST</h4>
-                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">TO BE ANNOUNCED</p>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </section>
+        <!-- GUIDE & SPEAKERS MOVED TO speakers.html -->
 
         <!-- VENUE TEASER (From Option 3) -->
         <section class="section-padding"
@@ -525,16 +466,13 @@
                 });
             }, { threshold: 0.1 });
 
+            // Note: we-rise ID moved to hero
             const riseText = document.getElementById('we-rise');
             if (riseText) {
-                riseObserver.observe(riseText);
-
-                // Safety Fallback: Force show after 1.5 seconds if observer misses
+                // Add a small delay for the hero animation to start after page load
                 setTimeout(() => {
-                    if (!riseText.classList.contains('show')) {
-                        riseText.classList.add('show');
-                    }
-                }, 1500);
+                    riseText.classList.add('show');
+                }, 500);
             }
 
             // Manual Reveal Logic (Since auto-fade was removed from global script)
