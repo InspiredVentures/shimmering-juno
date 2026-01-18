@@ -600,6 +600,19 @@ footer {
         transition: 0.3s;
     }
 
+    /* Restore Hamburger Animation */
+    .menu-toggle.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.is-active .bar:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle.is-active .bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
     .nav-links {
         position: fixed;
         inset: 0;
@@ -610,11 +623,13 @@ footer {
         gap: 2rem;
         transform: translateX(100%);
         transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        z-index: 1000;
+        z-index: 9998;
+        /* High Z-index */
         padding: 2rem;
         display: flex !important;
         /* Override display:none */
         height: 100vh;
+        /* Fixed height */
         width: 100vw;
     }
 
