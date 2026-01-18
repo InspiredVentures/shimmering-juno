@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Everest | The Summit</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&family=Saira+Stencil+One&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Masterpiece Overrides - To be safe, keeping these from option 3 */
+        body {
+            background-color: #050505;
+            color: #e0e0e0;
+        }
+
+        /* Typography Polish */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+        }
+
+        /* Animation Utilities from Homepage Option 3 */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Refinements */
+        .hero h1 {
+            font-size: 4rem;
+            /* Fallback */
+            font-size: clamp(3rem, 8vw, 7rem);
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Pillars (Calling, Game, etc) */
+        .pillar-card {
+            background: #111;
+            padding: 3rem;
+            border-left: 2px solid #333;
+            transition: transform 0.4s ease, border-color 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-5px);
+            border-left-color: var(--color-primary);
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--color-primary);
+            transition: width 0.4s ease;
+        }
+
+        .pillar-card:hover::before {
+            width: 100%;
+        }
+
+        .pillar-card h4 {
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pillar-card p {
+            color: #ccc;
+            font-size: 1.2rem;
+            line-height: 1.7;
+        }
+
+        .highlight {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        /* "We Rise" Animation */
+        .rise-container {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: bottom;
+        }
+
+        .rise-text {
+            display: inline-block;
+            transform: translateY(110%);
+            opacity: 0;
+            transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1), opacity 1.2s ease;
+        }
+
+        .rise-text.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Speaker Card */
+        .speaker-card {
+            background: #0a0a0a;
+            border: 1px solid #222;
+            text-align: center;
+            padding-bottom: 2rem;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .speaker-card:hover {
+            border-color: var(--color-primary);
+        }
+
+        .speaker-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            background-color: #111;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .speaker-card:hover .speaker-img {
+            filter: grayscale(0%);
+        }
+    </style>
+</head>
+
+<body class="bg-black epic-theme">
+
+    <!-- Navigation (Consistent) -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo"><img src="assets/logo.png" alt="7 Summits Summit"></a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="methodology.html">The Framework</a></li>
+                <li><a href="weekend.html">The Weekend</a></li>
+                <li><a href="venue.html">Venue</a></li>
+                <li><a href="charity.html">Higher Ground</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="#register" class="btn btn-book">Book Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- CINEMATIC HERO (From Option 3) -->
+    <header class="hero"
+        style="min-height: 130vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+        <video id="hero-video" autoplay muted loop playsinline poster="assets/fusyy68w0wxm6nyjmrog.webp"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5;">
+            <source src="assets/hero_video.mp4" type="video/mp4">
+        </video>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const video = document.getElementById('hero-video');
+                if (video) {
+                    video.addEventListener('timeupdate', () => {
+                        if (video.duration && video.currentTime > (video.duration - 5)) {
+                            video.currentTime = 0;
+                            video.play();
+                        }
+                    });
+                }
+            });
+        </script>
+        <div class="overlay"
+            style="position: absolute; inset: 0; background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);">
+        </div>
+
+        <div class="container text-center" style="position: relative; z-index: 10; margin-top: 15vh;">
+            <!-- SWAPPED HEADER: THIS FALL WE RISE -->
+            <div class="text-center">
+                <style>
+                    /* Local Override for Slow Rise */
+                    .rise-text {
+                        transition: transform 3s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 3s ease !important;
+                    }
+                </style>
+                <h1 class="big-impact-headline"
+                    style="font-size: clamp(3rem, 10vw, 8rem); line-height: 0.9; color: #fff; margin-bottom: 0;">
+                    THIS FALL<br>
+                    <span class="rise-container"><span id="we-rise" class="rise-text text-primary">WE
+                            RISE</span></span>
+                </h1>
+            </div>
+
+            <p style="font-size: 1.2rem; color: #ddd; max-width: 600px; margin: 2rem auto 2rem; letter-spacing: 1px;">
+                THE SUMMIT • SUN VALLEY, IDAHO • SEPT 18-20, 2026
+            </p>
+
+            <a href="#manifesto" class="btn btn-outline"
+                style="border-color: #fff; color: #fff; margin-bottom: 2rem;">Discover The Calling</a>
+
+            <!-- Context & Scarcity -->
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <p
+                    style="color: var(--color-primary); font-family: 'Oswald', sans-serif; letter-spacing: 2px; font-weight: 500; text-transform: uppercase; margin: 0; font-size: 1rem;">
+                    An Immersive Executive Retreat brought to you by Mark Pattison
+                </p>
+                <p style="color: #999; font-size: 0.85rem; letter-spacing: 0.5px; margin: 0;">
+                    Limited to 150 Leaders
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main id="manifesto">
+
+        <!-- MANIFESTO SECTION (From Option 3) -->
+        <section class="section-padding"
+            style="background: #050505; min-height: 100vh; display: flex; align-items: center;">
+            <div class="container">
+
+                <!-- Headline SWAPPED: WHAT'S YOUR EVEREST? -->
+                <div class="text-center" style="margin-bottom: 6rem;">
+                    <h2 class="big-impact-headline"
+                        style="font-size: clamp(3rem, 8vw, 7rem); line-height: 0.9; color: #fff; margin-bottom: 0;">
+                        WHAT'S YOUR <span class="highlight">EVEREST</span>?
+                    </h2>
+                    <h3 class="reveal-on-scroll"
+                        style="font-size: 1.5rem; color: #666; font-weight: 300; letter-spacing: 4px; margin-top: 1rem;">
+                        JOIN US IN SEPTEMBER TO FIND OUT.
+                    </h3>
+                </div>
+
+                <!-- The 3 Core Pillars -->
+                <div class="grid-2" style="gap: 3rem; margin-bottom: 6rem;">
+
+                    <!-- 1. The Calling -->
+                    <div class="pillar-card reveal-on-scroll" style="transition-delay: 0.1s;">
+                        <h4>THE <span class="highlight">CALLING</span></h4>
+                        <p>
+                            Life imposes challenges. Leaders <span class="highlight">choose</span> them. Your Everest is
+                            a calling. The voluntary pursuit of a struggle that demands your absolute best.
+                            <br><br>
+                            It’s not just about the summit. It’s about expanding your capacity to handle everything
+                            else.
+                        </p>
+                    </div>
+
+                    <!-- 2. The Game -->
+                    <div class="pillar-card reveal-on-scroll" style="transition-delay: 0.2s;">
+                        <h4>THE <span class="highlight">GAME</span></h4>
+                        <p>
+                            You’ve won the financial game. Now play the game of life.
+                            <br><br>
+                            Comfort is the enemy of fulfillment. Real purpose is found in the "arena", pursuing a
+                            challenge that scares you enough to make you feel alive again. Don't just exist. Ascend.
+                        </p>
+                    </div>
+
+                    <!-- 3. The Experience -->
+                    <div class="pillar-card reveal-on-scroll" style="border-left-color: #fff; transition-delay: 0.3s;">
+                        <h4>THE <span class="highlight">EXPERIENCE</span></h4>
+                        <p>
+                            Clarity doesn't happen in a conference room. It happens on the mountain.
+                            <br><br>
+                            We provide the elite framework, the world-class guides, and the rope team. You bring the
+                            <span class="highlight">grit</span>. This is where inspiration meets perspiration.
+                        </p>
+                    </div>
+
+                    <!-- 4. The Result -->
+                    <div class="pillar-card reveal-on-scroll"
+                        style="background: #1a1a1a; display: flex; flex-direction: column; justify-content: center; border-left-color: var(--color-primary); transition-delay: 0.4s;">
+                        <h4 style="color: var(--color-primary); margin-bottom: 0.5rem;">THE RESULT</h4>
+                        <p
+                            style="font-size: 2rem; color: #fff; font-family: 'Oswald', sans-serif; font-weight: 700; line-height: 1.1; text-transform: uppercase;">
+                            <span class="highlight">UNLEASHED POTENTIAL</span><br>
+                            <span style="color: #fff; font-weight: 300; font-size: 1.5rem; text-transform: none;">Making
+                                the Impossible, Possible.</span>
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- WE SHOW YOU (Extended) -->
+                <div class="reveal-on-scroll"
+                    style="margin-top: 6rem; padding: 4rem; background: #0a0a0a; border-top: 1px solid #111; border-bottom: 1px solid #111;">
+                    <div class="text-center" style="margin-bottom: 4rem;">
+                        <h2 style="color: #fff; font-size: 3rem;">NOT A CONFERENCE. A CLIMB</h2>
+                        <h3 class="text-primary" style="font-size: 1.5rem; letter-spacing: 2px;">MIND. BODY. PURPOSE.
+                        </h3>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem;">
+                        <div class="text-center">
+                            <h4 style="color: #fff; font-size: 1.5rem; margin-bottom: 1rem;">THE <span
+                                    class="highlight">INSPIRATIONAL</span></h4>
+                            <p style="color: #ccc;">World-class speakers who don't just talk from a stage—they hike
+                                beside you. They inspire you not with theory, but with the raw truth of their own
+                                journeys.</p>
+                        </div>
+                        <div class="text-center">
+                            <h4 style="color: #fff; font-size: 1.5rem; margin-bottom: 1rem;">THE <span
+                                    class="highlight">ASPIRATIONAL</span></h4>
+                            <p style="color: #ccc;">We take you into the mountains of Sun Valley to challenge you
+                                physically and mentally. The altitude and the effort narrow your focus.</p>
+                        </div>
+                        <div class="text-center">
+                            <h4 style="color: #fff; font-size: 1.5rem; margin-bottom: 1rem;">THE <span
+                                    class="highlight">IMPACT</span></h4>
+                            <p style="color: #ccc;">We climb for more than ourselves. We partner with <strong>Higher
+                                    Ground</strong>, supporting local veterans and first responders. It’s about paying
+                                it forward.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- GUIDE & SPEAKERS (From Option 3) -->
+        <section class="bg-black" style="padding: 4rem 0 var(--spacing-xl) 0; border-top: 1px solid #111;">
+            <div class="container">
+
+                <!-- Your Guide: Mark Pattison -->
+                <div class="grid-2 reveal-on-scroll" style="align-items: center; gap: 4rem; margin-bottom: 6rem;">
+                    <div>
+                        <h2 class="text-primary" style="font-size: 3rem; margin-bottom: 1rem;">YOUR GUIDE</h2>
+                        <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 2rem;">MARK PATTISON • NFL VETERAN • 7
+                            SUMMITS CLIMBER</h3>
+                        <p style="color: #ccc; margin-bottom: 2rem; font-size: 1.1rem;">
+                            After a career in the NFL, Mark set a new goal: to climb the Seven Summits. Now, he
+                            translates the discipline, grit, and team dynamics of elite sports into a framework for
+                            leaders.
+                        </p>
+                        <a href="about.html" class="btn">Meet The Host</a>
+                    </div>
+                    <div style="position: relative;">
+                        <img src="assets/Mark-Pattison.jpg" alt="Mark Pattison"
+                            style="width: 100%; border-radius: 4px; filter: grayscale(100%); transition: filter 0.5s;">
+                        <div
+                            style="position: absolute; inset: 0; border: 1px solid var(--color-primary); transform: translate(15px, 15px); z-index: -1;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NEW: The Speakers -->
+                <div class="reveal-on-scroll">
+                    <h2 class="text-center text-primary" style="font-size: 2.5rem; margin-bottom: 3rem;">THE SPEAKERS
+                    </h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+
+                        <!-- Mariel Hemingway -->
+                        <div class="speaker-card">
+                            <!-- Placeholder for Mariel, using a generic confident style -->
+                            <div class="speaker-img"
+                                style="display: flex; align-items: center; justify-content: center; background: #111; color: #333;">
+                                <span style="font-family: 'Oswald'; font-size: 5rem; opacity: 0.3;">MH</span>
+                            </div>
+                            <h4 style="color: #fff; margin-top: 1.5rem; margin-bottom: 0.5rem;">MARIEL HEMINGWAY</h4>
+                            <p class="highlight" style="font-size: 0.9rem; margin-bottom: 1rem;">ACTRESS & AUTHOR</p>
+                            <p style="color: #999; padding: 0 1.5rem; font-size: 0.95rem;">
+                                Oscar-nominated actress and mental health advocate sharing her powerful journey of
+                                resilience.
+                            </p>
+                        </div>
+
+                        <!-- TBA 1 -->
+                        <div class="speaker-card" style="opacity: 0.7;">
+                            <div class="speaker-img"
+                                style="display: flex; align-items: center; justify-content: center; background: #080808; color: #222;">
+                                <span style="font-family: 'Oswald'; font-size: 3rem; opacity: 0.3;">?</span>
+                            </div>
+                            <h4 style="color: #ccc; margin-top: 1.5rem; margin-bottom: 0.5rem;">SPECIAL GUEST</h4>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">TO BE ANNOUNCED</p>
+                        </div>
+
+                        <!-- TBA 2 -->
+                        <div class="speaker-card" style="opacity: 0.7;">
+                            <div class="speaker-img"
+                                style="display: flex; align-items: center; justify-content: center; background: #080808; color: #222;">
+                                <span style="font-family: 'Oswald'; font-size: 3rem; opacity: 0.3;">?</span>
+                            </div>
+                            <h4 style="color: #ccc; margin-top: 1.5rem; margin-bottom: 0.5rem;">SPECIAL GUEST</h4>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">TO BE ANNOUNCED</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- VENUE TEASER (From Option 3) -->
+        <section class="section-padding"
+            style="background: url('assets/venue_pool.jpg') center/cover fixed; position: relative;">
+            <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.8);"></div>
+            <div class="container text-center reveal-on-scroll"
+                style="position: relative; z-index: 2; padding: 6rem 0;">
+                <h2 style="color: #fff; font-size: 4rem; opacity: 0.9;">THE VENUE</h2>
+                <h3 style="color: var(--color-primary); margin-bottom: 2rem;">SUN VALLEY LODGE</h3>
+                <p style="color: #ddd; max-width: 600px; margin: 0 auto 3rem; font-size: 1.2rem;">
+                    Boardrooms don't build character. Mountains do. Experience the historic charm of America's first
+                    destination ski resort.
+                </p>
+                <a href="venue.html" class="btn btn-outline" style="border-color: #fff; color: #fff;">Explore The
+                    Lodge</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Register Interest Modal (Preserved from Index) -->
+    <div class="modal-overlay" id="register-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="text-center">
+                <h2 class="text-primary" style="font-size: 2rem; margin-bottom: 1rem;">Claim Your Spot</h2>
+                <p style="color: #999; margin-bottom: 2rem;">Applications are reviewed on a rolling basis. Tell us who
+                    you are.</p>
+            </div>
+            <form id="interest-form" action="https://formsubmit.co/matt@inspiredventures.co.uk" method="POST">
+                <input type="text" name="_honey" style="display:none">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_sheet" value="Seven Summits Leads">
+
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="name" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="email" required placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label>What is your Everest? (Optional)</label>
+                    <textarea name="message" rows="3" placeholder="Briefly, what are you trying to conquer?"></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Submit Interest</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER (Consistent) -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand / Partnership -->
+                <div class="footer-col">
+                    <a href="#" target="_blank"><img src="assets/logo.png" alt="Seven Summits"
+                            style="height: 50px; margin-bottom: 1.5rem;"></a>
+                    <p style="color: #999; line-height: 1.6; margin-bottom: 2rem;">
+                        The arena is outside. Boardrooms don't build character; mountains do.
+                    </p>
+                    <div class="partnership-lockup">
+                        <span style="color: #666; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">In
+                            Proud Partnership<br>With</span>
+                        <img src="assets/Inspired-logo.avif" alt="Inspired Ventures" style="height: 35px;">
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="index.html">The Summit</a></li>
+                        <li><a href="methodology.html">The Framework</a></li>
+                        <li><a href="weekend.html">The Weekend</a></li>
+                        <li><a href="venue.html">Venue</a></li>
+                        <li><a href="charity.html">Higher Ground</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:mark@markpattisonnfl.com">mark@markpattisonnfl.com</a></li>
+                        <li>Sun Valley, Idaho</li>
+                    </ul>
+                    <div class="social-links" style="margin-top: 1.5rem;">
+                        <a href="#">IG</a>
+                        <a href="#">LI</a>
+                        <a href="#">X</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Seven Summits Event. All Rights Reserved.</p>
+                <div style="display: flex; gap: 2rem;">
+                    <a href="#" style="color: #666; text-decoration: none;">Privacy Policy</a>
+                    <a href="#" style="color: #666; text-decoration: none;">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTION SCRIPT (Merged) -->
+    <script src="script.js"></script>
+    <script>
+        // Trigger "We Rise" Animation on Scroll (Specific to Home)
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // Observer for "We Rise" - Trigger when 10% visible (Maximize reliability)
+            const riseObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                        riseObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            // Note: we-rise ID moved to hero
+            const riseText = document.getElementById('we-rise');
+            if (riseText) {
+                // Add a small delay for the hero animation to start after page load
+                setTimeout(() => {
+                    riseText.classList.add('show');
+                }, 500);
+            }
+
+            // Manual Reveal Logic (Since auto-fade was removed from global script)
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+
+</html>
