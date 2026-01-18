@@ -342,7 +342,7 @@
         // Trigger "We Rise" Animation on Scroll
         document.addEventListener('DOMContentLoaded', () => {
 
-            // Observer for "We Rise" - Trigger when 50% visible (more reliable)
+            // Observer for "We Rise" - Trigger when 10% visible (Maximize reliability)
             const riseObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -350,10 +350,19 @@
                         riseObserver.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.5 });
+            }, { threshold: 0.1 });
 
             const riseText = document.getElementById('we-rise');
-            if (riseText) riseObserver.observe(riseText);
+            if (riseText) {
+                riseObserver.observe(riseText);
+
+                // Safety Fallback: Force show after 3 seconds if observer misses
+                setTimeout(() => {
+                    if (!riseText.classList.contains('show')) {
+                        riseText.classList.add('show');
+                    }
+                }, 3000);
+            }
 
             // General Scroll Fade-ins
             const observerOptions = {
