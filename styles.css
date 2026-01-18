@@ -557,6 +557,24 @@ footer {
         line-height: 0.9 !important;
     }
 
+    .trail-content {
+        border-left: 2px solid var(--color-primary) !important;
+        border-right: none !important;
+        opacity: 1 !important;
+        /* Always visible on mobile */
+        pointer-events: auto;
+    }
+
+    .node-summit {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .node-summit .trail-marker {
+        margin-bottom: 0;
+        margin-right: 1rem;
+    }
+
     h3 {
         font-size: 1.5rem !important;
     }
@@ -1354,12 +1372,14 @@ body.epic-theme p {
     cursor: default;
     transition: all 0.3s ease;
     z-index: 10;
-    width: 200px;
+    width: 400px;
+    /* Wider for extensive text */
 }
 
 .trail-point:hover {
     z-index: 20;
-    transform: translate(-50%, 50%) scale(1.1);
+    transform: translate(-50%, 50%) scale(1.05);
+    /* Slight scale */
 }
 
 .trail-marker {
@@ -1367,31 +1387,37 @@ body.epic-theme p {
     height: 50px;
     background: #000;
     /* Solid black to pop against white/rock */
-    border: 2px solid var(--color-primary);
+    border: 2px solid #fff;
+    /* White border */
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-primary);
+    color: #fff;
+    /* White Text */
     font-family: 'Saira Stencil One';
     font-size: 1.2rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     margin-bottom: 0.5rem;
     position: relative;
+    transition: transform 0.3s ease;
 }
 
 /* Connect the marker to the line visually if needed, but SVG does that */
 
 .trail-content {
-    background: rgba(0, 0, 0, 0.8);
-    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.9);
+    /* Darker for readability */
+    padding: 1.5rem;
+    /* More padding */
     border-radius: 4px;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
     opacity: 0;
     transition: opacity 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
     pointer-events: none;
     /* Let clicks pass through description */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .trail-point:hover .trail-content {
@@ -1401,15 +1427,18 @@ body.epic-theme p {
 
 .trail-content h4 {
     color: #fff;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     margin-bottom: 0.1rem;
     font-family: 'Oswald';
+    letter-spacing: 1px;
 }
 
 .trail-content p {
     display: block;
     color: #ccc;
-    font-size: 0.7rem;
+    font-size: 0.85rem;
+    /* Larger font for reading */
+    line-height: 1.5;
     margin: 0;
     margin-top: 0.2rem;
 }
@@ -1430,10 +1459,10 @@ body.epic-theme p {
 }
 
 .node-summit.final-form .trail-marker {
-    background: var(--color-primary);
-    color: #fff;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 30px var(--color-primary);
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
 }
 
 /* DIAGONAL POSITIONS (Bottom Left -> Top Right) */
@@ -1469,9 +1498,9 @@ body.epic-theme p {
     left: 55%;
 }
 
-/* T - The Dip (Lower than Identify) */
+/* T - The Dip (Reduced: from 55% to 58%) */
 .node-traverse {
-    bottom: 55%;
+    bottom: 58%;
     left: 70%;
 }
 
@@ -1534,16 +1563,105 @@ body.epic-theme p {
     }
 }
 
-/* Mobile: Disable complex animation, just show all */
-@media (max-width: 768px) {
-    .climb-path {
-        stroke-dashoffset: 0;
-        animation: none;
+/* Mobile/Tablet Vertical Timeline Layout */
+@media (max-width: 900px) {
+    .trail-map-container {
+        height: auto;
+        padding: 4rem 1.5rem;
+        background: linear-gradient(to bottom, #111 0%, #050505 100%);
+        /* Clean dark bg */
+        margin-top: 0;
     }
 
-    .anim-step {
+    /* Hide the complex mountain SVG path */
+    .climb-svg {
+        display: none;
+    }
+
+    /* Reset Nodes to Relative Stacking */
+    .trail-point {
+        position: relative;
+        bottom: auto !important;
+        left: auto !important;
+        transform: none !important;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto 3rem auto;
+        /* Vertical spacing */
+        flex-direction: row !important;
+        align-items: flex-start;
+        text-align: left !important;
         opacity: 1;
-        transform: none;
-        animation: none;
+        /* Ensure visible */
+    }
+
+    /* Vertical Connecting Line */
+    .trail-map-container::before {
+        content: '';
+        position: absolute;
+        top: 4rem;
+        bottom: 4rem;
+        left: 39px;
+        /* Align with center of markers (1.5rem padding + 25px half marker) */
+        width: 2px;
+        background: repeating-linear-gradient(to bottom, var(--color-primary) 0, var(--color-primary) 5px, transparent 5px, transparent 10px);
+        z-index: 1;
+    }
+
+    /* Markers */
+    .trail-marker {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+        margin-right: 1.5rem;
+        margin-bottom: 0;
+        z-index: 2;
+        /* Sit on top of line */
+        background: #000;
+        flex-shrink: 0;
+    }
+
+    /* Content Cards */
+    .trail-content {
+        flex: 1;
+        opacity: 1 !important;
+        /* Always visible */
+        pointer-events: auto;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-left: 3px solid var(--color-primary) !important;
+        border-right: none !important;
+        background: rgba(20, 20, 20, 0.6);
+    }
+
+    .trail-content p {
+        display: block;
+    }
+
+    /* Specific Tweaks */
+    .node-summit {
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 0;
+    }
+
+    .node-summit .trail-marker {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+        background: var(--color-primary);
+        color: #fff;
+    }
+
+    /* Disable Animations */
+    .anim-step,
+    .climb-path {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    /* Hide Desktop UI Elements */
+    #final-summits-text,
+    button[onclick^="replay"] {
+        display: none !important;
     }
 }
