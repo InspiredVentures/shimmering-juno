@@ -29,6 +29,7 @@
                 <li><a href="about.html" class="text-primary">About Us</a></li>
                 <li><a href="#register" class="btn btn-book">Book Now</a></li>
             </ul>
+        </div>
     </nav>
 
     <!-- CINEMATIC HERO -->
@@ -184,22 +185,8 @@
         </div>
     </footer>
 
-    <!-- SCROLL SCRIPT -->
+    <!-- CORE SCRIPT -->
     <script src="script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-            document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
-        });
-    </script>
 </body>
 
 </html>
