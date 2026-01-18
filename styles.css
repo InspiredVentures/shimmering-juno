@@ -581,6 +581,8 @@ footer {
         flex-direction: column;
         gap: 5px;
         cursor: pointer;
+        position: relative;
+        /* Fix for z-index */
         z-index: 1100;
         /* Above drawer */
     }
