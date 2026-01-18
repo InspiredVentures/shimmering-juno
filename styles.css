@@ -1697,29 +1697,21 @@ body.epic-theme p {
         transition: all 0.3s ease-in-out;
     }
 
-    /* Hamburger Animation to Summit Triangle */
+    /* Hamburger Animation (Reverted to X) */
     .menu-toggle.is-active .bar:nth-child(2) {
-        opacity: 1;
-        /* Base of Triangle */
-        width: 24px;
-        transform: none;
-        /* Stays in place */
+        opacity: 0;
     }
 
     .menu-toggle.is-active .bar:nth-child(1) {
-        /* Left Slope */
-        width: 24px;
-        transform-origin: 0% 100%;
-        /* Bottom Left Pivot */
-        transform: translateY(8px) rotate(-60deg);
+        transform: translateY(8px) rotate(45deg);
+        width: 25px;
+        /* Reset width */
     }
 
     .menu-toggle.is-active .bar:nth-child(3) {
-        /* Right Slope */
-        width: 24px;
-        transform-origin: 100% 100%;
-        /* Bottom Right Pivot */
-        transform: translateY(-8px) rotate(60deg);
+        transform: translateY(-8px) rotate(-45deg);
+        width: 25px;
+        /* Reset width */
     }
 
     /* Mobile Nav Drawer */
@@ -1794,5 +1786,40 @@ body.epic-theme p {
     .nav-links a {
         font-size: 1.5rem;
         /* Larger for touch */
+    }
+}
+
+/* Galaxy Fold / Ultra-Narrow Screen Optimization */
+@media (max-width: 330px) {
+    .container {
+        padding: 0 1rem;
+        /* Reduce global padding */
+    }
+
+    .navbar .logo {
+        height: 60px;
+        /* Smaller Logo */
+        padding: 5px 0;
+    }
+
+    .navbar {
+        padding: 0.8rem 0;
+        /* Thinner navbar */
+    }
+
+    .menu-toggle {
+        transform: scale(0.9);
+        /* Slightly smaller icon */
+    }
+
+    .nav-links {
+        top: 65px;
+        /* Adjust for smaller navbar */
+        height: calc(100vh - 65px);
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+        /* Smaller menu text */
     }
 }
