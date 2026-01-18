@@ -1443,6 +1443,38 @@ body.epic-theme p {
     margin-top: 0.2rem;
 }
 
+
+/* Mobile SUMMITS Header Row */
+.mobile-summits-row {
+    display: none;
+    /* Hidden on Desktop */
+}
+
+@media (max-width: 900px) {
+    .mobile-summits-row {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 2rem 1rem 0 1rem;
+        background: #111;
+    }
+
+    .summit-circle {
+        width: 35px;
+        height: 35px;
+        background: #000;
+        border: 1px solid var(--color-primary);
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Saira Stencil One';
+        font-size: 1rem;
+        box-shadow: 0 0 10px rgba(204, 0, 0, 0.2);
+    }
+}
+
 /* Convergence Animation Classes */
 .trail-point.converging {
     transition: transform 2s ease-in-out, opacity 2s ease-in-out;
