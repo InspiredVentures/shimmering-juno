@@ -116,31 +116,6 @@
             transform: translateY(0);
             opacity: 1;
         }
-
-        /* Quote Section */
-        .quote-box {
-            background: #0a0a0a;
-            border: 1px solid #222;
-            padding: 4rem;
-            position: relative;
-        }
-
-        .quote-box::after {
-            content: '"';
-            position: absolute;
-            top: 2rem;
-            left: 2rem;
-            font-family: 'Oswald', sans-serif;
-            font-size: 8rem;
-            color: #222;
-            z-index: 0;
-            line-height: 0;
-        }
-
-        .quote-content {
-            position: relative;
-            z-index: 1;
-        }
     </style>
 </head>
 
@@ -199,8 +174,8 @@
                     </h3>
                 </div>
 
-                <!-- The 3 Core Pillars -->
-                <div class="grid-2" style="gap: 3rem; margin-bottom: 5rem;">
+                <!-- The 3 Core Pillars (Calling / Game / Experience / Result) -->
+                <div class="grid-2" style="gap: 3rem; margin-bottom: 6rem;">
 
                     <!-- 1. The Calling -->
                     <div class="pillar-card reveal-on-scroll" style="transition-delay: 0.1s;">
@@ -250,14 +225,49 @@
 
                 </div>
 
-                <!-- NOT A CONFERENCE -->
-                <div class="quote-box text-center reveal-on-scroll" style="max-width: 900px; margin: 0 auto;">
-                    <div class="quote-content">
-                        <h3 style="color: #fff; font-size: 2rem; margin-bottom: 1rem;">NOT A CONFERENCE. A CLIMB.</h3>
-                        <p style="color: #bbb; max-width: 700px; margin: 0 auto;">
-                            "This is not a sit down, get inspired, go home programme. The speakers join you on the
-                            trails. The coversations happen where they stick: outside, moving, and away from the noise."
-                        </p>
+                <!-- WE SHOW YOU: Expanded Section -->
+                <div class="reveal-on-scroll"
+                    style="margin-top: 6rem; padding: 4rem; background: #0a0a0a; border-top: 1px solid #111; border-bottom: 1px solid #111;">
+                    <div class="text-center" style="margin-bottom: 4rem;">
+                        <h2 style="color: #fff; font-size: 3rem;">NOT A CONFERENCE. A CLIMB.</h2>
+                        <h3 class="text-primary" style="font-size: 1.5rem;letter-spacing: 2px;">WE SHOW YOU:</h3>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem;">
+
+                        <!-- 1. Inspirational -->
+                        <div class="text-center">
+                            <h4 style="color: #fff; font-size: 1.5rem; margin-bottom: 1rem;">THE <span
+                                    class="highlight">INSPIRATIONAL</span></h4>
+                            <p style="color: #ccc;">
+                                World-class speakers who don't just talk from a stage—they hike beside you. They inspire
+                                you not with theory, but with the raw truth of their own journeys, giving you the path
+                                to transform your mindset.
+                            </p>
+                        </div>
+
+                        <!-- 2. Aspirational -->
+                        <div class="text-center">
+                            <h4 style="color: #fff; font-size: 1.5rem; margin-bottom: 1rem;">THE <span
+                                    class="highlight">ASPIRATIONAL</span></h4>
+                            <p style="color: #ccc;">
+                                We take you into the mountains of Sun Valley to challenge you physically and mentally.
+                                The altitude and the effort narrow your focus, strengthening your mind to see what
+                                matters most.
+                            </p>
+                        </div>
+
+                        <!-- 3. Paying it Forward -->
+                        <div class="text-center">
+                            <h4 style="color: #fff; font-size: 1.5rem; margin-bottom: 1rem;">THE <span
+                                    class="highlight">IMPACT</span></h4>
+                            <p style="color: #ccc;">
+                                We climb for more than ourselves. We partner with <strong>Higher Ground</strong>,
+                                supporting local veterans and first responders. It’s about paying it forward and lifting
+                                others as we climb.
+                            </p>
+                        </div>
+
                     </div>
                 </div>
 
