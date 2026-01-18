@@ -2009,7 +2009,7 @@ body.epic-theme p {
 
 /* Speakers Page Hero */
 .speakers-hero {
-    min-height: 60vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2017,7 +2017,7 @@ body.epic-theme p {
     overflow: hidden;
     margin-bottom: 0;
     /* Desktop: Mark Pattison Image (Right aligned) */
-    background: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 60%), url('assets/mark_pattison_hero_ultrawide.png');
+    background: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 60%), url('assets/mark_pattison_hero_clean.png');
     background-size: cover;
     background-position: center right;
     /* Face is now far right */
