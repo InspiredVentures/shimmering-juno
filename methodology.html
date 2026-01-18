@@ -47,129 +47,166 @@
         </div>
     </header>
 
-    <main style="background: #050505; padding-top: 6rem;">
-        <div class="container">
+    <main style="background: #050505; padding-top: 0;"> <!-- Padding removed for full screen effect -->
 
-            <!-- INTRO -->
-            <div class="text-center reveal-on-scroll"
-                style="margin-bottom: 6rem; max-width: 900px; margin-left: auto; margin-right: auto;">
-                <p style="font-size: 1.3rem; color: #ccc; line-height: 1.8;">
-                    Mark Pattison’s success—from the NFL to the Seven Summits—wasn’t built on talent alone. It was built
-                    on a repeatable system. When you strip away the pads and the climbing gear, the steps to conquering
-                    any "Everest" remain the same.
-                </p>
-            </div>
+        <!-- TRAIL MAP VISUALIZATION -->
+        <!-- TRAIL MAP VISUALIZATION -->
+        <div class="trail-map-container" id="summit-anim-container">
+            <div class="trail-overlay"></div>
 
-            <!-- VISUAL SUMMIT PATH -->
-            <div class="summit-path-container">
-                <div class="summit-bg-layer"></div>
-                <div class="summit-rope"></div>
+            <!-- THE CLIMBING PATH (SVG) -->
+            <svg class="climb-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <!-- Path with a DIP: Up to Identify(55,38), Down to Traverse(70,45), Up to Summit(85,15) -->
+                <!-- Y coordinates are 100 - bottom% -->
+                <path class="climb-path" d="M15,85 L25,75 L35,65 L45,55 L55,38 L70,45 L85,15" fill="none"
+                    stroke="#d32f2f" stroke-width="0.8" stroke-dasharray="200" stroke-dashoffset="200"
+                    style="filter: drop-shadow(0 0 5px #d32f2f);" />
+            </svg>
 
-                <!-- S: SEED -->
-                <div class="summit-step reveal-on-scroll">
-                    <div class="summit-card">
-                        <div class="summit-marker">S</div>
-                        <h3>SEED</h3>
-                        <p class="highlight" style="margin-bottom: 0.5rem; font-size: 1.2rem;">THE VISION</p>
-                        <p>Everything begins with a single thought. A seed of possibility. You must first dare to plant
-                            the idea.</p>
-                    </div>
-                </div>
-
-                <!-- U: UNDERSTANDING -->
-                <div class="summit-step reveal-on-scroll">
-                    <div class="summit-card">
-                        <div class="summit-marker">U</div>
-                        <h3>UNDERSTANDING</h3>
-                        <p class="highlight" style="margin-bottom: 0.5rem; font-size: 1.2rem;">THE PREPARATION</p>
-                        <p>A dream without a plan is just a wish. Research, logistics, and honest assessment of what
-                            resources you need.</p>
-                    </div>
-                </div>
-
-                <!-- M: MINDSET -->
-                <div class="summit-step reveal-on-scroll">
-                    <div class="summit-card">
-                        <div class="summit-marker">M</div>
-                        <h3>MINDSET</h3>
-                        <p class="highlight" style="margin-bottom: 0.5rem; font-size: 1.2rem;">THE INNER GAME</p>
-                        <p>We work on resilience tools—visualization, positive self-talk, and "embracing the suck"—to
-                            ensure your mental state is your asset.</p>
-                    </div>
-                </div>
-
-                <!-- M: MOMENTUM -->
-                <div class="summit-step reveal-on-scroll">
-                    <div class="summit-card">
-                        <div class="summit-marker">M</div>
-                        <h3>MOMENTUM</h3>
-                        <p class="highlight" style="margin-bottom: 0.5rem; font-size: 1.2rem;">THE ACTION</p>
-                        <p>Consistency over intensity. Small, daily actions that compound over time to create an
-                            unstoppable force.</p>
-                    </div>
-                </div>
-
-                <!-- I: IDENTIFY -->
-                <div class="summit-step reveal-on-scroll">
-                    <div class="summit-card">
-                        <div class="summit-marker">I</div>
-                        <h3>IDENTIFY</h3>
-                        <p class="highlight" style="margin-bottom: 0.5rem; font-size: 1.2rem;">THE OBSTACLES</p>
-                        <p>Anticipate roadblocks and identify limiting beliefs that arise when the going gets tough.</p>
-                    </div>
-                </div>
-
-                <!-- T: TRAVERSE -->
-                <div class="summit-step reveal-on-scroll">
-                    <div class="summit-card">
-                        <div class="summit-marker">T</div>
-                        <h3>TRAVERSE</h3>
-                        <p class="highlight" style="margin-bottom: 0.5rem; font-size: 1.2rem;">THE PIVOT</p>
-                        <p>Sometimes you must move sideways to move up. It’s finding a new way to the same goal.</p>
-                    </div>
-                </div>
-
-                <!-- THE FALSE SUMMIT (Visual Surprise) -->
-                <div class="summit-step reveal-on-scroll">
-                    <div class="summit-card" style="border-color: #666; opacity: 0.8;">
-                        <div class="summit-marker" style="background: transparent; border-style: dashed; color: #666;">?
-                        </div>
-                        <h3 style="color: #999;">THE FALSE SUMMIT</h3>
-                        <p class="highlight" style="margin-bottom: 0.5rem; font-size: 1.2rem; color: #888;">THE TEST</p>
-                        <p style="color: #888;">You think you're there, but you're not. This is where resilience is
-                            truly tested. Do you have the gas to keep going when the finish line moves?</p>
-                    </div>
-                </div>
-
-                <!-- S: SUMMIT -->
-                <div class="summit-step reveal-on-scroll">
-                    <div class="summit-card" style="border-color: #fff;">
-                        <div class="summit-marker" style="background: #fff; color: #000;">S</div>
-                        <h3 style="color: #fff;">SUMMIT</h3>
-                        <p class="highlight" style="margin-bottom: 0.5rem; font-size: 1.2rem;">THE EXECUTION</p>
-                        <p>The final push. It's about how you use that view to find your <em>next</em> Everest.</p>
-                    </div>
-                </div>
-
-                <!-- FINAL LOCKUP: SUMMITS -->
-                <div class="summit-lockup reveal-on-scroll">
-                    <span>S</span>
-                    <span>U</span>
-                    <span>M</span>
-                    <span>M</span>
-                    <span>I</span>
-                    <span>T</span>
-                    <span class="highlight">S</span>
+            <!-- S: SEED (Bottom Left) -->
+            <div class="trail-point node-seed anim-step" style="--delay: 0.5s;">
+                <div class="trail-marker">S</div>
+                <div class="trail-content">
+                    <h4>SEED</h4>
+                    <p style="color:var(--color-primary); font-size:0.7rem; margin-bottom:0.2rem;">THE VISION</p>
+                    <p>Everything begins with a thought. Plant the idea.</p>
                 </div>
             </div>
 
-            <!-- CTA -->
-            <div class="text-center reveal-on-scroll" style="margin: 6rem 0;">
-                <h3 style="color: #fff; margin-bottom: 2rem; font-size: 2rem;">READY TO APPLY THIS FRAMEWORK?</h3>
-                <a href="weekend.html" class="btn">See The Weekend Agenda</a>
+            <!-- U: UNDERSTANDING (Bottom Right) -->
+            <div class="trail-point node-understand anim-step" style="--delay: 1.2s;">
+                <div class="trail-marker">U</div>
+                <div class="trail-content">
+                    <h4>UNDERSTANDING</h4>
+                    <p style="color:var(--color-primary); font-size:0.7rem; margin-bottom:0.2rem;">THE PLAN</p>
+                    <p>Research, logistics, and honest assessment.</p>
+                </div>
             </div>
 
+            <!-- M: MINDSET (Mid Left) -->
+            <div class="trail-point node-mindset anim-step" style="--delay: 1.9s;">
+                <div class="trail-marker">M</div>
+                <div class="trail-content">
+                    <h4>MINDSET</h4>
+                    <p style="color:var(--color-primary); font-size:0.7rem; margin-bottom:0.2rem;">INNER GAME</p>
+                    <p>Resilience, visualization, and positive self-talk.</p>
+                </div>
+            </div>
+
+            <!-- M: MOMENTUM (Mid Right) -->
+            <div class="trail-point node-momentum anim-step" style="--delay: 2.6s;">
+                <div class="trail-marker">M</div>
+                <div class="trail-content">
+                    <h4>MOMENTUM</h4>
+                    <p style="color:var(--color-primary); font-size:0.7rem; margin-bottom:0.2rem;">THE ACTION</p>
+                    <p>Consistency over intensity. Small daily actions.</p>
+                </div>
+            </div>
+
+            <!-- I: IDENTIFY (Upper Left) -->
+            <div class="trail-point node-identify anim-step" style="--delay: 3.3s;">
+                <div class="trail-marker">I</div>
+                <div class="trail-content">
+                    <h4>IDENTIFY</h4>
+                    <p style="color:var(--color-primary); font-size:0.7rem; margin-bottom:0.2rem;">OBSTACLES</p>
+                    <p>Anticipate roadblocks before they stop you.</p>
+                </div>
+            </div>
+
+            <!-- T: TRAVERSE (Upper Right) -->
+            <div class="trail-point node-traverse anim-step" style="--delay: 4.0s;">
+                <div class="trail-marker">T</div>
+                <div class="trail-content">
+                    <h4>TRAVERSE</h4>
+                    <p style="color:var(--color-primary); font-size:0.7rem; margin-bottom:0.2rem;">THE PIVOT</p>
+                    <p>Move sideways to move up. Find a new way.</p>
+                </div>
+            </div>
+
+            <!-- S: SUMMIT (The Peak) -->
+            <div class="trail-point node-summit anim-step" style="--delay: 4.7s;">
+                <div class="trail-marker">S</div>
+                <div class="trail-content">
+                    <h4>THE SUMMIT</h4>
+                    <p style="color:#000; font-size:0.8rem; margin-bottom:0.5rem; font-weight:bold;">THE EXECUTION</p>
+                    <p style="font-size:0.9rem;">The final push to the top.<br>Then, finding your <em>next</em> Everest.
+                    </p>
+                </div>
+            </div>
+
+            <!-- REPLAY CONTROL -->
+            <button onclick="replayClimb()"
+                style="position: absolute; bottom: 2rem; right: 2rem; z-index: 100; background: rgba(0,0,0,0.5); color: #fff; border: 1px solid #fff; padding: 0.5rem 1rem; cursor: pointer; border-radius: 4px; font-size: 0.8rem;">
+                REPLAY CLIMB
+            </button>
+
+            <!-- FINAL SUMMITS TEXT (Hidden initially) -->
+            <div id="final-summits-text"
+                style="position: absolute; top: 15%; right: 5%; transform: translate(0, -50%); opacity: 0; transition: opacity 1s ease; text-align: right; pointer-events: none;">
+                <h1
+                    style="font-family: 'Saira Stencil One'; font-size: 4rem; color: #fff; margin: 0; text-shadow: 0 0 20px rgba(220,53,69,0.8);">
+                    SUMMITS</h1>
+                <p style="color: #ccc; font-size: 1.2rem; letter-spacing: 2px;">FRAMEWORK COMPLETE</p>
+            </div>
+
+            <script>
+                function startConvergence() {
+                    const summitNode = document.querySelector('.node-summit');
+                    const summitRect = summitNode.getBoundingClientRect();
+                    const containerRect = document.querySelector('.trail-map-container').getBoundingClientRect();
+
+                    // Target coordinates relative to container
+                    const targetX = summitNode.offsetLeft;
+                    const targetY = summitNode.offsetTop;
+
+                    document.querySelectorAll('.trail-point:not(.node-summit)').forEach(node => {
+                        // Calculate distance to move to center of summit node
+                        // Current positions are set via bottom/left CSS, but getBoundingClientRect gives us pixels
+                        const nodeRect = node.getBoundingClientRect();
+                        const dx = summitRect.left - nodeRect.left;
+                        const dy = summitRect.top - nodeRect.top;
+
+                        node.style.transform = `translate(${dx}px, ${dy}px) scale(0.5)`;
+                        node.style.opacity = '0';
+                        node.classList.add('converging');
+                    });
+
+                    // Pulse the Summit Node
+                    setTimeout(() => {
+                        summitNode.classList.add('final-form');
+                        document.getElementById('final-summits-text').style.opacity = '1';
+                    }, 1500); // Wait for them to arrive
+                }
+
+                function replayClimb() {
+                    // Reset CSS states
+                    const path = document.querySelector('.climb-path');
+                    path.style.animation = 'none';
+                    path.offsetHeight; /* trigger reflow */
+                    path.style.animation = 'draw-path 5s linear forwards';
+
+                    document.querySelectorAll('.trail-point').forEach(el => {
+                        el.style.transform = ''; /* Clear inline transform from convergence */
+                        el.style.opacity = '';
+                        el.classList.remove('converging', 'converged', 'final-form');
+                        el.style.animation = 'none';
+                        el.offsetHeight;
+                        el.style.animation = 'step-pop 0.5s ease forwards';
+                        el.style.animationDelay = el.getAttribute('style').split('delay: ')[1];
+                    });
+
+                    document.getElementById('final-summits-text').style.opacity = '0';
+
+                    // Restart Timer for Convergence
+                    clearTimeout(window.convergenceTimer);
+                    window.convergenceTimer = setTimeout(startConvergence, 6000); // 5s draw + 1s buffer
+                }
+
+                // Initial Start
+                window.convergenceTimer = setTimeout(startConvergence, 6000);
+            </script>
         </div>
+
     </main>
 
     <!-- FOOTER -->

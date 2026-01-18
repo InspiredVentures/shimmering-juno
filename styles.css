@@ -1323,226 +1323,227 @@ body.epic-theme p {
 }
 
 /* =========================================
-   SUMMIT PATH VISUALIZATION (Methodology)
+   SUMMIT DIAGONAL ASCENT (One Side)
    ========================================= */
 
-.summit-path-container {
+.trail-map-container {
     position: relative;
-    padding: 6rem 0;
-    margin-top: 4rem;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background: url('mountain_ridge_ascent.png') center/cover no-repeat;
     overflow: hidden;
-    /* Optional: distinct background or keep global dark */
-    background: linear-gradient(to bottom, #000 0%, #0a0a0a 100%);
+    margin-top: 0;
 }
 
-/* The Mountain Background */
-.summit-bg-layer {
+.trail-overlay {
     position: absolute;
     inset: 0;
-    background-image: url('assets/hero_trekking.png');
-    /* Reusing existing asset */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    /* Parallax feel */
-    opacity: 0.4;
-    /* Strong visibility for 'Journey' feel */
-    z-index: 0;
+    /* Gradient to darken bottom/left for text readability */
+    background: linear-gradient(to top right, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.2) 100%);
+    pointer-events: none;
 }
 
-/* The Connecting Rope */
-.summit-rope {
+.trail-point {
     position: absolute;
-    top: 5rem;
-    bottom: 5rem;
-    left: 50%;
-    width: 6px;
-    background: repeating-linear-gradient(to bottom,
-            var(--color-primary) 0,
-            var(--color-primary) 15px,
-            transparent 15px,
-            transparent 30px);
-    /* Dashed trail look */
-    transform: translateX(-50%);
-    z-index: 1;
-    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.8));
-}
-
-/* The Step Container */
-.summit-step {
-    position: relative;
-    z-index: 2;
+    transform: translate(-50%, 50%);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    /* Stack vertically to save horizontal space on the slope */
     align-items: center;
-    width: 100%;
-    margin-bottom: 6rem;
-    /* Spacing between steps */
+    text-align: center;
+    cursor: default;
+    transition: all 0.3s ease;
+    z-index: 10;
+    width: 200px;
 }
 
-/* Content Box */
-.summit-card {
-    background: rgba(20, 20, 20, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 2rem;
-    width: 45%;
-    /* Desktop width */
-    position: relative;
-    backdrop-filter: blur(10px);
-    transition: transform 0.3s ease, border-color 0.3s ease;
+.trail-point:hover {
+    z-index: 20;
+    transform: translate(-50%, 50%) scale(1.1);
 }
 
-.summit-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--color-primary);
-}
-
-/* The Acronym Letter Marker */
-.summit-marker {
-    position: absolute;
-    top: 50%;
-    width: 80px;
-    height: 80px;
+.trail-marker {
+    width: 50px;
+    height: 50px;
     background: #000;
-    border: 3px solid var(--color-primary);
+    /* Solid black to pop against white/rock */
+    border: 2px solid var(--color-primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Saira Stencil One', sans-serif;
-    font-size: 2.5rem;
     color: var(--color-primary);
-    z-index: 10;
-    box-shadow: 0 0 20px rgba(220, 53, 69, 0.3);
-    /* Positioning calculated relative to center line */
-}
-
-/* DESKTOP: ZIG-ZAG LAYOUT */
-@media (min-width: 900px) {
-
-    /* Odd Items (Left) */
-    .summit-step:nth-child(odd) .summit-card {
-        margin-right: 50%;
-        /* Push to left */
-        border-right: 3px solid var(--color-primary);
-        text-align: right;
-        padding-right: 4rem;
-        /* Space for marker */
-    }
-
-    .summit-step:nth-child(odd) .summit-marker {
-        right: -40px;
-        /* Half width to sit on center line */
-        left: auto;
-        transform: translateY(-50%);
-    }
-
-    /* Even Items (Right) */
-    .summit-step:nth-child(even) .summit-card {
-        margin-left: 50%;
-        /* Push to right */
-        border-left: 3px solid var(--color-primary);
-        text-align: left;
-        padding-left: 4rem;
-    }
-
-    .summit-step:nth-child(even) .summit-marker {
-        left: -40px;
-        right: auto;
-        transform: translateY(-50%);
-    }
-}
-
-/* MOBILE: STRAIGHT CLIMB */
-@media (max-width: 899px) {
-    .summit-rope {
-        left: 30px;
-        /* Align rope to left side */
-    }
-
-    .summit-step {
-        justify-content: flex-start;
-        padding-left: 80px;
-        /* Space for rope/marker */
-    }
-
-    .summit-card {
-        width: 100%;
-        text-align: left !important;
-        border: 1px solid #333 !important;
-        border-left: 3px solid var(--color-primary) !important;
-        padding: 1.5rem;
-    }
-
-    .summit-marker {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-        left: 5px;
-        /* Align with rope */
-        transform: translateY(-50%);
-    }
-}
-
-/* Final SUMMITS Lockup */
-.summit-lockup {
-    text-align: center;
-    margin-top: 8rem;
+    font-family: 'Saira Stencil One';
+    font-size: 1.2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 0.5rem;
     position: relative;
-    z-index: 10;
 }
 
-.summit-lockup span {
-    display: inline-block;
-    font-family: 'Saira Stencil One', sans-serif;
-    font-size: 5rem;
-    color: #fff;
-    margin: 0 0.5rem;
+/* Connect the marker to the line visually if needed, but SVG does that */
+
+.trail-content {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 0.5rem;
+    border-radius: 4px;
+    backdrop-filter: blur(5px);
     opacity: 0;
-    transform: translateY(50px);
-    animation: letter-reveal 0.8s forwards;
+    transition: opacity 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+    /* Let clicks pass through description */
 }
 
-.summit-lockup.active span:nth-child(1) {
-    animation-delay: 0.1s;
+.trail-point:hover .trail-content {
+    opacity: 1;
+    pointer-events: auto;
 }
 
-.summit-lockup.active span:nth-child(2) {
-    animation-delay: 0.2s;
+.trail-content h4 {
+    color: #fff;
+    font-size: 0.9rem;
+    margin-bottom: 0.1rem;
+    font-family: 'Oswald';
 }
 
-.summit-lockup.active span:nth-child(3) {
-    animation-delay: 0.3s;
+.trail-content p {
+    display: block;
+    color: #ccc;
+    font-size: 0.7rem;
+    margin: 0;
+    margin-top: 0.2rem;
 }
 
-.summit-lockup.active span:nth-child(4) {
-    animation-delay: 0.4s;
+/* Convergence Animation Classes */
+.trail-point.converging {
+    transition: transform 2s ease-in-out, opacity 2s ease-in-out;
+    z-index: 100;
 }
 
-.summit-lockup.active span:nth-child(5) {
-    animation-delay: 0.5s;
+.trail-point.converged {
+    opacity: 0;
 }
 
-.summit-lockup.active span:nth-child(6) {
-    animation-delay: 0.6s;
+.node-summit.final-form {
+    transform: translate(-50%, 50%) scale(1.5) !important;
+    z-index: 200;
 }
 
-.summit-lockup.active span:nth-child(7) {
-    animation-delay: 0.7s;
+.node-summit.final-form .trail-marker {
+    background: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 30px var(--color-primary);
 }
 
-/* The S */
+/* DIAGONAL POSITIONS (Bottom Left -> Top Right) */
+/* Slope approx: x: 10%->90%, y: 90%->10% */
 
-@keyframes letter-reveal {
+/* S */
+.node-seed {
+    bottom: 15%;
+    left: 15%;
+}
+
+/* U */
+.node-understand {
+    bottom: 25%;
+    left: 25%;
+}
+
+/* M */
+.node-mindset {
+    bottom: 35%;
+    left: 35%;
+}
+
+/* M */
+.node-momentum {
+    bottom: 45%;
+    left: 45%;
+}
+
+/* I - Higher Peak before the dip */
+.node-identify {
+    bottom: 62%;
+    left: 55%;
+}
+
+/* T - The Dip (Lower than Identify) */
+.node-traverse {
+    bottom: 55%;
+    left: 70%;
+}
+
+/* FALSE SUMMIT REMOVED */
+
+/* S (Summit) */
+.node-summit {
+    bottom: 85%;
+    left: 85%;
+}
+
+.node-summit .trail-marker {
+    width: 70px;
+    height: 70px;
+    font-size: 1.8rem;
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+}
+
+.node-summit .trail-content h4 {
+    font-size: 1.2rem;
+}
+
+/* ANIMATION STYLES */
+.climb-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.climb-path {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    animation: draw-path 5s linear forwards;
+    /* Speed up to 5s */
+}
+
+.anim-step {
+    opacity: 0;
+    transform: translate(-50%, 100%);
+    animation: step-pop 0.5s ease forwards;
+    animation-delay: var(--delay);
+}
+
+@keyframes draw-path {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes step-pop {
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translate(-50%, 50%) scale(1);
     }
 }
 
+/* Mobile: Disable complex animation, just show all */
 @media (max-width: 768px) {
-    .summit-lockup span {
-        font-size: 3rem;
-        margin: 0 0.1rem;
+    .climb-path {
+        stroke-dashoffset: 0;
+        animation: none;
+    }
+
+    .anim-step {
+        opacity: 1;
+        transform: none;
+        animation: none;
     }
 }
