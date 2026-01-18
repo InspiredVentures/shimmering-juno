@@ -323,6 +323,39 @@ h6 {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* The Mountain Background (CSS Art or Image Overlay) */
+.summit-bg-layer {
+    position: absolute;
+    inset: 0;
+    background-image: url('assets/hero_trekking.png');
+    /* Reusing existing asset */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Parallax feel */
+    opacity: 0.4;
+    /* Increased visibility for 'Journey' feel */
+    z-index: 0;
+}
+
+/* The Connecting Rope */
+.summit-rope {
+    position: absolute;
+    top: 5rem;
+    bottom: 5rem;
+    left: 50%;
+    width: 6px;
+    background: repeating-linear-gradient(to bottom,
+            var(--color-primary) 0,
+            var(--color-primary) 15px,
+            transparent 15px,
+            transparent 30px);
+    /* Dashed trail look */
+    transform: translateX(-50%);
+    z-index: 1;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.8));
+}
+
 /* Timeline Styling */
 .section-header {
     margin-bottom: 4rem;
