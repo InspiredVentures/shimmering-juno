@@ -2017,10 +2017,10 @@ body.epic-theme p {
     overflow: hidden;
     margin-bottom: 0;
     /* Desktop: Mark Pattison Image (Right aligned) */
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 100%), url('assets/mark_pattison_hero_wide_1768779048327.png');
+    background: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 60%), url('assets/mark_pattison_hero_ultrawide.png');
     background-size: cover;
     background-position: center right;
-    /* Face on the right */
+    /* Face is now far right */
 }
 
 @media (max-width: 768px) {
