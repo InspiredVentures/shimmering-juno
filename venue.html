@@ -59,6 +59,12 @@
         .accordion-body {
             padding-bottom: 2rem;
         }
+
+        @media (max-width: 768px) {
+            .mobile-spacer {
+                margin-top: 4rem !important;
+            }
+        }
     </style>
 </head>
 
@@ -106,7 +112,8 @@
         <div class="container">
 
             <!-- Intro / History -->
-            <div class="grid-2 reveal-on-scroll" style="margin-bottom: 8rem; align-items: center; gap: 4rem;">
+            <div class="grid-2 reveal-on-scroll mobile-spacer"
+                style="margin-bottom: 8rem; align-items: center; gap: 4rem;">
                 <div>
                     <h2 class="text-primary" style="font-size: 3rem; margin-bottom: 2rem; line-height: 1;">An
                         Iconic<br>American Escape</h2>
@@ -329,9 +336,14 @@
     </footer>
 
     <!-- SCROLL & ACCORDION SCRIPT -->
+    <!-- SCROLL & ACCORDION SCRIPT -->
+    <script src="script.js"></script>
     <script>
-        // Scroll Animation
         document.addEventListener('DOMContentLoaded', () => {
+            // Keep Scroll Animation just in case script.js doesn't catch everything immediately,
+            // though script.js likely handles it. 
+            // REMOVED inline menu toggle.
+
             const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -344,7 +356,13 @@
             document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
         });
 
-        // Accordion Logic
+        // Accordion Logic (script.js has this too, but venue specific toggleAccordion function is called by onclick attributes)
+        // script.js adds event listeners to .accordion-header.
+        // We might need to keep this function if the HTML uses onclick="toggleAccordion(this)"
+        // LET'S CHECK: <button class="accordion-header" onclick="toggleAccordion(this)">
+        // YES it does. So we must keep this function OR remove the onclick attribute.
+        // For now, keeping the function is safer to avoid breaking changes.
+
         function toggleAccordion(button) {
             const content = button.nextElementSibling;
             const icon = button.querySelector('.icon');

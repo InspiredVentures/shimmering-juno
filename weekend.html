@@ -483,9 +483,15 @@
         </div>
     </footer>
 
-    <!-- SCROLL SCRIPT -->
+    <!-- MENU & SCROLL SCRIPT -->
+    <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Scroll Observer (Keep page-specific logic if needed, or rely on script.js globals)
+            // Since script.js has global reveal logic, we might be able to remove this,
+            // BUT weekend.html might have specific thresholds.
+            // Let's keep the observer for safety but REMOVE the menu toggle which is now in script.js
+
             const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
