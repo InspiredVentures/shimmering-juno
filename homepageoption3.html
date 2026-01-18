@@ -356,12 +356,12 @@
             if (riseText) {
                 riseObserver.observe(riseText);
 
-                // Safety Fallback: Force show after 3 seconds if observer misses
+                // Safety Fallback: Force show after 1.5 seconds if observer misses
                 setTimeout(() => {
                     if (!riseText.classList.contains('show')) {
                         riseText.classList.add('show');
                     }
-                }, 3000);
+                }, 1500);
             }
 
             // General Scroll Fade-ins
