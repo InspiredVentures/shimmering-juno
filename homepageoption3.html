@@ -342,7 +342,7 @@
         // Trigger "We Rise" Animation on Scroll
         document.addEventListener('DOMContentLoaded', () => {
 
-            // Observer for "We Rise" - Only trigger when FULLY visible (threshold: 1.0)
+            // Observer for "We Rise" - Trigger when 50% visible (more reliable)
             const riseObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -350,7 +350,7 @@
                         riseObserver.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 1.0, rootMargin: "0px 0px -50px 0px" });
+            }, { threshold: 0.5 });
 
             const riseText = document.getElementById('we-rise');
             if (riseText) riseObserver.observe(riseText);
