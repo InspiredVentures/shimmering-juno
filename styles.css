@@ -1117,6 +1117,21 @@ body.epic-theme p {
     transform: translateY(0);
 }
 
+/* Auto-Reveal Defaults (Matched to Epic Theme) */
+.reveal,
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+}
+
+.reveal.active,
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* Rise Animation */
 .rise-container {
     display: inline-block;
