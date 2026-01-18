@@ -85,23 +85,51 @@
                 <div class="methodology-intro text-center"
                     style="max-width: 1100px; margin: 0 auto 5rem; text-align: center; position: relative; z-index: 5;">
 
+                    <style>
+                        .rise-container {
+                            display: inline-block;
+                            overflow: hidden;
+                            vertical-align: bottom;
+                        }
+
+                        .rise-text {
+                            display: inline-block;
+                            transform: translateY(100%);
+                            opacity: 0;
+                            transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+                        }
+
+                        .rise-text.show {
+                            transform: translateY(0);
+                            opacity: 1;
+                        }
+                    </style>
                     <h2 class="text-primary"
                         style="font-size: 5rem; text-transform: uppercase; line-height: 0.9; font-family: 'Oswald', sans-serif; font-weight: 700; margin-bottom: 2rem;">
                         This Fall<br>
-                        <span style="color: #fff;">We Rise.</span>
+                        <span class="rise-container"><span id="we-rise" class="rise-text" style="color: #fff;">We
+                                Rise.</span></span>
                     </h2>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            setTimeout(() => {
+                                document.getElementById('we-rise').classList.add('show');
+                            }, 500);
+                        });
+                    </script>
 
                     <div class="grid-2" style="gap: 2rem;">
 
-                        <!-- Block 1: The Challenge -->
+                        <!-- Block 1: The Calling -->
                         <div
                             style="background: #111; padding: 3rem; text-align: left; border-left: 5px solid var(--color-primary);">
                             <h4 style="color: #fff; font-size: 1.8rem; text-transform: uppercase; margin-bottom: 1rem;">
-                                The Challenge</h4>
+                                The Calling</h4>
                             <p style="color: #ccc; font-size: 1.1rem; line-height: 1.6;">
-                                Your Everest is an <strong>active challenge</strong>. Something you choose to pursue.
-                                Something that requires conscious effort, focus, and unwavering determination.<br><br>
-                                Pursuing it identifies your purpose and expands your capacity to handle everything else
+                                Your Everest is more than a challenge. It is a <strong>calling</strong>. An active
+                                pursuit you choose for yourself. Something that requires conscious effort, focus, and
+                                unwavering determination.<br><br>
+                                Answering it identifies your purpose and expands your capacity to handle everything else
                                 life throws at you.
                             </p>
                         </div>
