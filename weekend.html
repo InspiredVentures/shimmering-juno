@@ -71,7 +71,7 @@
                 <span class="bar"></span>
             </div>
             <ul class="nav-links">
-                <li><a href="methodology.html">The Methodology</a></li>
+                <li><a href="methodology.html">The Framework</a></li>
                 <li><a href="weekend.html" class="text-primary">The Weekend</a></li>
                 <li><a href="venue.html">Venue</a></li>
                 <li><a href="charity.html">Higher Ground</a></li>
@@ -84,13 +84,26 @@
     <!-- CINEMATIC HERO -->
     <header class="hero"
         style="min-height: 70vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; margin-bottom: 0;">
-        <div
-            style="position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('assets/hero_gen_weekend.png') center/cover;">
+
+        <!-- VIMEO BACKGROUND -->
+        <div style="position: absolute; inset: 0; pointer-events: none; overflow: hidden;">
+            <iframe
+                src="https://player.vimeo.com/video/238803200?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
+                frameborder="0" allow="autoplay; fullscreen"
+                style="position: absolute; top: 50%; left: 50%; width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.77vh; transform: translate(-50%, -50%); opacity: 0.6;">
+            </iframe>
         </div>
 
+        <!-- Dark Overlay for Readability -->
+        <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.5);"></div>
+
         <div class="container text-center" style="position: relative; z-index: 10;">
-            <h1 class="epic-hero-text" style="color: #fff; margin-bottom: 1rem;">THE <span
+            <h1 class="epic-hero-text" style="color: #fff; margin-bottom: 0.5rem;">THE <span
                     class="highlight">WEEKEND</span></h1>
+            <p
+                style="font-family: 'Oswald', sans-serif; font-size: 1.2rem; color: #ccc; margin-bottom: 1.5rem; letter-spacing: 2px; text-transform: uppercase;">
+                Sept 24-27, 2026 • Sun Valley, Idaho
+            </p>
             <p style="font-size: 1.5rem; color: #ddd; max-width: 800px; margin: 0 auto; letter-spacing: 1px;">MORE THAN
                 A CONFERENCE. A CALL TO ACTION.</p>
         </div>
@@ -451,7 +464,7 @@
                     <h4>Explore</h4>
                     <ul>
                         <li><a href="index.html">The Summit</a></li>
-                        <li><a href="methodology.html">The Methodology</a></li>
+                        <li><a href="methodology.html">The Framework</a></li>
                         <li><a href="weekend.html">The Weekend</a></li>
                         <li><a href="venue.html">Venue</a></li>
                         <li><a href="charity.html">Higher Ground</a></li>
