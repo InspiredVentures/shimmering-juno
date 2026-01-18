@@ -4,10 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Venue | This Fall We Rise</title>
+    <title>The Venue | Find Your Everest</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&family=Saira+Stencil+One&display=swap"
         rel="stylesheet">
     <style>
         /* Local overrides for Venue Accordion */
@@ -38,7 +40,7 @@
         }
 
         .accordion-title {
-            font-family: 'Oswald', sans-serif;
+            font-family: 'Saira Stencil One', 'Oswald', sans-serif;
             font-size: 2rem;
             text-transform: uppercase;
         }
@@ -64,12 +66,23 @@
 
     <nav class="navbar">
         <div class="container">
-            <a href="index.html" class="logo"><img src="assets/logo.png" alt="7 Summits"></a>
+            <a href="index.html" class="logo"><img src="assets/logo.png" alt="7 Summits Summit"></a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
             <ul class="nav-links">
-                <li><a href="methodology.html">Methodology</a></li>
+                <li><a href="methodology.html">The Methodology</a></li>
                 <li><a href="weekend.html">The Weekend</a></li>
                 <li><a href="venue.html" class="text-primary">Venue</a></li>
                 <li><a href="charity.html">Higher Ground</a></li>
+                <li>
+                    <a href="about.html">About Us</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="sponsorship.html">Partnerships</a></li>
+                    </ul>
+                </li>
                 <li><a href="#register" class="btn btn-book">Book Now</a></li>
             </ul>
         </div>
@@ -81,48 +94,49 @@
         <div
             style="position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('assets/Sun valley Lodge.webp') center/cover;">
         </div>
-
         <div class="container text-center" style="position: relative; z-index: 10;">
-            <h1 class="epic-hero-text" style="color: #fff; margin-bottom: 1rem;">AN ICONIC <span
-                    class="highlight">ESCAPE</span></h1>
-            <p style="font-size: 1.5rem; color: #ddd; max-width: 800px; margin: 0 auto; letter-spacing: 1px;">LUXURY
-                MEETS LEGACY IN THE HEART OF IDAHO.</p>
+            <h1 class="epic-hero-text" style="color: #fff; margin-bottom: 1rem;">An Iconic <span
+                    class="highlight">American Escape</span></h1>
+            <p style="font-size: 1.5rem; color: #ddd; max-width: 800px; margin: 0 auto; letter-spacing: 1px;">Luxury
+                meets legacy in the heart of Idaho.</p>
         </div>
     </header>
 
     <main style="background: #050505; padding-top: 6rem;">
         <div class="container">
 
-            <!-- HISTORY SECTION -->
+            <!-- Intro / History -->
             <div class="grid-2 reveal-on-scroll" style="margin-bottom: 8rem; align-items: center; gap: 4rem;">
                 <div>
-                    <h2 style="font-size: 3rem; margin-bottom: 2rem; line-height: 1; color: #fff;">LEGENDARY <span
-                            class="highlight">GROUND</span></h2>
-                    <p style="margin-bottom: 1.5rem; color: #ccc; font-size: 1.2rem; line-height: 1.6;">
+                    <h2 class="text-primary" style="font-size: 3rem; margin-bottom: 2rem; line-height: 1;">An
+                        Iconic<br>American Escape</h2>
+                    <p style="margin-bottom: 1.5rem; color: #fff; font-size: 1.25rem; line-height: 1.6;">
                         Founded in 1936 as America's first destination ski resort, Sun Valley has always attracted those
-                        who push boundaries. From Ernest Hemingway to Olympic champions, the energy here is different.
+                        who push boundaries. From Ernest Hemingway finishing <em>For Whom the Bell Tolls</em> in Suite
+                        206 to Olympic champions training on its slopes, the energy here is different.
                     </p>
                     <p style="margin-bottom: 2rem; color: #999; font-size: 1.1rem;">
-                        We chose this location because the environment you're in dictates the thoughts you think. When
-                        you're surrounded by this kind of history, you don't just dream—you plan.
+                        It’s not just a hotel; it’s a legend. We chose this location because the environment you're in
+                        dictates the thoughts you think. When you're surrounded by this kind of history, you don't just
+                        dream - you plan.
                     </p>
                     <div style="border-left: 2px solid var(--color-primary); padding-left: 1.5rem;">
-                        <p style="color: #fff; font-style: italic; font-size: 1.5rem; font-family: 'Oswald';">"THE
-                            MOUNTAINS ARE CALLING AND I MUST GO."</p>
+                        <p style="color: #ccc; font-style: italic;">"The mountains are calling and I must go." - John
+                            Muir</p>
                     </div>
                 </div>
-                <div style="border: 1px solid #222; height: 500px; position: relative;">
+                <div class="box-shadow" style="border: 1px solid #333; height: 500px;">
                     <img src="assets/venue_pool.jpg" alt="Sun Valley Lodge Pool"
-                        style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%);">
+                        style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
             </div>
 
-            <!-- AMENITIES ACCORDION -->
+            <!-- The Experience / Amenities -->
             <div class="reveal-on-scroll" style="margin-bottom: 8rem;">
-                <div class="text-center" style="margin-bottom: 4rem;">
-                    <h2 style="font-size: 3rem; color: #fff; margin-bottom: 0.5rem;">THE <span
-                            class="highlight">EXPERIENCE</span></h2>
-                    <p style="color: #666; font-size: 1.2rem;">FIVE-STAR COMFORT MEETS RUGGED ADVENTURE.</p>
+                <div class="section-header text-center" style="margin-bottom: 4rem;">
+                    <h2 style="font-size: 2.5rem; color: #fff; text-transform: uppercase;">The Experience</h2>
+                    <p style="color: #666; max-width: 600px; margin: 1rem auto;">Five-star comfort meets rugged
+                        adventure.</p>
                 </div>
 
                 <div class="accordion">
@@ -135,13 +149,13 @@
                         <div class="accordion-content">
                             <div class="accordion-body grid-2" style="gap: 2rem;">
                                 <div>
-                                    <p style="color: #ccc; margin-bottom: 1rem; font-size: 1.1rem;">Completely renovated
-                                        in 2015, the guestrooms are spacious, warm, and appointed with every modern
-                                        amenity while retaining their classic charm.</p>
+                                    <p style="color: #ccc; margin-bottom: 1rem;">Completely renovated in 2015, the
+                                        guestrooms are spacious, warm, and appointed with every modern amenity while
+                                        retaining their classic charm.</p>
                                     <p style="color: #999;">Relax by the fire after a long day on the mountain, or catch
                                         up on work in a space designed for focus.</p>
                                 </div>
-                                <div style="height: 300px; border: 1px solid #333;">
+                                <div class="box-shadow" style="border: 1px solid #333; height: 300px;">
                                     <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
                                         alt="The Lodge" style="width: 100%; height: 100%; object-fit: cover;">
                                 </div>
@@ -158,13 +172,13 @@
                         <div class="accordion-content">
                             <div class="accordion-body grid-2" style="gap: 2rem;">
                                 <div>
-                                    <p style="color: #ccc; margin-bottom: 1rem; font-size: 1.1rem;">A 20,000 sq. ft.
-                                        sanctuary. After a day on the trails, the heated outdoor pools and world-class
-                                        treatments are not a luxury—they're recovery.</p>
+                                    <p style="color: #ccc; margin-bottom: 1rem;">A 20,000 sq. ft. sanctuary. After a day
+                                        on the trails, the heated outdoor pools and world-class treatments are not a
+                                        luxury - they're recovery.</p>
                                     <p style="color: #999;">From deep tissue massage to cold plunge therapy, we
                                         prioritize physical maintenance.</p>
                                 </div>
-                                <div style="height: 300px; border: 1px solid #333;">
+                                <div class="box-shadow" style="border: 1px solid #333; height: 300px;">
                                     <img src="assets/svr_spa_lobby_frontdesk_summer_2015_syms_kevin_1.jpg" alt="The Spa"
                                         style="width: 100%; height: 100%; object-fit: cover;">
                                 </div>
@@ -181,13 +195,13 @@
                         <div class="accordion-content">
                             <div class="accordion-body grid-2" style="gap: 2rem;">
                                 <div>
-                                    <p style="color: #ccc; margin-bottom: 1rem; font-size: 1.1rem;">From the historic
-                                        Ram Restaurant to the casual Duchin Lounge, the culinary experience is designed
-                                        to fuel your body and your conversations.</p>
+                                    <p style="color: #ccc; margin-bottom: 1rem;">From the historic Ram Restaurant to the
+                                        casual Duchin Lounge, the culinary experience is designed to fuel your body and
+                                        your conversations.</p>
                                     <p style="color: #999;">Locally sourced ingredients, protein-rich menus, and an
                                         atmosphere that encourages connection.</p>
                                 </div>
-                                <div style="height: 300px; border: 1px solid #333;">
+                                <div class="box-shadow" style="border: 1px solid #333; height: 300px;">
                                     <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
                                         alt="Dining" style="width: 100%; height: 100%; object-fit: cover;">
                                 </div>
@@ -197,40 +211,60 @@
                 </div>
             </div>
 
-            <!-- ARRIVAL -->
+            <!-- Gallery Section (Placeholder) -->
+            <div class="reveal-on-scroll" style="margin-bottom: 8rem;">
+                <h2 class="text-primary" style="font-size: 2rem; margin-bottom: 2rem;">Venue Gallery</h2>
+                <div class="grid-3" style="grid-template-rows: 300px;">
+                    <!-- Image 1 -->
+                    <div style="background: #222; border: 1px solid #333; position: relative; overflow: hidden;">
+                        <img src="assets/176795438.jpg" alt="Venue Atmosphere"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <!-- Image 2 -->
+                    <div style="background: #222; border: 1px solid #333; position: relative; overflow: hidden;">
+                        <img src="assets/sun-valley-lodge.jpg" alt="Sun Valley Lodge"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <!-- Image 3 -->
+                    <div style="background: #222; border: 1px solid #333; position: relative; overflow: hidden;">
+                        <img src="assets/100-degree-pool.jpg" alt="100 Degree Pool"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Getting Here -->
             <div class="reveal-on-scroll"
-                style="background: #0a0a0a; border: 1px solid #222; padding: 4rem; margin-bottom: 4rem;">
+                style="background: #111; padding: 4rem; border-top: 2px solid var(--color-primary);">
                 <div class="grid-2" style="gap: 4rem; align-items: start;">
                     <div>
-                        <h2 style="color: #fff; font-size: 3rem; margin-bottom: 1.5rem; line-height: 1;">ARRIVAL <span
-                                class="highlight">PROTOCOL</span></h2>
+                        <h2 style="color: #fff; font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1;">Arrival
+                            Protocol</h2>
                         <p style="color: #ccc; font-size: 1.1rem;">Getting to Sun Valley is the first step of the
-                            journey. Plan ahead. We handle the rest.</p>
+                            journey. Plan ahead.</p>
                     </div>
 
                     <div>
                         <div style="margin-bottom: 2.5rem;">
-                            <h3
-                                style="color: var(--color-primary); font-size: 1.5rem; margin-bottom: 0.5rem; font-family: 'Oswald';">
-                                FRIEDMAN MEMORIAL (SUN)</h3>
-                            <p style="color: #999;">Closest option. 20 min from Lodge. Direct flights from SEA, SLC,
-                                DEN, SFO, LAX, ORD.</p>
+                            <h3 style="color: var(--color-primary); font-size: 1.3rem; margin-bottom: 0.5rem;">✈️
+                                Friedman Memorial Airport (SUN)</h3>
+                            <p style="color: #999;">The closest option. 20 minutes from the Lodge.</p>
+                            <p style="color: #fff; margin-top: 0.5rem;">Direct Flights: SEA, SLC, DEN, SFO, LAX, ORD.
+                            </p>
                         </div>
 
                         <div style="margin-bottom: 2.5rem;">
-                            <h3
-                                style="color: var(--color-primary); font-size: 1.5rem; margin-bottom: 0.5rem; font-family: 'Oswald';">
-                                BOISE AIRPORT (BOI)</h3>
-                            <p style="color: #999;">Scenic 2.5hr drive. More flight options, but requires rental car or
-                                shuttle connection.</p>
+                            <h3 style="color: var(--color-primary); font-size: 1.3rem; margin-bottom: 0.5rem;">🚙 Boise
+                                Airport (BOI)</h3>
+                            <p style="color: #999;">A scenic 2.5-hour drive. More flight options, but requires a rental
+                                car or shuttle connection.</p>
                         </div>
 
                         <div>
-                            <h3
-                                style="color: var(--color-primary); font-size: 1.5rem; margin-bottom: 0.5rem; font-family: 'Oswald';">
-                                RESORT SHUTTLE</h3>
+                            <h3 style="color: var(--color-primary); font-size: 1.3rem; margin-bottom: 0.5rem;">Add-On:
+                                Resort Shuttle</h3>
                             <p style="color: #999;">Guests of the Lodge receive complimentary shuttle service from SUN.
-                                Coordinate with concierge.</p>
+                                Coordinate with the concierge.</p>
                         </div>
                     </div>
                 </div>
@@ -244,6 +278,10 @@
         <div class="container text-center">
             <img src="assets/logo.png" alt="7 Summits" style="height: 60px; opacity: 0.5; margin-bottom: 2rem;">
             <p style="color: #555;">&copy; 2026 Seven Summits Event. All Rights Reserved.</p>
+            <div style="display: flex; gap: 2rem; justify-content: center; margin-top: 1rem;">
+                <a href="#" style="color: #666; text-decoration: none;">Privacy Policy</a>
+                <a href="#" style="color: #666; text-decoration: none;">Terms of Service</a>
+            </div>
         </div>
     </footer>
 
