@@ -182,3 +182,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+// Booking Modal Overlay
+function openBookingModal() {
+    const modal = document.getElementById('booking-modal');
+    if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeBookingModal() {
+    const modal = document.getElementById('booking-modal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Close modal when clicking outside the iframe
+document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById('booking-modal');
+    if (modal) {
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal) {
+                closeBookingModal();
+            }
+        });
+    }
+});
