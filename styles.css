@@ -2031,3 +2031,35 @@ body.epic-theme p {
         background-position: center;
     }
 }
+
+/* Text Logo Styling */
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-highlight {
+    color: var(--color-primary);
+    /* Red */
+    font-size: 0.8em;
+    /* Slightly smaller relative to main text */
+}
+
+/* Mobile: Keep typical size */
+@media (max-width: 900px) {
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .logo-highlight {
+        font-size: 1em;
+        /* Reset size difference on mobile if needed, or keep relative */
+    }
+}
