@@ -210,3 +210,32 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+// Contact Modal Functions
+function openContactModal() {
+    const modal = document.getElementById('contact-modal');
+    if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeContactModal() {
+    const modal = document.getElementById('contact-modal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Close contact modal when clicking outside
+document.addEventListener('DOMContentLoaded', function () {
+    const contactModal = document.getElementById('contact-modal');
+    if (contactModal) {
+        contactModal.addEventListener('click', function (e) {
+            if (e.target === contactModal) {
+                closeContactModal();
+            }
+        });
+    }
+});
