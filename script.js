@@ -239,3 +239,38 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+// Video Modal Functions
+function openVideoModal() {
+    const modal = document.getElementById('video-modal');
+    if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeVideoModal() {
+    const modal = document.getElementById('video-modal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        // Stop video playback when closing
+        const iframe = modal.querySelector('iframe');
+        if (iframe) {
+            const src = iframe.src;
+            iframe.src = src; // Reload iframe to stop video
+        }
+    }
+}
+
+// Close video modal when clicking outside
+document.addEventListener('DOMContentLoaded', function () {
+    const videoModal = document.getElementById('video-modal');
+    if (videoModal) {
+        videoModal.addEventListener('click', function (e) {
+            if (e.target === videoModal) {
+                closeVideoModal();
+            }
+        });
+    }
+});
