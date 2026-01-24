@@ -177,15 +177,30 @@
                         </div>
 
                         <!-- Tom Flick -->
-                        <div class="speaker-card">
+                        <div class="speaker-card" onclick="openModal('tom-modal')" style="cursor: pointer;">
                             <img src="assets/TomFlick.jpg" alt="Tom Flick" class="speaker-img">
                             <h4 style="color: #fff; margin-top: 1.5rem; margin-bottom: 0.5rem;">TOM FLICK</h4>
                             <p class="highlight" style="font-size: 0.9rem; margin-bottom: 1rem;">FORMER NFL QUARTERBACK
                                 & LEADERSHIP EXPERT</p>
-                            <p style="color: #999; padding: 0 1.5rem; font-size: 0.95rem;">
+                            <p style="color: #999; padding: 0 1.5rem; font-size: 0.95rem; margin-bottom: 1.5rem;">
                                 A former NFL Quarterback and world-renowned authority on leadership, helping global
                                 organizations like Google and NASA develop leaders, lead change, and increase teamwork.
                             </p>
+                            <!-- Video Embed -->
+                            <div style="padding: 0 1.5rem 1.5rem;">
+                                <div
+                                    style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 4px;">
+                                    <iframe
+                                        src="https://player.vimeo.com/video/1117608536?badge=0&autopause=0&player_id=0&app_id=58479"
+                                        frameborder="0"
+                                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                                        title="Tom Flick - Speaking Demo Reel">
+                                    </iframe>
+                                </div>
+                                <p style="color: #666; font-size: 0.85rem; margin-top: 0.5rem; text-align: center;">
+                                    Speaking Demo Reel (3:18)</p>
+                            </div>
                         </div>
 
                         <!-- TBA 2 -->
@@ -245,6 +260,38 @@
                     The WillingWay. They are traveling all over the country sharing what they know about anti-aging,
                     having fun and feeling great.
                 </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tom Flick Bio Modal -->
+    <div class="modal-overlay" id="tom-modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <span class="close-modal" onclick="closeModal('tom-modal')">&times;</span>
+            <div class="text-center" style="margin-bottom: 2rem;">
+                <h2 class="text-primary" style="font-size: 2.5rem; margin-bottom: 0.5rem;">Tom Flick</h2>
+                <h3 style="color: #fff; font-size: 1.5rem;">Leadership & Change Expert</h3>
+            </div>
+            <div
+                style="color: #ccc; line-height: 1.8; text-align: left; max-height: 60vh; overflow-y: auto; padding-right: 1rem;">
+                <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">
+                    A former NFL Quarterback, Tom has worked with the world's most innovative leaders and organizations,
+                    helping them move faster—with greater focus—to succeed in a rapidly changing, highly competitive
+                    world.
+                </p>
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #333;">
+                    <p style="color: #999; margin-bottom: 1rem;">
+                        <strong style="color: var(--color-primary);">Website:</strong>
+                        <a href="https://www.tomflick.com" target="_blank" rel="noopener noreferrer"
+                            style="color: #fff; text-decoration: underline;">www.tomflick.com</a>
+                    </p>
+                    <p style="color: #999;">
+                        <a href="https://www.tomflick.com/about/" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-outline" style="display: inline-block; margin-top: 1rem;">
+                            Read More About Tom
+                        </a>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
