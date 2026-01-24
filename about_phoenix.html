@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | This Fall We Rise</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&family=Saira+Stencil+One&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="epic-theme">
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo"><img src="assets/logo.png" alt="7 Summits"></a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="methodology.html">The Framework</a></li>
+                <li><a href="weekend.html">The Weekend</a></li>
+                <li><a href="venue.html">Venue</a></li>
+                <li><a href="speakers.html">Key Speakers</a></li>
+                <li>
+                    <a href="about.html" class="text-primary">About Us</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="charity.html">Higher Ground</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://inspired.wetravel.com/checkout_embed?uuid=8798483510&source=direct_link"
+                        class="btn btn-book" onclick="openBookingModal(); return false;">Book Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- CINEMATIC HERO -->
+    <header class="hero"
+        style="min-height: 70vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; margin-bottom: 0;">
+        <div
+            style="position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('assets/hero_trekking.png') center/cover;">
+        </div>
+
+        <div class="container text-center" style="position: relative; z-index: 10;">
+            <h1 class="epic-hero-text" style="color: #fff; margin-bottom: 1rem;">Born From <span
+                    class="highlight">Reinvention</span></h1>
+            <p style="font-size: 1.5rem; color: #ddd; max-width: 800px; margin: 0 auto; letter-spacing: 1px;">The story
+                behind the Second Summit.</p>
+        </div>
+    </header>
+
+    <main style="background: #050505; padding-top: 6rem;">
+        <div class="container">
+
+            <!-- Mission / Origin -->
+            <div class="grid-2 reveal-on-scroll"
+                style="margin-bottom: 3rem; align-items: center; position: relative; z-index: 20;">
+                <div>
+                    <h2 class="text-primary" style="font-size: 3rem; margin-bottom: 2rem; line-height: 1;">It Started
+                        With<br>A Collapse</h2>
+                    <p style="margin-bottom: 1.5rem; color: #fff; font-size: 1.25rem; line-height: 1.6;">
+                        Mark didn't just climb mountains. He climbed out of the three valleys that define
+                        the high-achiever's crisis:
+                    </p>
+                    <ul style="margin-bottom: 2rem; color: #999; font-size: 1.1rem; list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 1rem;">
+                            <strong style="color: #fff;">1. The Identity Loss (The Athlete):</strong> <br>
+                            Leaving the NFL and realizing he was "nothing" without the jersey.
+                        </li>
+                        <li style="margin-bottom: 1rem;">
+                            <strong style="color: #fff;">2. The Family Shift (The Divorce):</strong> <br>
+                            Navigating the end of a marriage and rebuilding a new life from scratch.
+                        </li>
+                        <li style="margin-bottom: 1rem;">
+                            <strong style="color: #fff;">3. The Business Turnaround (The Founder):</strong> <br>
+                            Taking Sports Illustrated from #17 to #1 using the exact same frameworks he used on Everest.
+                        </li>
+                    </ul>
+                    <p style="color: #ddd;">
+                        He chose the Seven Summits as his laboratory. To prove that the skills required to survive the
+                        death zone—resilience, team dynamics, risk calibration—were the exact skills needed to rebuild a
+                        life.
+                    </p>
+                </div>
+                <!-- Image -->
+                <div class="box-shadow" style="border: 1px solid #333; height: 500px; overflow: hidden;">
+                    <img src="assets/Mark-Pattison.jpg" alt="Mark Pattison"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+
+            <!-- The Team -->
+            <div class="reveal-on-scroll" style="margin-bottom: 8rem;">
+                <div class="text-center" style="margin-bottom: 4rem;">
+                    <h2 style="font-size: 2.5rem; color: #fff; text-transform: uppercase;">The Team</h2>
+                    <p style="color: #666; max-width: 600px; margin: 1rem auto;">Builders, Climbers, and Visionaries.
+                    </p>
+                </div>
+
+                <div class="grid-3" style="gap: 2rem;">
+                    <!-- Mark Pattison -->
+                    <div class="speaker-card">
+                        <div style="height: 300px; margin-bottom: 0; overflow: hidden;">
+                            <img src="assets/Mark-Pattison.jpg" alt="Mark Pattison"
+                                style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: filter 0.3s;">
+                        </div>
+                        <div style="padding: 1.5rem;">
+                            <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 0.5rem;">Mark Pattison</h3>
+                            <p style="color: var(--color-primary); font-weight: bold; margin-bottom: 1rem;">Founder &
+                                Guide</p>
+                            <p style="color: #999; font-size: 0.9rem;">Former NFL Player turn Mountaineer. Helping
+                                leaders navigate the space between success and significance.</p>
+                        </div>
+                    </div>
+
+                    <!-- Matt Smith (Placeholder for "Inspired Ventures") -->
+                    <div class="speaker-card">
+                        <div
+                            style="height: 300px; background: #111; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #222;">
+                            <span style="color: #333; font-size: 3rem; font-family: 'Saira Stencil One';">IV</span>
+                        </div>
+                        <div style="padding: 1.5rem;">
+                            <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 0.5rem;">Inspired Ventures</h3>
+                            <p style="color: var(--color-primary); font-weight: bold; margin-bottom: 1rem;">Production
+                                Partner</p>
+                            <p style="color: #999; font-size: 0.9rem;">Global event production and experiential design.
+                                Bringing the vision to life.</p>
+                        </div>
+                    </div>
+                    <!-- Higher Ground (Placeholder) -->
+                    <div class="speaker-card">
+                        <div
+                            style="height: 300px; background: #111; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #222;">
+                            <span style="color: #333; font-size: 3rem; font-family: 'Saira Stencil One';">HG</span>
+                        </div>
+                        <div style="padding: 1.5rem;">
+                            <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 0.5rem;">Higher Ground</h3>
+                            <p style="color: var(--color-primary); font-weight: bold; margin-bottom: 1rem;">Charity
+                                Partner</p>
+                            <p style="color: #999; font-size: 0.9rem;">Based in Sun Valley, using recreation to give our
+                                wounded warriors a second chance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Contact Inquiry Section -->
+    <section style="background: #0a0a0a; padding: 4rem 0; border-top: 1px solid #222;">
+        <div class="container" style="max-width: 900px; text-align: center;">
+            <h2
+                style="font-size: clamp(2rem, 5vw, 3rem); color: #fff; margin-bottom: 1rem; font-family: var(--font-heading);">
+                ANY QUESTIONS?
+            </h2>
+            <p style="font-size: 1.2rem; color: #ddd; font-weight: 300; margin-bottom: 2rem;">
+                Our team are happy to help
+            </p>
+            <a href="#" class="btn" onclick="openContactModal(); return false;">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand / Partnership -->
+                <div class="footer-col">
+                    <a href="#" target="_blank"><img src="assets/logo.png" alt="Seven Summits"
+                            style="height: 50px; margin-bottom: 1.5rem;"></a>
+                    <p style="color: #999; line-height: 1.6; margin-bottom: 2rem;">
+                        The arena is outside. Boardrooms don't build character; mountains do.
+                    </p>
+                    <div class="partnership-lockup">
+                        <span style="color: #666; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">In
+                            Proud Partnership<br>With</span>
+                        <img src="assets/Inspired-logo.avif" alt="Inspired Ventures" style="height: 35px;">
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="index.html">The Summit</a></li>
+                        <li><a href="methodology.html">The Framework</a></li>
+                        <li><a href="weekend.html">The Weekend</a></li>
+                        <li><a href="venue.html">Venue</a></li>
+                        <li><a href="charity.html">Higher Ground</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:mark@markpattisonnfl.com">mark@markpattisonnfl.com</a></li>
+                        <li>Sun Valley, Idaho</li>
+                    </ul>
+                    <div class="social-links" style="margin-top: 1.5rem;">
+                        <a href="#">IG</a>
+                        <a href="#">LI</a>
+                        <a href="#">X</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Seven Summits Event. All Rights Reserved.</p>
+                <div style="display: flex; gap: 2rem;">
+                    <a href="#" style="color: #666; text-decoration: none;">Privacy Policy</a>
+                    <a href="#" style="color: #666; text-decoration: none;">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; justify-content: center; align-items: center; padding: 2rem;">
+        <div
+            style="position: relative; width: 100%; max-width: 900px; height: 90vh; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+            <button onclick="closeContactModal()"
+                style="position: absolute; top: -40px; right: 0; background: transparent; border: none; color: #fff; font-size: 2rem; cursor: pointer; padding: 0.5rem 1rem; z-index: 10001; transition: transform 0.2s ease;">×</button>
+            <iframe height="674" frameborder="0"
+                src="https://inspired.wetravel.com/widgets/contact_form?buttonColor=%252333ae3f&buttonTextColor=%23ffffff&version=v1.0&env=https%3A%2F%2Finspired.wetravel.com&messageTitle=Do%20you%20have%20any%20questions%20about%20the%20trip%3F&title=Trip%20Inquiry%20Form&showPhone=true&organizerId=344082&tripUuid=8798483510&tripTitle=Seven%20Summits%20Summit%202026"
+                style="width: 100%; height: 100%; border: none;"></iframe>
+        </div>
+    </div>
+
+    <!-- CORE SCRIPT -->
+    <script src="script.js"></script>
+</body>
+
+</html>
