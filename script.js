@@ -73,6 +73,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const modal = document.getElementById(modalId);
         if (modal) {
             modal.classList.remove('active');
+            
+            // Stop video playback by reloading iframes
+            const iframes = modal.querySelectorAll('iframe');
+            iframes.forEach(iframe => {
+                const src = iframe.src;
+                iframe.src = '';
+                iframe.src = src;
+            });
+            
             setTimeout(() => {
                 modal.style.display = 'none';
             }, 300); // Match CSS transition
