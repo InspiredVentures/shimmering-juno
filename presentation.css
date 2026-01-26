@@ -1,16 +1,16 @@
-
 /* ------------------------------------------------------------
    PRESENTATION MODE (Flash Deck Style)
    ------------------------------------------------------------ */
 
 body.presentation-mode {
-    overflow: hidden; /* Prevent body scroll, handle in container */
+    overflow: hidden;
+    /* Prevent body scroll, handle in container */
     background-color: #000;
 }
 
 /* Hide standard nav in presentation mode for immersion */
 body.presentation-mode .navbar {
-    display: none; 
+    display: none;
 }
 
 /* Container locking */
@@ -21,11 +21,13 @@ body.presentation-mode .navbar {
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
     position: relative;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
-.presentation-container::-webkit-scrollbar { 
-    display: none; /* Chrome/Safari */
+.presentation-container::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
 }
 
 /* Individual Slides */
@@ -112,4 +114,78 @@ body.presentation-mode .navbar {
 .slide.active .reveal-on-scroll {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* ------------------------------------------------------------
+   TIER CARDS (Hover Effects & Details)
+   ------------------------------------------------------------ */
+.tier-card {
+    background: #111;
+    border: 1px solid #333;
+    padding: 3rem 2rem;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    cursor: default;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 500px;
+    /* Ensure uniform height */
+}
+
+/* Feature Lists */
+.tier-card ul {
+    text-align: left;
+    list-style: none;
+    padding: 0;
+    color: #999;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.tier-card ul li {
+    border-bottom: 1px solid #222;
+    padding: 0.8rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    font-size: 0.95rem;
+}
+
+.tier-card ul li::before {
+    content: '✓';
+    color: var(--color-primary);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* The "Summit" Box Look (Target State) */
+.tier-card.featured,
+.tier-card:hover {
+    background: #1a1a1a;
+    border: 2px solid var(--color-primary);
+    transform: scale(1.05);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    z-index: 10;
+}
+
+.tier-card h3 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.tier-card .price-label {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.tier-card .btn {
+    width: 100%;
+    margin-top: auto;
 }
