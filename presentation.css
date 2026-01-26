@@ -1,0 +1,115 @@
+
+/* ------------------------------------------------------------
+   PRESENTATION MODE (Flash Deck Style)
+   ------------------------------------------------------------ */
+
+body.presentation-mode {
+    overflow: hidden; /* Prevent body scroll, handle in container */
+    background-color: #000;
+}
+
+/* Hide standard nav in presentation mode for immersion */
+body.presentation-mode .navbar {
+    display: none; 
+}
+
+/* Container locking */
+.presentation-container {
+    height: 100vh;
+    width: 100vw;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    position: relative;
+    scrollbar-width: none; /* Firefox */
+}
+
+.presentation-container::-webkit-scrollbar { 
+    display: none; /* Chrome/Safari */
+}
+
+/* Individual Slides */
+.slide {
+    height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+}
+
+/* Force hero/sections to match slide behavior if they share classes */
+.slide.hero,
+.slide.section-padding {
+    min-height: 100vh !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Content container within slide ensuring centered limit */
+.slide-content {
+    width: 100%;
+    max-width: 1400px;
+    padding: 0 2rem;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+/* Navigation Controls (Floating) */
+.deck-nav {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 9999;
+    display: flex;
+    gap: 1rem;
+}
+
+.deck-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.deck-btn:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.deck-progress {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 6px;
+    background: var(--color-primary);
+    z-index: 10000;
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+/* Entrance Animations for Slides */
+.slide .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+.slide.active .reveal-on-scroll {
+    opacity: 1;
+    transform: translateY(0);
+}

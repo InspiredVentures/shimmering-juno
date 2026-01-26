@@ -6,66 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find Your Everest | The Partnership Deck</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="presentation.css"> <!-- Added Presentation Styles -->
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&family=Saira+Stencil+One&display=swap"
         rel="stylesheet">
 </head>
 
-<body class="epic-theme">
+<body class="epic-theme presentation-mode"> <!-- Added presentation-mode class -->
 
-    <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo"><img src="assets/logo.png" alt="7 Summits"></a>
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+    <!-- Navigation Overlay -->
+    <div class="deck-progress"></div>
+    <div class="deck-nav">
+        <button id="deck-prev" class="deck-btn">↑</button>
+        <button id="deck-next" class="deck-btn">↓</button>
+    </div>
+
+    <!-- Main Scroll Container -->
+    <div class="presentation-container">
+
+        <!-- SLIDE 1: HERO -->
+        <header class="hero slide"
+            style="min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; margin-bottom: 0;">
+            <div
+                style="position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('assets/hero_gen_charity.png') center/cover;">
             </div>
-            <ul class="nav-links">
-                <li><a href="methodology.html">The Framework</a></li>
-                <li><a href="weekend.html">The Weekend</a></li>
-                <li><a href="venue.html">Venue</a></li>
-                <li><a href="speakers.html">Key Speakers</a></li>
-                <li>
-                    <a href="about.html">About Us</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="about.html">Our Story</a></li>
-                        <li><a href="charity.html">Higher Ground</a></li>
-                    </ul>
-                </li>
-                <li><a href="https://inspired.wetravel.com/checkout_embed?uuid=8798483510&source=direct_link"
-                        class="btn btn-book" onclick="openBookingModal(); return false;">Book Now</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!-- 1. TITLE SLIDE HERO -->
-    <header class="hero"
-        style="min-height: 85vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; margin-bottom: 0;">
-        <div
-            style="position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('assets/hero_gen_charity.png') center/cover;">
-        </div>
+            <div class="container hero-content text-center reveal-on-scroll" style="position: relative; z-index: 10;">
+                <p
+                    style="font-family: 'Oswald'; font-size: 1.5rem; letter-spacing: 4px; color: #fff; text-transform: uppercase; margin-bottom: 2rem; opacity: 0.9;">
+                    The 2026 Partnership Deck</p>
+                <h1 class="epic-hero-text" style="color: #fff; margin-bottom: 1rem; font-size: 6rem;">FIND YOUR <span
+                        class="highlight">EVEREST</span></h1>
+                <p style="font-size: 1.5rem; color: #ddd; max-width: 800px; margin: 0 auto; letter-spacing: 1px;">
+                    Sun Valley, Idaho | Sept 18th – 20th
+                </p>
+                <p style="color: #999; margin-top: 1rem; font-style: italic;">"An Immersive Executive Retreat for
+                    Leaders Ready to Make the Impossible, Possible."</p>
+            </div>
+        </header>
 
-        <div class="container hero-content text-center" style="position: relative; z-index: 10; margin-top: 10vh;">
-            <p
-                style="font-family: 'Oswald'; font-size: 1.5rem; letter-spacing: 4px; color: #fff; text-transform: uppercase; margin-bottom: 2rem; opacity: 0.9;">
-                The 2026 Partnership Deck</p>
-            <h1 class="epic-hero-text" style="color: #fff; margin-bottom: 1rem; font-size: 6rem;">FIND YOUR <span
-                    class="highlight">EVEREST</span></h1>
-            <p style="font-size: 1.5rem; color: #ddd; max-width: 800px; margin: 0 auto; letter-spacing: 1px;">
-                Sun Valley, Idaho | Sept 18th – 20th
-            </p>
-            <p style="color: #999; margin-top: 1rem; font-style: italic;">"An Immersive Executive Retreat for Leaders
-                Ready to Make the Impossible, Possible."</p>
-        </div>
-    </header>
-
-    <main style="background: #050505;">
-
-        <!-- 2. THE HOOK: FINANCIAL GAME VS GAME OF LIFE -->
-        <section class="section-padding reveal-on-scroll"
-            style="padding-top: 8rem; padding-bottom: 8rem; background: #111;">
-            <div class="container text-center" style="max-width: 1000px;">
+        <!-- SLIDE 2: THE HOOK -->
+        <section class="section-padding slide" style="background: #111;">
+            <div class="container text-center reveal-on-scroll" style="max-width: 1000px;">
                 <h2
                     style="font-size: 4rem; text-transform: uppercase; color: #fff; line-height: 1; margin-bottom: 2rem;">
                     YOU’VE WON THE <br><span class="highlight">FINANCIAL GAME</span>.
@@ -74,10 +56,6 @@
                     style="font-size: 4rem; text-transform: uppercase; color: #fff; line-height: 1; margin-bottom: 4rem;">
                     NOW PLAY THE <br><span class="text-white">GAME OF LIFE</span>.
                 </h2>
-                <p style="font-size: 1.3rem; color: #ccc; max-width: 800px; margin: 0 auto; line-height: 1.8;">
-                    Comfort is the enemy of fulfillment. Real purpose isn’t found in a conference room; it’s found in
-                    the arena—pursuing a challenge that scares you enough to make you feel alive again.
-                </p>
                 <div style="margin-top: 3rem;">
                     <p style="color: var(--color-primary); font-size: 1.2rem; font-weight: 700; letter-spacing: 2px;">
                         DON'T JUST EXIST. RISE AND ASCEND.</p>
@@ -85,12 +63,12 @@
             </div>
         </section>
 
-        <!-- 3. THE CONCEPT: NOT A CONFERENCE -->
-        <section class="reveal-on-scroll" style="display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh;">
-            <div style="background: url('assets/hero_trekking.png') center/cover; min-height: 400px;"></div>
+        <!-- SLIDE 3: THE CONCEPT -->
+        <section class="slide" style="display: grid; grid-template-columns: 1fr 1fr; height: 100vh;">
+            <div style="background: url('assets/hero_trekking.png') center/cover; height: 100%;"></div>
             <div
                 style="background: #050505; display: flex; align-items: center; justify-content: center; padding: 4rem;">
-                <div style="max-width: 600px;">
+                <div class="reveal-on-scroll" style="max-width: 600px;">
                     <h2 class="text-primary" style="font-size: 3.5rem; margin-bottom: 1rem; line-height: 0.9;">NOT A
                         CONFERENCE.<br><span style="color: #fff;">A CLIMB.</span></h2>
                     <h3
@@ -99,7 +77,7 @@
 
                     <p style="color: #999; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2rem;">
                         Clarity doesn’t happen at sea level. We provide the elite framework, the world-class guides, and
-                        the rope team. You bring the grit. This is where inspiration meets perspiration.
+                        the rope team. You bring the grit.
                     </p>
 
                     <div style="border-left: 2px solid var(--color-primary); padding-left: 1.5rem;">
@@ -110,10 +88,10 @@
             </div>
         </section>
 
-        <!-- 4. THE GUIDES -->
-        <section class="section-padding reveal-on-scroll" style="background: #0a0a0a;">
-            <div class="container">
-                <div class="text-center" style="margin-bottom: 5rem;">
+        <!-- SLIDE 4: THE GUIDE (MARK) -->
+        <section class="section-padding slide" style="background: #0a0a0a;">
+            <div class="container reveal-on-scroll">
+                <div class="text-center" style="margin-bottom: 3rem;">
                     <h2 style="font-size: 3rem; color: #fff; text-transform: uppercase;">Led By Those Who Have <span
                             class="highlight">Walked The Path</span></h2>
                 </div>
@@ -126,7 +104,7 @@
                     <div>
                         <h3 class="text-primary" style="font-size: 2.5rem; margin-bottom: 1rem;">YOUR GUIDE: MARK
                             PATTISON</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
                             <div>
                                 <h4 style="color: #fff; font-size: 1.2rem; margin-bottom: 0.5rem;">NFL VETERAN</h4>
                                 <p style="color: #999; font-size: 0.9rem;">5 years in the league (Raiders, Saints,
@@ -136,78 +114,60 @@
                                 <h4 style="color: #fff; font-size: 1.2rem; margin-bottom: 0.5rem;">7 SUMMITS CLIMBER
                                 </h4>
                                 <p style="color: #999; font-size: 0.9rem;">The only NFL player to climb the Seven
-                                    Summits + Matterhorn.</p>
-                            </div>
-                            <div>
-                                <h4 style="color: #fff; font-size: 1.2rem; margin-bottom: 0.5rem;">MEDIA EXECUTIVE</h4>
-                                <p style="color: #999; font-size: 0.9rem;">Helped scale Sports Illustrated to 50M+
-                                    visitors.</p>
-                            </div>
-                            <div>
-                                <h4 style="color: #fff; font-size: 1.2rem; margin-bottom: 0.5rem;">STORYTELLER</h4>
-                                <p style="color: #999; font-size: 0.9rem;">Emmy Award-winning filmmaker & host of
-                                    finding your summit.</p>
+                                    Summits.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- ADDED SPEAKERS -->
-                <div class="grid-2"
-                    style="align-items: center; gap: 4rem; margin-top: 4rem; padding-top: 4rem; border-top: 1px solid #222;">
-                    <div>
-                        <h3 class="text-white"
-                            style="font-size: 2.5rem; margin-bottom: 1rem; text-transform: uppercase;">Mariel Hemingway
-                        </h3>
-                        <p style="color: var(--color-primary); font-size: 1.1rem; margin-bottom: 2rem;">ACTRESS • AUTHOR
-                            • ADVOCATE</p>
-                        <p style="color: #999; line-height: 1.6;">Academy Award-nominated actress and mental health
-                            advocate sharing her powerful journey of resilience. Mariel uses her platform to inspire
-                            holistic living and finding balance in a chaotic world.</p>
-                    </div>
-                    <div>
-                        <img src="assets/Mariel_Bio.jpg" alt="Mariel Hemingway"
-                            style="width: 100%; border: 1px solid #333;">
-                    </div>
-                </div>
-
-                <div class="grid-2"
-                    style="align-items: center; gap: 4rem; margin-top: 4rem; padding-top: 4rem; border-top: 1px solid #222;">
-                    <div>
-                        <img src="assets/TomFlick.jpg" alt="Tom Flick" style="width: 100%; border: 1px solid #333;">
-                    </div>
-                    <div>
-                        <h3 class="text-white"
-                            style="font-size: 2.5rem; margin-bottom: 1rem; text-transform: uppercase;">Tom Flick</h3>
-                        <p style="color: var(--color-primary); font-size: 1.1rem; margin-bottom: 2rem;">LEADERSHIP
-                            EXPERT • FORMER NFL QB</p>
-                        <p style="color: #999; line-height: 1.6;">A world-renowned authority on leadership, helping
-                            global organizations like Google and NASA navigate change. Tom masters the pivot from
-                            "Success" to "Significance."</p>
-                    </div>
-                </div>
-
             </div>
         </section>
 
-        <!-- 5. THE ROPE TEAM / AUDIENCE -->
-        <section class="reveal-on-scroll"
-            style="padding: 8rem 0; background: #111; position: relative; overflow: hidden;">
-            <!-- Background Texture -->
+        <!-- SLIDE 5: THE VOICES (MARIEL & TOM) -->
+        <section class="section-padding slide" style="background: #080808;">
+            <div class="container reveal-on-scroll">
+                <div class="text-center" style="margin-bottom: 3rem;">
+                    <h2 style="font-size: 3rem; color: #fff; text-transform: uppercase;">The <span
+                            class="highlight">Voices</span></h2>
+                </div>
+
+                <div class="grid-2" style="gap: 2rem;">
+                    <!-- Mariel -->
+                    <div class="speaker-card" style="padding: 2rem; border: 1px solid #222;">
+                        <img src="assets/Mariel_Bio.jpg" alt="Mariel"
+                            style="height: 200px; object-fit: cover; margin-bottom: 1rem; width: 100%;">
+                        <h3 class="text-white" style="font-size: 1.5rem; margin-bottom: 0.5rem;">MARIEL HEMINGWAY</h3>
+                        <p style="color: var(--color-primary); font-size: 0.9rem;">ACTRESS & ADVOCATE</p>
+                        <p style="color: #888; font-size: 0.9rem; margin-top: 1rem;">Oscar-nominated actress sharing her
+                            journey of holistic resilience.</p>
+                    </div>
+
+                    <!-- Tom -->
+                    <div class="speaker-card" style="padding: 2rem; border: 1px solid #222;">
+                        <img src="assets/TomFlick.jpg" alt="Tom"
+                            style="height: 200px; object-fit: cover; margin-bottom: 1rem; width: 100%;">
+                        <h3 class="text-white" style="font-size: 1.5rem; margin-bottom: 0.5rem;">TOM FLICK</h3>
+                        <p style="color: var(--color-primary); font-size: 0.9rem;">LEADERSHIP EXPERT</p>
+                        <p style="color: #888; font-size: 0.9rem; margin-top: 1rem;">Former NFL QB teaching the pivot
+                            from success to significance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 6: THE ROPE TEAM -->
+        <section class="slide" style="padding: 0; background: #111; position: relative;">
             <div
                 style="position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: url('assets/hero_group.jpg') center/cover; opacity: 0.1; filter: grayscale(100%);">
             </div>
 
-            <div class="container" style="position: relative; z-index: 2;">
+            <div class="container reveal-on-scroll" style="position: relative; z-index: 2;">
                 <div class="grid-2" style="gap: 5rem; align-items: center;">
                     <div>
                         <h2 style="font-size: 4rem; color: #fff; line-height: 0.9; margin-bottom: 2rem;">YOUR <span
-                                class="highlight">ROPE TEAM</span> DEFINES YOUR ASCENT</h2>
-                        <h3 style="color: #ccc; font-size: 1.5rem; margin-bottom: 2rem;">Limited to 150 Aspiring
-                            Superstars.</h3>
+                                class="highlight">ROPE TEAM</span></h2>
                         <p style="color: #999; font-size: 1.1rem; line-height: 1.7; margin-bottom: 2rem;">
-                            Access a network of leaders who are climbing for more than just profit. Boardrooms don’t
-                            build character. Mountains do. Connect with your peers in the arena, not the hallway.
+                            Boardrooms don’t build character. Mountains do. Connect with 150 aspiring superstars in the
+                            arena.
                         </p>
                     </div>
                     <div style="background: #050505; padding: 3rem; border: 1px solid #333; text-align: center;">
@@ -216,18 +176,17 @@
                             150</h4>
                         <p style="color: #fff; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2rem;">
                             Curated Seats</p>
-
                         <div
                             style="display: flex; justify-content: space-around; padding-top: 2rem; border-top: 1px solid #222;">
                             <div>
                                 <span
                                     style="display: block; color: #fff; font-size: 1.5rem; font-weight: 700;">85%</span>
-                                <span style="color: #666; font-size: 0.8rem;">C-SUITE / FOUNDER</span>
+                                <span style="color: #666; font-size: 0.8rem;">C-SUITE</span>
                             </div>
                             <div>
                                 <span
                                     style="display: block; color: #fff; font-size: 1.5rem; font-weight: 700;">$100M+</span>
-                                <span style="color: #666; font-size: 0.8rem;">COMBINED REVENUE</span>
+                                <span style="color: #666; font-size: 0.8rem;">REVENUE</span>
                             </div>
                         </div>
                     </div>
@@ -235,194 +194,89 @@
             </div>
         </section>
 
-        <!-- 6. THE MISSION (HIGHER GROUND) -->
-        <section class="reveal-on-scroll" style="position: relative; height: 60vh; display: flex; align-items: center;">
+        <!-- SLIDE 7: MISSION -->
+        <section class="slide" style="position: relative; overflow: hidden; display: flex; align-items: center;">
             <div style="position: absolute; inset: 0; background: url('assets/higher_ground.jpg') center/cover;"></div>
             <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.8);"></div>
 
-            <div class="container text-center" style="position: relative; z-index: 2;">
+            <div class="container text-center reveal-on-scroll" style="position: relative; z-index: 2;">
                 <h2 style="font-size: 3.5rem; color: #fff; text-transform: uppercase; margin-bottom: 1rem;">Climbing For
                     <span class="highlight">Higher Ground</span>
                 </h2>
                 <p style="font-size: 1.3rem; color: #ccc; max-width: 800px; margin: 0 auto; line-height: 1.6;">
-                    Our proud partnership with Higher Ground allows us to pay it forward. We support local veterans and
-                    first responders, integrating their stories of resilience into our climb.
+                    Supporting local veterans and first responders. Integrating their stories of resilience into our
+                    climb.
                 </p>
-                <div style="margin-top: 2rem;">
+                <div style="margin-top: 3rem;">
                     <span
-                        style="border: 2px solid #fff; padding: 1rem 2rem; color: #fff; font-weight: 700; text-transform: uppercase;">True
+                        style="border: 2px solid #fff; padding: 1rem 2rem; color: #fff; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">True
                         Leadership Is Service</span>
                 </div>
             </div>
         </section>
 
-        <!-- ROI SECTION -->
-        <section class="section-padding reveal-on-scroll" style="background: #111; border-bottom: 1px solid #222;">
-            <div class="container text-center">
+        <!-- SLIDE 8: THE HALO EFFECT (ROI) -->
+        <section class="slide" style="background: #111;">
+            <div class="container text-center reveal-on-scroll">
                 <h2 style="font-size: 3rem; color: #fff; text-transform: uppercase; margin-bottom: 4rem;">The <span
                         class="highlight">Halo Effect</span></h2>
 
                 <div class="grid-3" style="gap: 2rem;">
                     <div style="background: #050505; padding: 2rem; border: 1px solid #222;">
                         <h4 style="color: #fff; text-transform: uppercase; margin-bottom: 1rem;">Brand Alignment</h4>
-                        <p style="color: #999; font-size: 0.9rem;">Associate your brand with resilience, peak
-                            performance, and executive leadership. This isn't just visibility; it's validation.</p>
+                        <p style="color: #999; font-size: 0.9rem;">Associate with resilience and leadership.</p>
                     </div>
                     <div style="background: #050505; padding: 2rem; border: 1px solid #222;">
                         <h4 style="color: #fff; text-transform: uppercase; margin-bottom: 1rem;">Media Momentum</h4>
-                        <p style="color: #999; font-size: 0.9rem;">Launch alongside Mark Pattison’s new book tour.
-                            Benefit from the nationwide PR wave, podcast appearances, and media spotlight.</p>
+                        <p style="color: #999; font-size: 0.9rem;">Launch alongside the book tour & PR wave.</p>
                     </div>
                     <div style="background: #050505; padding: 2rem; border: 1px solid #222;">
                         <h4 style="color: #fff; text-transform: uppercase; margin-bottom: 1rem;">Direct Access</h4>
-                        <p style="color: #999; font-size: 0.9rem;">Bypass the gatekeepers. Engage directly with 150
-                            C-Suite leaders and high-net-worth individuals in an intimate setting.</p>
+                        <p style="color: #999; font-size: 0.9rem;">Engage 150 C-Suite leaders intimately.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 7. THE REQUEST (TIERS) - Preserved from original but visually integrated -->
-        <section class="section-padding reveal-on-scroll" style="background: #050505;">
-            <div class="container">
-                <div class="text-center" style="margin-bottom: 5rem;">
+        <!-- SLIDE 9: TIERS & CLOSING -->
+        <section class="slide" style="background: #050505;">
+            <div class="container reveal-on-scroll">
+                <div class="text-center" style="margin-bottom: 3rem;">
                     <h2 style="font-size: 3rem; color: #fff; text-transform: uppercase;">Join The Expedition</h2>
-                    <p style="color: #666; font-size: 1.2rem;">Partnership Opportunities</p>
                 </div>
 
-                <div class="grid-3" style="gap: 2rem; align-items: start;">
-                    <!-- Silver Tier -->
-                    <div
-                        style="background: #111; border: 1px solid #333; padding: 3rem 2rem; text-align: center; transition: transform 0.3s;">
-                        <h3 style="color: #ccc; font-size: 2rem; margin-bottom: 1rem; text-transform: uppercase;">Base
-                            Camp</h3>
-                        <p
-                            style="color: var(--color-primary); font-size: 1.5rem; margin-bottom: 2rem; font-weight: 700;">
-                            Silver Partner</p>
-                        <ul
-                            style="text-align: left; list-style: none; padding: 0; color: #999; margin-bottom: 3rem; line-height: 1.8;">
-                            <li style="border-bottom: 1px solid #222; padding: 0.5rem 0;">• Digital branding placement
-                            </li>
-                            <li style="border-bottom: 1px solid #222; padding: 0.5rem 0;">• Social mentions</li>
-                            <li style="border-bottom: 1px solid #222; padding: 0.5rem 0;">• Gift bag inclusion</li>
-                            <li style="border-bottom: 1px solid #222; padding: 0.5rem 0;">• 1 VIP Pass included</li>
-                        </ul>
-                        <a href="#contact" class="btn btn-outline" style="width: 100%;"
-                            onclick="openContactModal(); return false;">Inquire Now</a>
+                <div class="grid-3" style="gap: 2rem; align-items: center;">
+                    <!-- Silver -->
+                    <div style="background: #111; border: 1px solid #333; padding: 2rem; text-align: center;">
+                        <h3 style="color: #ccc; font-size: 1.5rem; text-transform: uppercase;">Base Camp</h3>
+                        <p style="color: var(--color-primary); margin-bottom: 1rem;">Silver Partner</p>
+                        <a href="#" class="btn btn-outline" style="font-size: 0.8rem;"
+                            onclick="openContactModal(); return false;">Inquire</a>
                     </div>
 
-                    <!-- Gold Tier (Highlighted) -->
+                    <!-- Gold -->
                     <div
-                        style="background: #1a1a1a; border: 2px solid var(--color-primary); padding: 4rem 2rem; text-align: center; transform: scale(1.05); position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-
-                        <h3 style="color: #fff; font-size: 2.5rem; margin-bottom: 1rem; text-transform: uppercase;">
-                            Summit</h3>
-                        <p style="color: var(--color-primary); font-size: 2rem; margin-bottom: 2rem; font-weight: 700;">
-                            Gold Partner</p>
-                        <ul
-                            style="text-align: left; list-style: none; padding: 0; color: #ccc; margin-bottom: 3rem; line-height: 1.8;">
-                            <li style="border-bottom: 1px solid #333; padding: 0.5rem 0;">• Everything in Silver</li>
-                            <li style="border-bottom: 1px solid #333; padding: 0.5rem 0;">• <strong>PR Integration (Book
-                                    Launch)</strong></li>
-                            <li style="border-bottom: 1px solid #333; padding: 0.5rem 0;">• Host a breakout session</li>
-                            <li style="border-bottom: 1px solid #333; padding: 0.5rem 0;">• Dedicated email blast</li>
-                            <li style="border-bottom: 1px solid #333; padding: 0.5rem 0;">• 2 VIP Passes included</li>
-                        </ul>
-                        <a href="#contact" class="btn" style="width: 100%;"
-                            onclick="openContactModal(); return false;">Secure This Spot</a>
+                        style="background: #1a1a1a; border: 2px solid var(--color-primary); padding: 3rem 2rem; text-align: center; transform: scale(1.1); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                        <h3 style="color: #fff; font-size: 2rem; text-transform: uppercase;">Summit</h3>
+                        <p style="color: var(--color-primary); font-weight: 700; margin-bottom: 1rem;">Gold Partner</p>
+                        <a href="#" class="btn" style="width: 100%;"
+                            onclick="openContactModal(); return false;">Inquire</a>
                     </div>
 
-                    <!-- Platinum Tier -->
-                    <div
-                        style="background: #111; border: 1px solid #333; padding: 3rem 2rem; text-align: center; transition: transform 0.3s;">
-                        <h3 style="color: #fff; font-size: 2rem; margin-bottom: 1rem; text-transform: uppercase;">Title
-                        </h3>
-                        <p
-                            style="color: var(--color-primary); font-size: 1.5rem; margin-bottom: 2rem; font-weight: 700;">
-                            Presenting Partner</p>
-                        <ul
-                            style="text-align: left; list-style: none; padding: 0; color: #999; margin-bottom: 3rem; line-height: 1.8;">
-                            <li style="border-bottom: 1px solid #222; padding: 0.5rem 0;">• "Presented by" Naming Rights
-                            </li>
-                            <li style="border-bottom: 1px solid #222; padding: 0.5rem 0;">• <strong>Headline Media
-                                    Coverage</strong></li>
-                            <li style="border-bottom: 1px solid #222; padding: 0.5rem 0;">• Keynote Introduction</li>
-                            <li style="border-bottom: 1px solid #222; padding: 0.5rem 0;">• 5 VIP Passes included</li>
-                        </ul>
-                        <a href="#contact" class="btn btn-outline" style="width: 100%;"
-                            onclick="openContactModal(); return false;">Inquire Now</a>
+                    <!-- Platinum -->
+                    <div style="background: #111; border: 1px solid #333; padding: 2rem; text-align: center;">
+                        <h3 style="color: #fff; font-size: 1.5rem; text-transform: uppercase;">Title</h3>
+                        <p style="color: var(--color-primary); margin-bottom: 1rem;">Presenting</p>
+                        <a href="#" class="btn btn-outline" style="font-size: 0.8rem;"
+                            onclick="openContactModal(); return false;">Inquire</a>
                     </div>
                 </div>
             </div>
         </section>
 
-    </main>
+    </div> <!-- End Presentation Container -->
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <!-- Brand / Partnership -->
-                <div class="footer-col">
-                    <a href="#" target="_blank"><img src="assets/logo.png" alt="Seven Summits"
-                            style="height: 50px; margin-bottom: 1.5rem;"></a>
-                    <p style="color: #999; line-height: 1.6; margin-bottom: 2rem;">
-                        The arena is outside. Boardrooms don't build character; mountains do.
-                    </p>
-                    <div class="partnership-lockup">
-                        <span style="color: #666; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">In
-                            Proud Partnership<br>With</span>
-                        <img src="assets/Inspired-logo.avif" alt="Inspired Ventures" style="height: 35px;">
-                    </div>
-                </div>
-
-                <!-- Navigation -->
-                <div class="footer-col">
-                    <h4>Explore</h4>
-                    <ul>
-                        <li><a href="index.html">The Summit</a></li>
-                        <li><a href="methodology.html">The Framework</a></li>
-                        <li><a href="weekend.html">The Weekend</a></li>
-                        <li><a href="venue.html">Venue</a></li>
-                        <li><a href="charity.html">Higher Ground</a></li>
-                    </ul>
-                </div>
-
-                <!-- Contact -->
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><a href="mailto:mark@markpattisonnfl.com">mark@markpattisonnfl.com</a></li>
-                        <li>Sun Valley, Idaho</li>
-                    </ul>
-                    <div class="social-links" style="margin-top: 1.5rem;">
-                        <a href="#">IG</a>
-                        <a href="#">LI</a>
-                        <a href="#">X</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2026 Seven Summits Event. All Rights Reserved.</p>
-                <div style="display: flex; gap: 2rem;">
-                    <a href="#" style="color: #666; text-decoration: none;">Privacy Policy</a>
-                    <a href="#" style="color: #666; text-decoration: none;">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Booking Modal Overlay -->
-    <div id="booking-modal">
-        <div class="booking-modal-content">
-            <button class="booking-modal-close" onclick="closeBookingModal()">×</button>
-            <iframe src="https://inspired.wetravel.com/checkout_embed?uuid=8798483510&source=direct_link"
-                allow="payment"></iframe>
-        </div>
-    </div>
-
-    <!-- Contact Modal -->
+    <!-- Contact Modal (Preserved) -->
     <div id="contact-modal"
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; justify-content: center; align-items: center; padding: 2rem;">
         <div
@@ -435,8 +289,9 @@
         </div>
     </div>
 
-    <!-- CORE SCRIPT -->
+    <!-- CORE SCRIPTS -->
     <script src="script.js"></script>
+    <script src="presentation.js"></script>
 </body>
 
 </html>
