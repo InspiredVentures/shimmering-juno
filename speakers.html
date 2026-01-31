@@ -228,47 +228,98 @@
                 flex-wrap: nowrap;
                 overflow-x: auto;
                 justify-content: flex-start;
-                padding-left: 50px;
+                padding-left: 20px;
+                padding-right: 20px;
+                align-items: center;
+                /* Center items vertically in the scroll area */
+            }
+
+            .speaker-group {
+                display: contents;
+                /* Treat all speakers as direct siblings for scrolling */
             }
 
             .speaker {
-                margin: 0 -15px;
+                margin: 0 10px;
+                /* Positive spacing - Separate Cards */
                 flex-shrink: 0;
+                width: 280px;
+                /* Fixed width for consistency */
+                transform: none !important;
+                /* Reset all scaling */
+                opacity: 1 !important;
+                background: transparent;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+            }
+
+            /* Reset special scaling for Mark and John */
+            .speaker.mark,
+            .speaker.center-speaker,
+            .speaker[data-name="John Foley"] {
+                transform: none !important;
+                margin: 0 10px;
+                z-index: 1 !important;
+                /* Reset z-index */
             }
 
             .flyer-integration-container h1 {
-                font-size: 4rem;
+                font-size: 3rem;
             }
 
-            /* Mobile: Always Show Nameplates */
+            /* Mobile: Nameplates Below Image */
             .name-plate {
                 opacity: 1 !important;
+                position: relative;
+                /* Flow below the image */
                 top: auto;
-                bottom: 10px;
-                transform: translateX(-50%) scale(0.8);
+                bottom: auto;
+                left: auto;
+                transform: none;
                 width: 100%;
-                background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-                padding-bottom: 20px;
+                background: transparent;
+                /* Clean look */
+                padding: 15px 0;
+                text-align: center;
+                pointer-events: auto;
+                /* Ensure no weird blocking */
             }
 
-            /* Reset specific adjustments for mobile to uniform bottom positioning */
+            /* Clean up specific positioning overrides */
             .speaker[data-name="Mariel Hemingway"] .name-plate,
             .speaker[data-name="Steve Azar"] .name-plate,
             .speaker[data-name="Shep Rose"] .name-plate,
             .speaker.mark .name-plate,
             .speaker.center-speaker .name-plate {
                 top: auto;
-                bottom: 0;
-                transform: translateX(-50%) scale(0.8);
+                bottom: auto;
+                transform: none;
             }
 
             .name-plate h3 {
-                font-size: 1.8rem;
-                text-shadow: 2px 2px 2px #000;
+                font-size: 1.5rem;
+                text-shadow: none;
+                /* Remove shadow for cleaner look against black */
+                margin-bottom: 5px;
             }
 
             .name-plate p {
-                font-size: 1rem;
+                font-size: 0.9rem;
+                background: transparent;
+                padding: 0;
+                color: #aaa;
+                text-shadow: none;
+            }
+
+            .speaker img {
+                height: 40vh;
+                /* Adjust height to fit text below */
+                width: 100%;
+                object-fit: contain;
+                /* Remove mask so they look like full cutouts */
+                -webkit-mask-image: none;
+                mask-image: none;
             }
         }
 
