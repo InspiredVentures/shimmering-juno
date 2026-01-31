@@ -892,17 +892,32 @@
             document.getElementById('modal-bio').innerText = bio;
             document.getElementById('modal-video').src = videoUrl;
 
-            modal.classList.add('active');
+            // Fix for "works once" bug: Ensure display is reset
+            modal.style.display = 'flex';
+            // Small delay to allow display change to register before transition
+            requestAnimationFrame(() => {
+                modal.classList.add('active');
+            });
+
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
         }
 
         function closeSpeakerModal(event) {
+            // Stop global listeners (from script.js) which might set display:none incorrectly or fail to reset overflow
+            if (event) event.stopPropagation();
+
             // Close if event is undefined (button click) or if clicking overlay (id check)
-            if (!event || event.target.id === 'speaker-modal') {
+            if (!event || event.target.id === 'speaker-modal' || event.target.classList.contains('close-modal')) {
                 const modal = document.getElementById('speaker-modal');
                 modal.classList.remove('active');
-                document.getElementById('modal-video').src = ''; // Stop video
-                document.body.style.overflow = '';
+
+                // Allow transition to finish before hiding
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.getElementById('modal-video').src = ''; // Stop video
+                }, 300);
+
+                document.body.style.overflow = ''; // Restore scrolling
             }
         }
     </script>
