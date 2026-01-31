@@ -946,29 +946,53 @@
                     container.scrollLeft = 0;
                 }
 
-                // 2. IntersectionObserver for 'Center' Detection (More robust than scroll listener)
-                const centerObserverOptions = {
-                    root: container, // Use the scroll container as root
-                    rootMargin: '0px -25% 0px -25%', // Create a wider "active zone" (middle 50%) for better hit rate
-                    threshold: 0 // Trigger as soon as they enter this zone
-                };
+                // 2. Direct Scroll Listener (Most reliable for momentum scrolling)
+                let ticking = false;
 
-                const centerObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('mobile-active');
-                        } else {
-                            entry.target.classList.remove('mobile-active');
+                const checkCenter = () => {
+                    const containerCenter = container.getBoundingClientRect().left + (container.clientWidth / 2);
+                    let closestSpeaker = null;
+                    let minDistance = Infinity;
+
+                    speakers.forEach(speaker => {
+                        const rect = speaker.getBoundingClientRect();
+                        const speakerCenter = rect.left + (rect.width / 2);
+                        const distance = Math.abs(containerCenter - speakerCenter);
+
+                        // Reset (optimization: do it here to avoid second loop if possible, 
+                        // though separated loop is cleaner for 'single active' logic)
+                        speaker.classList.remove('mobile-active');
+
+                        if (distance < minDistance) {
+                            minDistance = distance;
+                            closestSpeaker = speaker;
                         }
                     });
-                }, centerObserverOptions);
 
-                speakers.forEach(speaker => centerObserver.observe(speaker));
+                    // Activate the closest one (if within reasonable range)
+                    if (closestSpeaker && minDistance < (container.clientWidth / 2)) {
+                        closestSpeaker.classList.add('mobile-active');
+                    }
+
+                    ticking = false;
+                };
+
+                // Check on scroll (throttled via RAF)
+                container.addEventListener('scroll', () => {
+                    if (!ticking) {
+                        window.requestAnimationFrame(checkCenter);
+                        ticking = true;
+                    }
+                });
+
+                // Check on load
+                checkCenter();
 
                 // 3. Initial Scroll to First Speaker (Mark is order -1)
                 // Small timeout to ensure layout is stable
                 setTimeout(() => {
                     container.scrollLeft = 0;
+                    checkCenter(); // Re-check after potential shift
                 }, 100);
             }
         });
