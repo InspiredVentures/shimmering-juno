@@ -160,15 +160,15 @@
                 <span class="bar"></span>
             </div>
             <ul class="nav-links">
-                <li><a href="methodology.html">The Framework</a></li>
-                <li><a href="weekend.html">The Weekend</a></li>
-                <li><a href="venue.html">Venue</a></li>
-                <li><a href="speakers.html">Key Speakers</a></li>
+                <li><a href="methodology/">The Framework</a></li>
+                <li><a href="weekend/">The Weekend</a></li>
+                <li><a href="venue/">Venue</a></li>
+                <li><a href="speakers/">Key Speakers</a></li>
                 <li>
-                    <a href="about.html">About Us</a>
+                    <a href="about/">About Us</a>
                     <ul class="dropdown-menu">
-                        <li><a href="about.html">Our Story</a></li>
-                        <li><a href="charity.html">Higher Ground</a></li>
+                        <li><a href="about/">Our Story</a></li>
+                        <li><a href="charity/">Higher Ground</a></li>
                     </ul>
                 </li>
                 <li><a href="https://inspired.wetravel.com/checkout_embed?uuid=8798483510&source=direct_link"
@@ -184,19 +184,7 @@
             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5;">
             <source src="assets/hero_video.mp4" type="video/mp4">
         </video>
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const video = document.getElementById('hero-video');
-                if (video) {
-                    video.addEventListener('timeupdate', () => {
-                        if (video.duration && video.currentTime > (video.duration - 5)) {
-                            video.currentTime = 0;
-                            video.play();
-                        }
-                    });
-                }
-            });
-        </script>
+        <!-- Video Loop Logic Removed (Handled by HTML attribute) -->
         <div class="overlay"
             style="position: absolute; inset: 0; background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);">
         </div>
@@ -442,7 +430,91 @@
             </div>
         </section>
 
-        <!-- GUIDE & SPEAKERS MOVED TO speakers.html -->
+        <!-- SPEAKER SPOTLIGHT TEASER -->
+        <section class="section-padding" style="background: #0a0a0a; border-top: 1px solid #222;">
+            <div class="container">
+                <div class="text-center" style="margin-bottom: 4rem;">
+                    <h2 style="color: #fff; font-size: 3rem;">LEGENDS OF THE <span class="highlight">CLIMB</span></h2>
+                    <p style="color: #666; max-width: 600px; margin: 1rem auto;">
+                        Curated by Mark Pattison. A lineup of world-changers, thought leaders, and peak performers.
+                    </p>
+                </div>
+
+                <div class="grid-3" style="gap: 2rem; margin-bottom: 3rem;">
+                    <!-- Mark Pattison -->
+                    <a href="speakers/" class="speaker-card" style="text-decoration: none; display: block;">
+                        <div class="speaker-img-container" style="height: 350px; overflow: hidden;">
+                            <img src="assets/mark_cutout.png" alt="Mark Pattison" class="speaker-img">
+                        </div>
+                        <div style="padding: 1.5rem; background: #111;">
+                            <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 0.5rem;">Mark Pattison</h3>
+                            <p style="color: var(--color-primary); font-size: 0.9rem;">NFL Veteran & 7 Summits Climber
+                            </p>
+                        </div>
+                    </a>
+
+                    <!-- Mariel Hemingway -->
+                    <a href="speakers/" class="speaker-card" style="text-decoration: none; display: block;">
+                        <div class="speaker-img-container" style="height: 350px; overflow: hidden;">
+                            <img src="assets/mariel_cutout.png" alt="Mariel Hemingway" class="speaker-img">
+                        </div>
+                        <div style="padding: 1.5rem; background: #111;">
+                            <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 0.5rem;">Mariel Hemingway</h3>
+                            <p style="color: var(--color-primary); font-size: 0.9rem;">Actress & Wellness Author</p>
+                        </div>
+                    </a>
+
+                    <!-- Tom Flick -->
+                    <a href="speakers/" class="speaker-card" style="text-decoration: none; display: block;">
+                        <div class="speaker-img-container" style="height: 350px; overflow: hidden;">
+                            <img src="assets/tom_cutout.png" alt="Tom Flick" class="speaker-img">
+                        </div>
+                        <div style="padding: 1.5rem; background: #111;">
+                            <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 0.5rem;">Tom Flick</h3>
+                            <p style="color: var(--color-primary); font-size: 0.9rem;">Leadership Expert</p>
+                        </div>
+                    </a>
+
+                    <!-- John Foley -->
+                    <a href="speakers/" class="speaker-card" style="text-decoration: none; display: block;">
+                        <div class="speaker-img-container" style="height: 350px; overflow: hidden;">
+                            <img src="assets/john_cutout.png" alt="John Foley" class="speaker-img">
+                        </div>
+                        <div style="padding: 1.5rem; background: #111;">
+                            <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 0.5rem;">John Foley</h3>
+                            <p style="color: var(--color-primary); font-size: 0.9rem;">Blue Angels Lead Solo Pilot</p>
+                        </div>
+                    </a>
+
+                    <!-- Steve Azar -->
+                    <a href="speakers/" class="speaker-card" style="text-decoration: none; display: block;">
+                        <div class="speaker-img-container" style="height: 350px; overflow: hidden;">
+                            <img src="assets/steve_cutout.png" alt="Steve Azar" class="speaker-img">
+                        </div>
+                        <div style="padding: 1.5rem; background: #111;">
+                            <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 0.5rem;">Steve Azar</h3>
+                            <p style="color: var(--color-primary); font-size: 0.9rem;">Music Legend</p>
+                        </div>
+                    </a>
+
+                    <!-- Shep Rose -->
+                    <a href="speakers/" class="speaker-card" style="text-decoration: none; display: block;">
+                        <div class="speaker-img-container" style="height: 350px; overflow: hidden;">
+                            <img src="assets/shep_cutout.png" alt="Shep Rose" class="speaker-img">
+                        </div>
+                        <div style="padding: 1.5rem; background: #111;">
+                            <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 0.5rem;">Shep Rose</h3>
+                            <p style="color: var(--color-primary); font-size: 0.9rem;">Entrepreneur & TV Personality</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="text-center">
+                    <a href="speakers/" class="btn btn-outline" style="border-color: #fff; color: #fff;">View Full
+                        Lineup</a>
+                </div>
+            </div>
+        </section>
 
         <!-- VENUE TEASER (From Option 3) -->
         <section class="section-padding"
@@ -456,8 +528,9 @@
                     Boardrooms don't build character. Mountains do. Experience the historic charm of America's first
                     destination ski resort.
                 </p>
-                <a href="venue.html" class="btn btn-outline" style="border-color: #fff; color: #fff;">Explore The
+                <a href="venue/" class="btn btn-outline" style="border-color: #fff; color: #fff;">Explore The
                     Lodge</a>
+            </div>
             </div>
         </section>
 
@@ -530,11 +603,11 @@
                 <div class="footer-col">
                     <h4>Explore</h4>
                     <ul>
-                        <li><a href="index.html">The Summit</a></li>
-                        <li><a href="methodology.html">The Framework</a></li>
-                        <li><a href="weekend.html">The Weekend</a></li>
-                        <li><a href="venue.html">Venue</a></li>
-                        <li><a href="charity.html">Higher Ground</a></li>
+                        <li><a href="./">The Summit</a></li>
+                        <li><a href="methodology/">The Framework</a></li>
+                        <li><a href="weekend/">The Weekend</a></li>
+                        <li><a href="venue/">Venue</a></li>
+                        <li><a href="charity/">Higher Ground</a></li>
                     </ul>
                 </div>
 
