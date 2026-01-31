@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lineup Flyer Export</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&family=Saira+Stencil+One&display=swap"
+        rel="stylesheet">
+    <style>
+        /* RESET & SETUP FOR EXPORT */
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            overflow: hidden;
+            /* No scrollbars */
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Hide Website UI */
+        .navbar,
+        .hero,
+        .footer,
+        .mobile-scroll-hint,
+        .btn,
+        nav {
+            display: none !important;
+        }
+
+        /* FLYER CONTAINER */
+        .flyer-container {
+            position: relative;
+            width: 1920px;
+            /* Target Full HD */
+            height: 1080px;
+            background: #000;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            /* Align lineup to bottom */
+        }
+
+        /* BACKGROUND */
+        .flyer-bg {
+            position: absolute;
+            inset: 0;
+            background: top center url('assets/hero_mountains.jpg') no-repeat;
+            /* Fallback */
+            background-size: cover;
+            opacity: 0.4;
+        }
+
+        .flyer-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, #000 10%, rgba(0, 0, 0, 0.6) 80%);
+            z-index: 1;
+        }
+
+        /* HEADER - Adjusted for Details */
+        .flyer-header {
+            position: absolute;
+            top: 40px;
+            width: 100%;
+            text-align: center;
+            z-index: 20;
+        }
+
+        .flyer-header h1 {
+            font-family: 'Saira Stencil One', sans-serif;
+            font-size: 5rem;
+            /* Slightly smaller to fit details */
+            color: var(--color-primary, #cc0000);
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            margin: 0;
+            line-height: 1;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .flyer-header h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            margin-top: 5px;
+            opacity: 0.9;
+        }
+
+        /* NEW: Event Details Band */
+        .event-details {
+            position: absolute;
+            top: 150px;
+            /* Below Lineup Title */
+            width: 80%;
+            left: 10%;
+            text-align: center;
+            z-index: 20;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
+        }
+
+        .event-details p {
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+            font-size: 1.2rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1.4;
+        }
+
+        .event-details .highlight {
+            color: var(--color-primary, #cc0000);
+            font-weight: 700;
+        }
+
+        .event-details .description {
+            font-size: 1rem;
+            color: #ccc;
+            margin-top: 10px;
+            text-transform: none;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* LINEUP - Pushed down slightly */
+        .lineup-row {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+            margin-bottom: -40px;
+            height: 700px;
+            /* Reduced slightly */
+            transform-origin: bottom center;
+            transform: scale(0.9);
+            /* Scale to fit */
+        }
+
+        /* FOOTER BRANDING */
+        .flyer-footer {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            text-align: right;
+            z-index: 100;
+        }
+
+        .flyer-footer h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            color: #fff;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .flyer-footer p {
+            font-family: 'Inter', sans-serif;
+            color: #aaa;
+            font-size: 0.9rem;
+            margin: 5px 0 0 0;
+        }
+
+        .cta-badge {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            background: var(--color-primary);
+            color: white;
+            padding: 15px 30px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transform: rotate(5deg);
+            z-index: 200;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .speaker-card {
+            position: relative;
+            margin: 0 -35px;
+            /* Overlap */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: transform 0.3s;
+        }
+
+        /* FULL COLOR FOR FLYER */
+        .speaker-card img {
+            height: 600px;
+            /* Standard Height */
+            width: auto;
+            max-width: none;
+            /* Prevent constraint */
+            object-fit: contain;
+            /* Ensure no stretching */
+            filter: grayscale(0%) contrast(1.1) brightness(1.1) drop-shadow(0 0 20px rgba(0, 0, 0, 0.8));
+            transition: all 0.3s;
+        }
+
+        /* MARK (Center) */
+        .speaker-card.center img {
+            height: 720px;
+            /* Larger */
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(0%) contrast(1.2) brightness(1.2) drop-shadow(0 0 40px rgba(204, 0, 0, 0.6));
+            z-index: 50;
+        }
+
+        .speaker-card.center {
+            z-index: 50;
+            margin: 0 -20px;
+            transform: scale(1.1);
+            /* Pop */
+        }
+
+        /* Left/Right Depth */
+        .speaker-card.layer-2 {
+            z-index: 40;
+            filter: brightness(0.9);
+            transform: scale(0.95);
+        }
+
+        .speaker-card.layer-1 {
+            z-index: 30;
+            filter: brightness(0.8);
+            transform: scale(0.9);
+        }
+
+        /* NAMEPLATES (Always Visible) */
+        .name-tag {
+            position: absolute;
+            top: 20%;
+            /* Above Head */
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            width: 300px;
+            opacity: 1;
+            /* Force Show */
+            z-index: 100;
+        }
+
+        /* Mark & Tom Bottom */
+        .speaker-card.center .name-tag,
+        .speaker-card[data-pos="bottom"] .name-tag {
+            top: 75%;
+        }
+
+        .name-tag h3 {
+            font-family: 'Saira Stencil One', sans-serif;
+            font-size: 2rem;
+            color: var(--color-primary, #cc0000);
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px #000;
+            margin: 0 0 5px 0;
+        }
+
+        .name-tag p {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 2px 8px;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="flyer-container">
+        <!-- Background -->
+        <div class="flyer-bg"></div>
+        <div class="flyer-overlay"></div>
+
+        <!-- CTA Badge -->
+        <div class="cta-badge">Limited to 150 Leaders</div>
+
+        <!-- Header -->
+        <div class="flyer-header">
+            <h1>The Lineup</h1>
+            <h2>Legends of the Summit</h2>
+        </div>
+
+        <!-- Details Band -->
+        <div class="event-details">
+            <p>Sun Valley, ID <span class="highlight">|</span> Sept 18th - 20th 2026</p>
+            <p class="description">An Immersive Executive Retreat Curated by Mark Pattison. Ready To Make The
+                Impossible, Possible.</p>
+        </div>
+
+        <!-- Footer Info -->
+        <div class="flyer-footer">
+            <h4>The Summit 2026</h4>
+            <p>www.markpattisonnfl.com</p>
+        </div>
+
+        <!-- Lineup (Manual Recreation for Perfect Static Layout) -->
+        <div class="lineup-row">
+
+            <!-- Far Left: Steve Azar -->
+            <div class="speaker-card layer-1">
+                <div class="name-tag">
+                    <h3>Steve Azar</h3>
+                    <p>Hit Songwriter</p>
+                </div>
+                <img src="assets/steve_cutout.png" alt="Steve">
+            </div>
+
+            <!-- Left: Shep -->
+            <div class="speaker-card layer-2">
+                <div class="name-tag">
+                    <h3>Shep Rose</h3>
+                    <p>Entrepreneur</p>
+                </div>
+                <img src="assets/shep_cutout.png" alt="Shep">
+            </div>
+
+            <!-- Mid Left: Mariel -->
+            <div class="speaker-card layer-2">
+                <div class="name-tag" style="top: 15%;">
+                    <h3>Mariel Hemingway</h3>
+                    <p>Wellness Advocate</p>
+                </div>
+                <img src="assets/mariel_cutout.png" alt="Mariel">
+            </div>
+
+            <!-- CENTER: Mark -->
+            <div class="speaker-card center">
+                <div class="name-tag">
+                    <h3>Mark Pattison</h3>
+                    <p>Host & NFL Vet</p>
+                </div>
+                <img src="assets/mark_cutout.png" alt="Mark">
+            </div>
+
+            <!-- Mid Right: Tom (Bottom Tag) -->
+            <div class="speaker-card layer-2" data-pos="bottom">
+                <div class="name-tag">
+                    <h3>Tom Flick</h3>
+                    <p>Leadership Expert</p>
+                </div>
+                <img src="assets/tom_cutout.png" alt="Tom">
+            </div>
+
+            <!-- Far Right: John -->
+            <div class="speaker-card layer-1">
+                <div class="name-tag">
+                    <h3>John Foley</h3>
+                    <p>Blue Angel Lead</p>
+                </div>
+                <img src="assets/john_cutout.png" alt="John">
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

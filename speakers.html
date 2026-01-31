@@ -408,8 +408,21 @@
             .speaker.mobile-active img {
                 filter: grayscale(0%) contrast(1.2) brightness(1.2) drop-shadow(0 0 30px rgba(204, 0, 0, 0.8)) !important;
                 transform: scale(1.05);
-                /* Slight pulse */
                 transition: all 0.3s ease;
+            }
+
+            /* Active State - Text Turns Red */
+            .speaker.mobile-active .name-plate h3 {
+                color: var(--color-primary);
+                /* Red */
+                text-shadow: 0 0 10px rgba(204, 0, 0, 0.5);
+                /* Glow */
+            }
+
+            /* Ensure Default Text is Visible (White) */
+            .name-plate h3 {
+                color: #FFFFFF !important;
+                /* Force white default so it's not black-on-black */
             }
 
             /* Ensure nameplates are definitely clickable and visible */
@@ -933,39 +946,30 @@
                     container.scrollLeft = 0;
                 }
 
-                // 2. Scroll Observer for Glow Effect (Refined with getBoundingClientRect)
-                const highlightCenterSpeaker = () => {
-                    const viewportCenter = window.innerWidth / 2;
-                    let closestSpeaker = null;
-                    let minDistance = Infinity;
-
-                    speakers.forEach(speaker => {
-                        const rect = speaker.getBoundingClientRect();
-                        const speakerCenter = rect.left + (rect.width / 2);
-                        const distance = Math.abs(viewportCenter - speakerCenter);
-
-                        // Track the single closest speaker
-                        if (distance < minDistance) {
-                            minDistance = distance;
-                            closestSpeaker = speaker;
-                        }
-
-                        // Reset all first
-                        speaker.classList.remove('mobile-active');
-                    });
-
-                    // Activate the closest one if it's reasonably close (e.g. within screen bounds)
-                    // The 200 threshold is generous enough to catch "mid way"
-                    if (closestSpeaker && minDistance < 200) {
-                        closestSpeaker.classList.add('mobile-active');
-                    }
+                // 2. IntersectionObserver for 'Center' Detection (More robust than scroll listener)
+                const centerObserverOptions = {
+                    root: container, // Use the scroll container as root
+                    rootMargin: '0px -50% 0px -50%', // Create a 0-width line in the exact horizontal center
+                    threshold: 0 // Trigger as soon as one pixel crosses the center line
                 };
 
-                // Attach scroll listener (throttled slightly by browser default)
-                container.addEventListener('scroll', highlightCenterSpeaker);
+                const centerObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('mobile-active');
+                        } else {
+                            entry.target.classList.remove('mobile-active');
+                        }
+                    });
+                }, centerObserverOptions);
 
-                // Run once on load to highlight Mark
-                highlightCenterSpeaker();
+                speakers.forEach(speaker => centerObserver.observe(speaker));
+
+                // 3. Initial Scroll to First Speaker (Mark is order -1)
+                // Small timeout to ensure layout is stable
+                setTimeout(() => {
+                    container.scrollLeft = 0;
+                }, 100);
             }
         });
     </script>
