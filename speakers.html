@@ -313,6 +313,9 @@
                 /* Text comes AFTER image visually */
                 justify-content: flex-start;
                 /* Align to top so faces align */
+
+                /* FIX: Remove grayscale default on mobile so they aren't 'black and white' until touched/scrolled */
+                filter: grayscale(0%) !important;
             }
 
             /* Exception: Mark stays first */
