@@ -2017,10 +2017,16 @@ body.epic-theme p {
     overflow: hidden;
     margin-bottom: 0;
     /* Desktop: Mark Pattison Image (Right aligned) */
-    background: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 60%), url('assets/mark_pattison_hero_clean.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)),
+        url('assets/hero_gen_home.png');
     background-size: cover;
-    background-position: center right;
-    /* Face is now far right */
+    background-position: top center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-top: 60px;
+    z-index: 1;
 }
 
 @media (max-width: 768px) {
@@ -2118,13 +2124,13 @@ body.epic-theme p {
     #booking-modal {
         padding: 0;
     }
-    
+
     .booking-modal-content {
         max-width: 100%;
         height: 100vh;
         border-radius: 0;
     }
-    
+
     .booking-modal-close {
         top: 1rem;
         right: 1rem;

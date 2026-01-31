@@ -6,6 +6,388 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Key Speakers | The Summit</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Flyer Integration Styles */
+        .flyer-integration-container {
+            position: relative;
+            height: 90vh;
+            /* Dominant section */
+            width: 100%;
+            background-color: #000;
+            overflow: hidden;
+            border-top: 1px solid #333;
+        }
+
+        .flyer-integration-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, #111 0%, #000 100%);
+            z-index: 0;
+        }
+
+        /* Scoped styles from flyer.html */
+        .flyer-integration-container .fog {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, transparent 40%);
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .flyer-integration-container .header {
+            position: absolute;
+            top: 5vh;
+            text-align: center;
+            z-index: 20;
+            width: 100%;
+        }
+
+        .flyer-integration-container h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 10vw, 8rem);
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 0 0 20px rgba(204, 0, 0, 0.5);
+            margin: 0;
+        }
+
+        .flyer-integration-container h2 {
+            font-family: var(--font-subheading);
+            font-size: clamp(1rem, 3vw, 2rem);
+            color: #fff;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+
+        .lineup-container {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            bottom: -2%;
+            padding-bottom: 0;
+            z-index: 5;
+            max-width: 100%;
+            overflow: visible;
+        }
+
+        .speaker {
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            filter: grayscale(100%) contrast(1.1) brightness(0.8);
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            margin: 0 -45px;
+            flex-shrink: 1;
+        }
+
+        .speaker:hover {
+            filter: grayscale(0%) contrast(1.05) brightness(1.1);
+            transform: scale(1.15) translateY(-20px);
+            z-index: 100 !important;
+        }
+
+        .speaker img {
+            display: block;
+            height: 55vh;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.8));
+            -webkit-mask-image: linear-gradient(to top, transparent 5%, black 20%);
+            mask-image: linear-gradient(to top, transparent 5%, black 20%);
+        }
+
+        /* Enhanced Center Speaker (Mark) */
+        .speaker.mark,
+        .speaker.center-speaker {
+            z-index: 50;
+            margin: 0 -40px;
+            transform: scale(1.25);
+            filter: grayscale(10%) contrast(1.15) brightness(1.1);
+            flex-shrink: 0;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Specific Highlight for John Foley */
+        .speaker[data-name="John Foley"] {
+            transform: scale(1.15);
+            /* Make him bigger */
+            z-index: 20;
+            /* Ensure he sits nicely */
+            margin: 0 -25px;
+            /* Adjust spacing slightly */
+        }
+
+        .speaker[data-name="John Foley"]:hover {
+            transform: scale(1.25) translateY(-20px);
+            z-index: 102 !important;
+        }
+
+        .speaker.mark:hover,
+        .speaker.center-speaker:hover {
+            transform: scale(1.35) translateY(-25px);
+            filter: grayscale(0%) contrast(1.2) brightness(1.2) drop-shadow(0 0 30px rgba(204, 0, 0, 0.8));
+            z-index: 101 !important;
+        }
+
+        /* Adjust Nameplate for Mariel, Steve, and Shep to avoid face coverage */
+        .speaker[data-name="Mariel Hemingway"] .name-plate,
+        .speaker[data-name="Steve Azar"] .name-plate,
+        .speaker[data-name="Shep Rose"] .name-plate {
+            top: 75%;
+            transform: translate(-50%, -50%) scale(0.9);
+        }
+
+        .speaker.mark img,
+        .speaker.center-speaker img {
+            height: 65vh;
+            filter: drop-shadow(0 0 50px rgba(204, 0, 0, 0.5));
+        }
+
+        .name-plate {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 300px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 200;
+        }
+
+        .name-plate h3 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px #000;
+            margin-bottom: 0.5rem;
+        }
+
+        .name-plate p {
+            font-family: var(--font-subheading);
+            font-size: 1.2rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 2px #000;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2px 10px;
+            display: inline-block;
+        }
+
+        .speaker:hover .name-plate {
+            opacity: 1;
+        }
+
+        /* Adjust Mark's Name Plate */
+        .speaker.mark .name-plate,
+        .speaker.center-speaker .name-plate {
+            top: 75%;
+            transform: translate(-50%, -50%) scale(0.9);
+        }
+
+        .speaker-group {
+            display: flex;
+            align-items: flex-end;
+            flex-shrink: 1;
+        }
+
+        @media (max-width: 1400px) {
+            .speaker img {
+                height: 45vh;
+                margin: 0 -20px;
+            }
+
+            .speaker.mark img {
+                height: 55vh;
+            }
+
+            .speaker {
+                margin: 0 -30px;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .lineup-container {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding-left: 50px;
+            }
+
+            .speaker {
+                margin: 0 -15px;
+                flex-shrink: 0;
+            }
+
+            .flyer-integration-container h1 {
+                font-size: 4rem;
+            }
+
+            /* Mobile: Always Show Nameplates */
+            .name-plate {
+                opacity: 1 !important;
+                top: auto;
+                bottom: 10px;
+                transform: translateX(-50%) scale(0.8);
+                width: 100%;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+                padding-bottom: 20px;
+            }
+
+            /* Reset specific adjustments for mobile to uniform bottom positioning */
+            .speaker[data-name="Mariel Hemingway"] .name-plate,
+            .speaker[data-name="Steve Azar"] .name-plate,
+            .speaker[data-name="Shep Rose"] .name-plate,
+            .speaker.mark .name-plate,
+            .speaker.center-speaker .name-plate {
+                top: auto;
+                bottom: 0;
+                transform: translateX(-50%) scale(0.8);
+            }
+
+            .name-plate h3 {
+                font-size: 1.8rem;
+                text-shadow: 2px 2px 2px #000;
+            }
+
+            .name-plate p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: #111;
+            border: 1px solid #333;
+            width: 90%;
+            max-width: 900px;
+            border-radius: 8px;
+            position: relative;
+            padding: 40px;
+            box-shadow: 0 0 50px rgba(204, 0, 0, 0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: #666;
+            cursor: pointer;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+
+        .close-modal:hover {
+            color: var(--color-primary);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-header h2 {
+            font-family: 'Saira Stencil One', sans-serif;
+            font-size: 3rem;
+            color: var(--color-text);
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .modal-header p {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            color: var(--color-primary);
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            background: #000;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .bio-text {
+            font-family: 'Inter', sans-serif;
+            color: #ccc;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 900px) {
+            .modal-body {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .modal-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&family=Saira+Stencil+One&display=swap"
         rel="stylesheet">
@@ -62,6 +444,97 @@
             </p>
         </div>
     </header>
+
+    <!-- The Speakers (Flyer Integration) -->
+    <div id="speakers" class="flyer-integration-container">
+        <div class="header">
+            <h1>The Lineup</h1>
+            <h2>Legends of the Summit</h2>
+        </div>
+
+        <div class="lineup-container">
+
+            <!-- Left Group -->
+            <div class="speaker-group left">
+                <!-- Shep Rose -->
+                <div class="speaker" data-name="Shep Rose" data-title="TV Personality & Entrepreneur"
+                    data-bio-brief="Star of Bravo's Southern Charm."
+                    data-bio-full="Shep Rose is a television personality, businessman, and author, best known for his role on Bravo's 'Southern Charm'. He is the author of 'Average Expectations' and founder of the Shep Gear lifestyle brand. Shep brings his unique perspective on connection and authenticity."
+                    data-video-url="https://www.youtube.com/embed/5vKvJZueV0w" onclick="openSpeakerModal(this)">
+                    <img src="assets/shep_cutout.png" alt="Shep Rose">
+                    <div class="name-plate">
+                        <h3>Shep Rose</h3>
+                        <p>TV Personality</p>
+                    </div>
+                </div>
+
+                <!-- Mariel Hemingway -->
+                <div class="speaker" data-name="Mariel Hemingway" data-title="Actress & Wellness Author"
+                    data-bio-brief="Oscar-nominated actress and mental health advocate."
+                    data-bio-full="As the granddaughter of illustrious author Ernest Hemingway, Mariel appeared in 30 films and earned an Oscar nomination for 'Manhattan'. She is a passionate advocate for mental health and holistic living, sharing her journey of resilience and balance. Mariel leads wellness retreats sharing insights on movement, silence, and nutrition."
+                    data-video-url="https://player.vimeo.com/video/238803200" onclick="openSpeakerModal(this)">
+                    <img src="assets/mariel_cutout.png" alt="Mariel Hemingway">
+                    <div class="name-plate">
+                        <h3>Mariel Hemingway</h3>
+                        <p>Actress & Wellness Author</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center: Mark Pattison -->
+            <div class="speaker center-speaker" data-name="Mark Pattison" data-title="NFL Veteran & 7 Summits Climber"
+                data-bio-brief="First NFL player to climb the Seven Summits."
+                data-bio-full="Mark Pattison is a former NFL player who has climbed the Seven Summits, including Mt. Everest. He translates the discipline, grit, and team dynamics of elite sports and mountaineering into a framework for business leaders. His journey from the football field to the world's highest peaks is a testament to the power of vision and perseverance."
+                data-video-url="https://www.youtube.com/embed/5vKvJZueV0w" onclick="openSpeakerModal(this)">
+                <img src="assets/mark_cutout.png" alt="Mark Pattison">
+                <div class="name-plate">
+                    <h3>Mark Pattison</h3>
+                    <p>NFL Veteran & 7 Summits Climber</p>
+                </div>
+            </div>
+
+            <!-- Right Group -->
+            <div class="speaker-group right">
+                <!-- Tom Flick -->
+                <div class="speaker" data-name="Tom Flick" data-title="Leadership Expert"
+                    data-bio-brief="Former NFL Quarterback turned leadership authority."
+                    data-bio-full="Tom Flick is a former NFL Quarterback and a world-renowned authority on leadership, helping global organizations like Google and NASA develop leaders. He connects the head and the heart, allowing people to lead the way and accelerate performance."
+                    data-video-url="https://player.vimeo.com/video/1117608536" onclick="openSpeakerModal(this)">
+                    <img src="assets/tom_cutout.png" alt="Tom Flick">
+                    <div class="name-plate">
+                        <h3>Tom Flick</h3>
+                        <p>Leadership Expert</p>
+                    </div>
+                </div>
+
+                <!-- John Foley -->
+                <div class="speaker" data-name="John Foley" data-title="Blue Angels Pilot"
+                    data-bio-brief="Former Lead Solo Pilot of the Blue Angels."
+                    data-bio-full="John Foley is the former lead solo pilot of the Blue Angels. He has performed in extreme, high-stakes environments, flying at speeds over 500 mph. As a keynote speaker, verified as one of the top in the world, he shares his 'Glad To Be Here' mindset on trust, teamwork, and high performance."
+                    data-video-url="https://www.youtube.com/embed/W5i8i-lX_w" onclick="openSpeakerModal(this)">
+                    <img src="assets/john_cutout.png" alt="John Foley">
+                    <div class="name-plate">
+                        <h3>John Foley</h3>
+                        <p>Blue Angels Pilot</p>
+                    </div>
+                </div>
+
+                <!-- Steve Azar -->
+                <div class="speaker" data-name="Steve Azar" data-title="Music Legend"
+                    data-bio-brief="Grammy-nominated singer-songwriter."
+                    data-bio-full="Steve Azar is a Mississippi Delta native and Grammy-nominated singer-songwriter with nine Billboard charted singles. His hit 'I Don't Have To Be Me ('til Monday)' has over 4 million radio plays. Steve brings his soulful sound and storytelling to the summit."
+                    data-video-url="https://www.youtube.com/embed/rXqXqXqXqXq" onclick="openSpeakerModal(this)">
+                    <img src="assets/steve_cutout.png" alt="Steve Azar">
+                    <div class="name-plate">
+                        <h3>Steve Azar</h3>
+                        <p>Music Legend</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="fog"></div>
+    </div>
 
     <!-- Mark's Message Section -->
     <section class="section-padding" style="background: #0a0a0a; padding: 4rem 0;">
@@ -126,224 +599,9 @@
         </div>
     </section>
 
-    <main style="background: #050505; padding-top: 4rem;">
 
-        <!-- GUIDE & SPEAKERS (Moved from Index) -->
-        <section class="bg-black" style="padding: 0 0 var(--spacing-xl) 0;">
-            <div class="container">
 
-                <!-- Your Guide: Mark Pattison -->
-                <div class="grid-2 reveal-on-scroll" style="align-items: center; gap: 4rem; margin-bottom: 8rem;">
-                    <div>
-                        <h2 class="text-primary" style="font-size: 3rem; margin-bottom: 1rem;">YOUR GUIDE</h2>
-                        <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 2rem;">MARK PATTISON • NFL VETERAN • 7
-                            SUMMITS CLIMBER</h3>
-                        <p style="color: #ccc; margin-bottom: 2rem; font-size: 1.1rem;">
-                            After a career in the NFL, Mark set a new goal: to climb the Seven Summits. Now, he
-                            translates the discipline, grit, and team dynamics of elite sports into a framework for
-                            leaders.
-                        </p>
-                        <a href="about.html" class="btn">Meet The Host</a>
-                    </div>
-                    <div style="position: relative;">
-                        <img src="assets/activity_hike.webp" alt="Seven Summits Expedition"
-                            style="width: 100%; border-radius: 4px; filter: grayscale(100%); transition: filter 0.5s;">
-                        <div
-                            style="position: absolute; inset: 0; border: 1px solid var(--color-primary); transform: translate(15px, 15px); z-index: -1;">
-                        </div>
-                    </div>
-                </div>
 
-                <!-- The Speakers -->
-                <div id="speakers" class="reveal-on-scroll">
-                    <h2 class="text-center text-primary" style="font-size: 2.5rem; margin-bottom: 4rem;">THE SPEAKERS
-                    </h2>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
-
-                        <!-- Mariel Hemingway -->
-                        <div class="speaker-card" onclick="openModal('mariel-modal')" style="cursor: pointer;">
-                            <img src="assets/Mariel_Bio.jpg" alt="Mariel Hemingway" class="speaker-img">
-                            <h4 style="color: #fff; margin-top: 1.5rem; margin-bottom: 0.5rem;">MARIEL HEMINGWAY</h4>
-                            <p class="highlight" style="font-size: 0.9rem; margin-bottom: 1rem;">ACTRESS & AUTHOR</p>
-                            <p style="color: #999; padding: 0 1.5rem; font-size: 0.95rem; margin-bottom: 1.5rem;">
-                                Oscar-nominated actress and mental health advocate sharing her powerful journey of
-                                resilience.
-                                Mariel uses her platform and best-selling books to inspire holistic living, helping
-                                others find balance and peace in a chaotic world.
-                            </p>
-                            <!-- Mobile Read More -->
-                            <span class="btn-read-more">Read More</span>
-                        </div>
-
-                        <!-- Tom Flick -->
-                        <div class="speaker-card" onclick="openModal('tom-modal')" style="cursor: pointer;">
-                            <img src="assets/TomFlick.jpg" alt="Tom Flick" class="speaker-img">
-                            <h4 style="color: #fff; margin-top: 1.5rem; margin-bottom: 0.5rem;">TOM FLICK</h4>
-                            <p class="highlight" style="font-size: 0.9rem; margin-bottom: 1rem;">FORMER NFL QUARTERBACK
-                                & LEADERSHIP EXPERT</p>
-                            <p style="color: #999; padding: 0 1.5rem; font-size: 0.95rem;">
-                                A former NFL Quarterback and world-renowned authority on leadership, helping global
-                                organizations like Google and NASA develop leaders, lead change, and increase teamwork.
-                            </p>
-                            <!-- Mobile Read More -->
-                            <span class="btn-read-more">Read More</span>
-                        </div>
-
-                        <!-- Steve Azar -->
-                        <div class="speaker-card">
-                            <img src="assets/Steve_Azar.png" alt="Steve Azar" class="speaker-img">
-                            <h4 style="color: #fff; margin-top: 1.5rem; margin-bottom: 0.5rem;">STEVE AZAR</h4>
-                            <p class="highlight" style="font-size: 0.9rem; margin-bottom: 1rem;">GRAMMY-NOMINATED
-                                COUNTRY ARTIST</p>
-                            <p style="color: #999; padding: 0 1.5rem; font-size: 0.95rem;">
-                                Mississippi Delta native and Grammy-nominated singer-songwriter with nine Billboard
-                                charted singles. His hit "I Don't Have To Be Me ('til Monday)" has over 4 million radio
-                                plays. Steve joins us Saturday evening for an intimate acoustic performance.
-                            </p>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </section>
-    </main>
-
-    <!-- Mariel Bio Modal -->
-    <div class="modal-overlay" id="mariel-modal">
-        <div class="modal-content" style="max-width: 800px;">
-            <span class="close-modal" onclick="closeModal('mariel-modal')">&times;</span>
-            <div class="text-center" style="margin-bottom: 2rem;">
-                <h2 class="text-primary" style="font-size: 2.5rem; margin-bottom: 0.5rem;">Mariel Hemingway</h2>
-                <h3 style="color: #fff; font-size: 1.5rem;">Actress, Author & Wellness Advocate</h3>
-            </div>
-            <div
-                style="color: #ccc; line-height: 1.8; text-align: left; max-height: 60vh; overflow-y: auto; padding-right: 1rem;">
-                <p style="margin-bottom: 1.5rem;">
-                    As the granddaughter of illustrious author, Ernest Hemingway, Mariel was always destined to be
-                    well-known and publicly recognized. However, at the young age of 13, Mariel became famous in her own
-                    right when she made her silver screen debut in <em>Lipstick</em>. Four years later her work in Woody
-                    Allen's <em>Manhattan</em> earned her an Oscar® nomination. She has since made 30 films and numerous
-                    television appearances in series and as a host of several environmental and humanitarian
-                    documentaries.
-                </p>
-                <p style="margin-bottom: 1.5rem;">
-                    Now at the age of 50, Mariel is the mother of two daughters, Dree (24) and Langley (23). For over 20
-                    years, she has been pursuing her passion for yoga and health and is now seen as a voice of holistic
-                    and balanced health and well-being. As part of that role she has led wellness retreats all over
-                    America, sharing her insights about movement, silence, nutrition, and home.
-                </p>
-                <p style="margin-bottom: 1.5rem;">
-                    In 2003, she published her powerful bestselling memoir, <em>Finding My Balance</em>. A truly
-                    insightful and inspiring story, of her life's journey through the eyes of yoga and meditation.
-                    Mariel's second book called <em>Mariel Hemingway's Healthy Living from the Inside Out</em> (Harper
-                    Collins San Francisco 2007), is a how-to guide to finding one's balance and health through
-                    self-empowering lifestyle techniques and is a huge success for Mariel and especially for those whom
-                    incorporate her inspiring advice. Her gluten-free, sugar-free cookbook is called <em>Mariel's
-                        Kitchen</em> and her latest book is called <em>Running With Nature</em>.
-                </p>
-                <p>
-                    Mariel's passion is her love of the outdoors...connecting with nature and becoming younger through
-                    food, breath, exercise and nature. She has partnered with Robert Williams, an eco adventurer whose
-                    life has been dedicated to adventure, healing and nature in a new book and lifestyle company called
-                    The WillingWay. They are traveling all over the country sharing what they know about anti-aging,
-                    having fun and feeling great.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Tom Flick Bio Modal -->
-    <div class="modal-overlay" id="tom-modal">
-        <div class="modal-content" style="max-width: 800px;">
-            <span class="close-modal" onclick="closeModal('tom-modal')">&times;</span>
-            <div class="text-center" style="margin-bottom: 2rem;">
-                <h2 class="text-primary" style="font-size: 2.5rem; margin-bottom: 0.5rem;">Tom Flick</h2>
-                <h3 style="color: #fff; font-size: 1.5rem;">Leadership & Change Expert</h3>
-            </div>
-            <div
-                style="color: #ccc; line-height: 1.8; text-align: left; max-height: 60vh; overflow-y: auto; padding-right: 1rem;">
-
-                <!-- Video Embed -->
-                <div style="margin-bottom: 2rem;">
-                    <div
-                        style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 4px;">
-                        <iframe
-                            src="https://player.vimeo.com/video/1117608536?badge=0&autopause=0&player_id=0&app_id=58479"
-                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                            title="Tom Flick - Speaking Demo Reel">
-                        </iframe>
-                    </div>
-                    <p style="color: #666; font-size: 0.85rem; margin-top: 0.5rem; text-align: center;">Speaking Demo
-                        Reel (3:18)</p>
-                </div>
-
-                <p style="margin-bottom: 1.5rem; font-size: 1.1rem; color: #fff;">
-                    A former NFL Quarterback, Tom has worked with the world's most innovative leaders and organizations,
-                    helping them move faster—with greater focus—to succeed in a rapidly changing, highly competitive
-                    world.
-                </p>
-
-                <h4 style="color: var(--color-primary); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">
-                    Connecting to the Human Side of Business</h4>
-
-                <p style="margin-bottom: 1.5rem;">
-                    As a former NFL Quarterback, Tom understands the demands of performing under pressure to win. That
-                    is why Tom's messages aim for the heart—to create deep-felt determination to move, make things
-                    happen, and win now.
-                </p>
-
-                <p style="margin-bottom: 1.5rem;">
-                    For the past <strong style="color: var(--color-primary);">30 years</strong>, Tom has worked with the
-                    world's most innovative and dynamic leaders and organizations, helping them move faster—with more
-                    focus—to succeed in a rapidly changing and highly competitive world.
-                </p>
-
-                <h4 style="color: var(--color-primary); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">
-                    Background</h4>
-
-                <p style="margin-bottom: 1.5rem;">
-                    Tom Flick is a former <strong>Rose Bowl Champion</strong>, Team Captain, Most-Inspirational, Pac-10
-                    Conference "Player of the Year," and NFL quarterback for <strong>seven seasons</strong>.
-                </p>
-
-                <p style="margin-bottom: 1.5rem;">
-                    Tom's remarkable ability to communicate real business solutions with humor, wit and razor-sharp
-                    insight has made him one of the most sought-after authorities on leadership today. His keynote
-                    presentations connect the head and the heart, allowing people to lead the way and accelerate
-                    performance at every level of the enterprise.
-                </p>
-
-                <h4 style="color: var(--color-primary); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem;">
-                    Mission & Vision</h4>
-
-                <p style="margin-bottom: 1rem;">
-                    <strong style="color: #fff;">Tom's Mission:</strong> When I speak, I aim for the heart—to truly
-                    motivate change in the world.
-                </p>
-
-                <p style="margin-bottom: 1.5rem;">
-                    <strong style="color: #fff;">Tom's Vision:</strong> To inspire and mobilize people to become better
-                    leaders to serve the world.
-                </p>
-
-                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #333;">
-                    <p style="color: #999; margin-bottom: 1rem;">
-                        <strong style="color: var(--color-primary);">Website:</strong>
-                        <a href="https://www.tomflick.com" target="_blank" rel="noopener noreferrer"
-                            style="color: #fff; text-decoration: underline;">www.tomflick.com</a>
-                    </p>
-                    <p style="color: #999;">
-                        <a href="https://www.tomflick.com/about/" target="_blank" rel="noopener noreferrer"
-                            class="btn btn-outline" style="display: inline-block; margin-top: 1rem;">
-                            Read More About Tom
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Register Interest Modal -->
     <div class="modal-overlay" id="register-modal">
@@ -444,6 +702,55 @@
         </div>
     </div>
 
+    <!-- Dynamic Speaker Modal -->
+    <div class="modal-overlay" id="speaker-modal" onclick="closeSpeakerModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-modal" onclick="closeSpeakerModal()">&times;</span>
+
+            <div class="modal-header">
+                <h2 id="modal-name">Speaker Name</h2>
+                <p id="modal-title">Speaker Title</p>
+            </div>
+
+            <div class="modal-body">
+                <div class="video-container">
+                    <iframe id="modal-video" src="" frameborder="0" allow="autoplay; encrypted-media"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="bio-text">
+                    <p id="modal-bio">Speaker bio goes here...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openSpeakerModal(element) {
+            const modal = document.getElementById('speaker-modal');
+            const name = element.getAttribute('data-name');
+            const title = element.getAttribute('data-title');
+            const bio = element.getAttribute('data-bio-full');
+            const videoUrl = element.getAttribute('data-video-url');
+
+            document.getElementById('modal-name').innerText = name;
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-bio').innerText = bio;
+            document.getElementById('modal-video').src = videoUrl;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeSpeakerModal(event) {
+            // Close if event is undefined (button click) or if clicking overlay (id check)
+            if (!event || event.target.id === 'speaker-modal') {
+                const modal = document.getElementById('speaker-modal');
+                modal.classList.remove('active');
+                document.getElementById('modal-video').src = ''; // Stop video
+                document.body.style.overflow = '';
+            }
+        }
+    </script>
     <script src="script.js"></script>
 </body>
 
