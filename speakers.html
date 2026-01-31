@@ -408,11 +408,19 @@
 
             /* Mobile Active State (Glow on Scroll) */
             .speaker.mobile-active img {
-                filter: drop-shadow(0 0 30px rgba(204, 0, 0, 0.8)) !important;
+                filter: grayscale(0%) contrast(1.2) brightness(1.2) drop-shadow(0 0 30px rgba(204, 0, 0, 0.8)) !important;
                 transform: scale(1.05);
                 /* Slight pulse */
                 transition: all 0.3s ease;
             }
+
+            /* Ensure nameplates are definitely clickable and visible */
+            .name-plate {
+                z-index: 500 !important;
+                cursor: pointer;
+                /* pointer-events: auto; is inherited from previous rule, ensuring it sticks */
+            }
+
         }
 
         /* Modal Styles */
