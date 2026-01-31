@@ -299,7 +299,7 @@
                 display: contents;
             }
 
-            /* Default: Text ABOVE image for mobile (Column Reverse) */
+            /* Default: Text BELOW image for mobile (Standard Column) */
             .speaker {
                 margin: 0 10px;
                 flex-shrink: 0;
@@ -308,27 +308,26 @@
                 opacity: 1 !important;
                 background: transparent;
                 display: flex;
-                flex-direction: column-reverse;
-                /* Text comes BEFORE image visually */
-                justify-content: flex-end;
+                flex-direction: column;
+                /* Text comes AFTER image visually */
+                justify-content: flex-start;
+                /* Align to top so faces align */
             }
 
-            /* Exception: Mark (and Center) text stays BELOW image */
+            /* Exception: Mark stays first */
             .speaker.mark,
             .speaker.center-speaker {
                 flex-direction: column;
-                /* Standard Order: Image then Text */
                 transform: none !important;
                 margin: 0 10px;
                 z-index: 1 !important;
                 order: -1;
-                /* Move to the START of the list on mobile */
             }
 
-            /* Reset specific scaling for John Foley on Mobile */
-            .speaker[data-name="John Foley"] {
-                flex-direction: column-reverse;
-                /* Ensure John is top-text like others */
+            /* Clean up overrides - everyone is column now */
+            .speaker[data-name="John Foley"],
+            .speaker[data-name="Tom Flick"] {
+                flex-direction: column;
                 transform: none !important;
                 z-index: 1 !important;
             }
