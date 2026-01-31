@@ -238,16 +238,19 @@
                 padding-right: 20px;
                 align-items: center;
                 /* Center items vertically in the scroll area */
+                scroll-behavior: smooth;
             }
 
             .mobile-scroll-hint {
                 display: block;
                 position: absolute;
-                top: 10px;
-                right: 20px;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: max-content;
                 background: rgba(204, 0, 0, 0.8);
                 color: white;
-                padding: 5px 15px;
+                padding: 8px 20px;
                 border-radius: 20px;
                 font-size: 0.8rem;
                 z-index: 1000;
@@ -256,22 +259,24 @@
                 text-transform: uppercase;
                 letter-spacing: 1px;
                 font-family: var(--font-subheading);
+                margin-top: -30px;
+                /* Pull it up slightly above the cards */
             }
 
             @keyframes pulse {
                 0% {
                     opacity: 0.6;
-                    transform: translateX(0);
+                    transform: translateX(-50%) scale(1);
                 }
 
                 50% {
                     opacity: 1;
-                    transform: translateX(5px);
+                    transform: translateX(-50%) scale(1.05);
                 }
 
                 100% {
                     opacity: 0.6;
-                    transform: translateX(0);
+                    transform: translateX(-50%) scale(1);
                 }
             }
 
@@ -361,6 +366,14 @@
                 /* Remove mask so they look like full cutouts */
                 -webkit-mask-image: none;
                 mask-image: none;
+            }
+
+            /* Force Mark to match others exactly on mobile */
+            .speaker.mark img,
+            .speaker.center-speaker img {
+                height: 40vh !important;
+                filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.8)) !important;
+                /* Reset glow */
             }
         }
 
@@ -848,6 +861,22 @@
         }
     </script>
     <script src="script.js"></script>
+    <script>
+        // Auto-scroll to center Mark Pattison on mobile load
+        window.addEventListener('load', function () {
+            if (window.innerWidth <= 1000) {
+                const container = document.querySelector('.lineup-container');
+                const mark = document.querySelector('.speaker.mark') || document.querySelector('.speaker.center-speaker');
+
+                if (container && mark) {
+                    // Calculate center position
+                    const scrollLeft = mark.offsetLeft - (container.clientWidth / 2) + (mark.clientWidth / 2);
+                    // Scroll instantly or smooth
+                    container.scrollLeft = scrollLeft;
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
