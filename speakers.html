@@ -245,9 +245,16 @@
                 padding-left: 20px;
                 padding-right: 20px;
                 padding-right: 20px;
+                padding-right: 20px;
                 align-items: center;
                 /* Center items vertically in the scroll area */
                 scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+                /* smooth momentum scroll */
+                touch-action: pan-x pan-y;
+                /* Explicitly allow vertical scrolling */
+                overscroll-behavior-y: auto;
+                /* Ensure vertical scroll bubbles up */
             }
 
             .mobile-scroll-hint {
@@ -353,10 +360,17 @@
             .speaker[data-name="Steve Azar"] .name-plate,
             .speaker[data-name="Shep Rose"] .name-plate,
             .speaker.mark .name-plate,
-            .speaker.center-speaker .name-plate {
-                top: auto;
+            .speaker.center-speaker .name-plate,
+            .speaker[data-name="Tom Flick"] .name-plate {
+                /* Added Tom here to reset */
+                top: auto !important;
                 bottom: auto;
-                transform: none;
+                transform: none !important;
+            }
+
+            /* Ensure Tom gets the standard "Above Head" layout on mobile */
+            .speaker[data-name="Tom Flick"] {
+                flex-direction: column-reverse;
             }
 
             .name-plate h3 {
