@@ -1714,19 +1714,28 @@ body.epic-theme p {
     }
 
     .menu-toggle {
-        display: block;
+        display: flex !important;
+        /* Override any hidden states */
+        flex-direction: column;
+        justify-content: center;
+        gap: 6px;
         cursor: pointer;
-        z-index: 1001;
+        z-index: 2000;
+        /* Ensure top visibility */
+        width: 30px;
+        height: 30px;
     }
 
     .menu-toggle .bar {
         display: block;
-        width: 25px;
-        height: 3px;
-        background-color: var(--color-primary);
-        /* Use brand red */
-        margin: 5px auto;
+        width: 100%;
+        height: 2px;
+        background-color: #fff !important;
+        /* Force White for visibility against dark bg */
+        border-radius: 2px;
         transition: all 0.3s ease-in-out;
+        margin: 0;
+        /* Flex gap handles spacing */
     }
 
     /* Hamburger Animation (Reverted to X) */

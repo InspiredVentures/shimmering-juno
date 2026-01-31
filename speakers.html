@@ -143,6 +143,12 @@
             z-index: 101 !important;
         }
 
+        .mobile-scroll-hint {
+            display: none;
+        }
+
+        /* Hidden by default */
+
         /* Adjust Nameplate for Mariel, Steve, and Shep to avoid face coverage */
         .speaker[data-name="Mariel Hemingway"] .name-plate,
         .speaker[data-name="Steve Azar"] .name-plate,
@@ -232,6 +238,41 @@
                 padding-right: 20px;
                 align-items: center;
                 /* Center items vertically in the scroll area */
+            }
+
+            .mobile-scroll-hint {
+                display: block;
+                position: absolute;
+                top: 10px;
+                right: 20px;
+                background: rgba(204, 0, 0, 0.8);
+                color: white;
+                padding: 5px 15px;
+                border-radius: 20px;
+                font-size: 0.8rem;
+                z-index: 1000;
+                pointer-events: none;
+                animation: pulse 2s infinite;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-family: var(--font-subheading);
+            }
+
+            @keyframes pulse {
+                0% {
+                    opacity: 0.6;
+                    transform: translateX(0);
+                }
+
+                50% {
+                    opacity: 1;
+                    transform: translateX(5px);
+                }
+
+                100% {
+                    opacity: 0.6;
+                    transform: translateX(0);
+                }
             }
 
             .speaker-group {
@@ -504,6 +545,10 @@
         </div>
 
         <div class="lineup-container">
+            <!-- Mobile Scroll Hint -->
+            <div class="mobile-scroll-hint">
+                <span>Swipe to Explore Lineup &rarr;</span>
+            </div>
 
             <!-- Left Group -->
             <div class="speaker-group left">
