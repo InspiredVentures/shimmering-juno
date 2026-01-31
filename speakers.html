@@ -114,8 +114,10 @@
         .speaker.mark,
         .speaker.center-speaker {
             z-index: 50;
-            margin: 0 -40px;
-            transform: scale(1.25);
+            margin: 0 -25px;
+            /* Reduced overlap from -40px to prevent spilling into neighbors */
+            transform: scale(1.15);
+            /* Reduced from 1.25 */
             filter: grayscale(10%) contrast(1.15) brightness(1.1);
             flex-shrink: 0;
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -138,8 +140,10 @@
 
         .speaker.mark:hover,
         .speaker.center-speaker:hover {
-            transform: scale(1.35) translateY(-25px);
-            filter: grayscale(0%) contrast(1.2) brightness(1.2) drop-shadow(0 0 30px rgba(204, 0, 0, 0.8));
+            transform: scale(1.25) translateY(-25px);
+            /* Reduced from 1.35 */
+            filter: grayscale(0%) contrast(1.2) brightness(1.2) drop-shadow(0 0 20px rgba(204, 0, 0, 0.8));
+            /* Tighter shadow */
             z-index: 101 !important;
         }
 
@@ -149,12 +153,15 @@
 
         /* Hidden by default */
 
-        /* Adjust Nameplate for Mariel, Steve, and Shep to avoid face coverage */
-        .speaker[data-name="Mariel Hemingway"] .name-plate,
-        .speaker[data-name="Steve Azar"] .name-plate,
-        .speaker[data-name="Shep Rose"] .name-plate {
+        /* Specific Override for Tom Flick (Avoid Face) */
+        .speaker[data-name="Tom Flick"] .name-plate {
             top: 75%;
             transform: translate(-50%, -50%) scale(0.9);
+        }
+
+        /* Specific Override for Mariel (Move Up Further) */
+        .speaker[data-name="Mariel Hemingway"] .name-plate {
+            top: 15%;
         }
 
         .speaker.mark img,
@@ -165,7 +172,8 @@
 
         .name-plate {
             position: absolute;
-            top: 50%;
+            top: 20%;
+            /* Default: Above/Near Head */
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
@@ -236,6 +244,7 @@
                 justify-content: flex-start;
                 padding-left: 20px;
                 padding-right: 20px;
+                padding-right: 20px;
                 align-items: center;
                 /* Center items vertically in the scroll area */
                 scroll-behavior: smooth;
@@ -282,32 +291,38 @@
 
             .speaker-group {
                 display: contents;
-                /* Treat all speakers as direct siblings for scrolling */
             }
 
+            /* Default: Text ABOVE image for mobile (Column Reverse) */
             .speaker {
                 margin: 0 10px;
-                /* Positive spacing - Separate Cards */
                 flex-shrink: 0;
                 width: 280px;
-                /* Fixed width for consistency */
                 transform: none !important;
-                /* Reset all scaling */
                 opacity: 1 !important;
                 background: transparent;
                 display: flex;
-                flex-direction: column;
+                flex-direction: column-reverse;
+                /* Text comes BEFORE image visually */
                 justify-content: flex-end;
             }
 
-            /* Reset special scaling for Mark and John */
+            /* Exception: Mark (and Center) text stays BELOW image */
             .speaker.mark,
-            .speaker.center-speaker,
-            .speaker[data-name="John Foley"] {
+            .speaker.center-speaker {
+                flex-direction: column;
+                /* Standard Order: Image then Text */
                 transform: none !important;
                 margin: 0 10px;
                 z-index: 1 !important;
-                /* Reset z-index */
+            }
+
+            /* Reset specific scaling for John Foley on Mobile */
+            .speaker[data-name="John Foley"] {
+                flex-direction: column-reverse;
+                /* Ensure John is top-text like others */
+                transform: none !important;
+                z-index: 1 !important;
             }
 
             .flyer-integration-container h1 {
@@ -374,6 +389,14 @@
                 height: 40vh !important;
                 filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.8)) !important;
                 /* Reset glow */
+            }
+
+            /* Mobile Active State (Glow on Scroll) */
+            .speaker.mobile-active img {
+                filter: drop-shadow(0 0 30px rgba(204, 0, 0, 0.8)) !important;
+                transform: scale(1.05);
+                /* Slight pulse */
+                transition: all 0.3s ease;
             }
         }
 
@@ -862,18 +885,41 @@
     </script>
     <script src="script.js"></script>
     <script>
-        // Auto-scroll to center Mark Pattison on mobile load
+        // Auto-scroll to center Mark Pattison on mobile load AND Handle Scroll Glow
         window.addEventListener('load', function () {
             if (window.innerWidth <= 1000) {
                 const container = document.querySelector('.lineup-container');
+                const speakers = document.querySelectorAll('.speaker');
                 const mark = document.querySelector('.speaker.mark') || document.querySelector('.speaker.center-speaker');
 
+                // 1. Center Mark Initial Load
                 if (container && mark) {
-                    // Calculate center position
                     const scrollLeft = mark.offsetLeft - (container.clientWidth / 2) + (mark.clientWidth / 2);
-                    // Scroll instantly or smooth
                     container.scrollLeft = scrollLeft;
                 }
+
+                // 2. Scroll Observer for Glow Effect
+                const highlightCenterSpeaker = () => {
+                    const centerPoint = container.scrollLeft + (container.clientWidth / 2);
+
+                    speakers.forEach(speaker => {
+                        const speakerCenter = speaker.offsetLeft + (speaker.clientWidth / 2);
+                        const distance = Math.abs(centerPoint - speakerCenter);
+
+                        // If within 100px of center, active
+                        if (distance < 100) {
+                            speaker.classList.add('mobile-active');
+                        } else {
+                            speaker.classList.remove('mobile-active');
+                        }
+                    });
+                };
+
+                // Attach scroll listener (throttled slightly by browser default)
+                container.addEventListener('scroll', highlightCenterSpeaker);
+
+                // Run once on load to highlight Mark
+                highlightCenterSpeaker();
             }
         });
     </script>
