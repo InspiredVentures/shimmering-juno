@@ -253,7 +253,8 @@
             .mobile-scroll-hint {
                 display: block;
                 position: absolute;
-                top: 0;
+                top: 80px;
+                /* Adjusted since it's now relative to the main container */
                 left: 50%;
                 transform: translateX(-50%);
                 width: max-content;
@@ -268,8 +269,6 @@
                 text-transform: uppercase;
                 letter-spacing: 1px;
                 font-family: var(--font-subheading);
-                margin-top: -30px;
-                /* Pull it up slightly above the cards */
             }
 
             @keyframes pulse {
@@ -315,6 +314,8 @@
                 transform: none !important;
                 margin: 0 10px;
                 z-index: 1 !important;
+                order: -1;
+                /* Move to the START of the list on mobile */
             }
 
             /* Reset specific scaling for John Foley on Mobile */
@@ -574,18 +575,18 @@
     </header>
 
     <!-- The Speakers (Flyer Integration) -->
-    <div id="speakers" class="flyer-integration-container">
+    <div id="speakers" class="flyer-integration-container" style="position: relative;">
         <div class="header">
             <h1>The Lineup</h1>
             <h2>Legends of the Summit</h2>
         </div>
 
-        <div class="lineup-container">
-            <!-- Mobile Scroll Hint -->
-            <div class="mobile-scroll-hint">
-                <span>Swipe to Explore Lineup &rarr;</span>
-            </div>
+        <!-- Mobile Scroll Hint (Outside Scroll Container to stay centered) -->
+        <div class="mobile-scroll-hint">
+            <span>Swipe to Explore Lineup &rarr;</span>
+        </div>
 
+        <div class="lineup-container">
             <!-- Left Group -->
             <div class="speaker-group left">
                 <!-- Shep Rose -->
@@ -892,10 +893,10 @@
                 const speakers = document.querySelectorAll('.speaker');
                 const mark = document.querySelector('.speaker.mark') || document.querySelector('.speaker.center-speaker');
 
-                // 1. Center Mark Initial Load
+                // 1. Center Mark Initial Load - UPDATED: Just scroll to start/mark for mobile "Left Align" request
                 if (container && mark) {
-                    const scrollLeft = mark.offsetLeft - (container.clientWidth / 2) + (mark.clientWidth / 2);
-                    container.scrollLeft = scrollLeft;
+                    // Since Mark is now order: -1 (first), we define 'start' as 0
+                    container.scrollLeft = 0;
                 }
 
                 // 2. Scroll Observer for Glow Effect
