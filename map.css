@@ -1,0 +1,203 @@
+/* =========================================
+   INTERACTIVE MAP STYLES
+   ========================================= */
+
+.map-wrapper {
+    position: relative;
+    width: 100%;
+    /* Was 100vw, using 100% to fit parent context if needed */
+    height: 100vh;
+    min-height: 800px;
+    background-color: #050505;
+    background-image: url('assets/map-bg.png');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+/* Darken the background slightly so UI pops */
+.map-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
+/* SVG Map Layer */
+.map-svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* INTERACTIVE SVG ELEMENTS */
+.map-group {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.map-marker {
+    fill: rgba(0, 0, 0, 0.8);
+    stroke: var(--color-primary);
+    stroke-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.map-label {
+    fill: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    text-shadow: 0 2px 4px black;
+}
+
+/* Hover / Active Effects */
+.map-group:hover .map-marker,
+.map-group.active .map-marker {
+    fill: var(--color-primary);
+    r: 15;
+    stroke-width: 4px;
+    stroke: rgba(255, 255, 255, 0.5);
+}
+
+.map-group:hover .map-label,
+.map-group.active .map-label {
+    opacity: 1;
+    font-size: 16px;
+    fill: white;
+}
+
+/* Pulse Animation */
+.pulse-circle {
+    fill: none;
+    stroke: var(--color-primary);
+    stroke-width: 1;
+    opacity: 0;
+    transform-origin: center;
+    pointer-events: none;
+}
+
+.map-group:hover .pulse-circle,
+.map-group.active .pulse-circle {
+    animation: svg-pulse 2s infinite;
+}
+
+@keyframes svg-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+        stroke-width: 2;
+    }
+
+    100% {
+        transform: scale(3);
+        opacity: 0;
+        stroke-width: 0;
+    }
+}
+
+/* CONNECTION PATH */
+.path-line {
+    fill: none;
+    stroke: #333;
+    stroke-width: 2;
+    stroke-dasharray: 5, 5;
+    vector-effect: non-scaling-stroke;
+}
+
+/* MISSION CARD UI */
+.mission-card {
+    position: absolute;
+    width: 480px;
+    /* Wider to reduce height */
+    background: rgba(15, 15, 15, 0.95);
+    border-left: 4px solid var(--color-primary);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    padding: 1rem;
+    /* Compact padding */
+    color: #fff;
+    pointer-events: none;
+    /* Initially none */
+    opacity: 0;
+    border-radius: 4px;
+    z-index: 100;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mission-card.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Dynamic Positions */
+
+/* Day 1: ABOVE the marker */
+.card-pos-1 {
+    top: auto;
+    bottom: 25%;
+    left: 15%;
+}
+
+/* Right of Day 1 -> Becomes Below for Day 2 */
+.card-pos-2 {
+    top: 48%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Left of Day 3 -> Now Above (Symmetrical with Day 1) */
+.card-pos-3 {
+    top: auto;
+    bottom: 25%;
+    right: 15%;
+}
+
+/* Map Header UI */
+.ui-header {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.ui-header h1 {
+    font-family: 'Saira Stencil One';
+    font-size: 3rem;
+    margin: 0;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 1);
+    color: #fff;
+}
+
+.ui-header p {
+    color: #aaa;
+    font-family: 'Inter';
+    letter-spacing: 1px;
+    margin-top: 0.5rem;
+}
+
+/* Mobile Adjustments for Map */
+@media (max-width: 768px) {
+    .mission-card {
+        width: 90%;
+        left: 5% !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: 20px !important;
+        transform: none !important;
+    }
+
+    .ui-header {
+        top: 20px;
+        left: 20px;
+    }
+
+    .ui-header h1 {
+        font-size: 2rem;
+    }
+}

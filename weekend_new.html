@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Journey | Seven Summits</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&family=Saira+Stencil+One&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            overflow: hidden;
+            /* Lock scroll for map feel */
+            background: #050505;
+            margin: 0;
+            padding: 0;
+        }
+
+        .map-wrapper {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background-color: #0a0a0a;
+            /* Subtle Grid Background */
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* SVG Map Layer */
+        .map-svg {
+            width: 100%;
+            height: 100%;
+            /* Ensure it fills screen but maintains aspect ratio focus */
+            object-fit: cover;
+            display: block;
+        }
+
+        /* INTERACTIVE SVG ELEMENTS */
+        .map-group {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .map-marker {
+            fill: rgba(0, 0, 0, 0.8);
+            stroke: var(--color-primary);
+            stroke-width: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .map-label {
+            fill: white;
+            font-family: 'Oswald', sans-serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            text-shadow: 0 2px 4px black;
+        }
+
+        /* Hover / Active Effects */
+        .map-group:hover .map-marker,
+        .map-group.active .map-marker {
+            fill: var(--color-primary);
+            r: 15;
+            /* Grow radius */
+            stroke-width: 4px;
+            stroke: rgba(255, 255, 255, 0.5);
+        }
+
+        .map-group:hover .map-label,
+        .map-group.active .map-label {
+            opacity: 1;
+            font-size: 16px;
+            fill: white;
+        }
+
+        /* Pulse Animation via CSS on SVG elements */
+        .pulse-circle {
+            fill: none;
+            stroke: var(--color-primary);
+            stroke-width: 1;
+            opacity: 0;
+            transform-origin: center;
+            pointer-events: none;
+        }
+
+        .map-group:hover .pulse-circle,
+        .map-group.active .pulse-circle {
+            animation: svg-pulse 2s infinite;
+        }
+
+        @keyframes svg-pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+                stroke-width: 2;
+            }
+
+            100% {
+                transform: scale(3);
+                opacity: 0;
+                stroke-width: 0;
+            }
+        }
+
+        /* CONNECTION PATH */
+        .path-line {
+            fill: none;
+            stroke: #333;
+            stroke-width: 2;
+            stroke-dasharray: 5, 5;
+            vector-effect: non-scaling-stroke;
+        }
+
+        /* MISSION CARD UI (Floating) */
+        .mission-overlay {
+            display: none;
+            /* Removed container to allow absolute positioning of card directly */
+        }
+
+        .mission-card {
+            position: absolute;
+            width: 480px;
+            /* Wider to reduce height */
+            background: rgba(15, 15, 15, 0.95);
+            border-left: 4px solid var(--color-primary);
+            border-top: none;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+            padding: 1rem;
+            /* Compact padding */
+            color: #fff;
+            pointer-events: auto;
+            border-radius: 4px;
+            z-index: 100;
+
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+        }
+
+        .mission-card.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Dynamic Positions (Percentages to match SVG roughly) */
+
+        /* Day 1: ABOVE the marker */
+        .card-pos-1 {
+            top: auto;
+            bottom: 25%;
+            /* Lowered from 30% to pull different away from top nav */
+            left: 15%;
+        }
+
+        /* Right of Day 1 -> Becomes Below for Day 2 */
+        .card-pos-2 {
+            top: 48%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Left of Day 3 -> Now Above (Symmetrical with Day 1) */
+        .card-pos-3 {
+            top: auto;
+            bottom: 25%;
+            /* Lowered from 30% */
+            right: 15%;
+        }
+
+
+        /* Header UI */
+        .ui-header {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .ui-header h1 {
+            font-family: 'Saira Stencil One';
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 1);
+            color: #fff;
+        }
+
+        .ui-header p {
+            color: #aaa;
+            font-family: 'Inter';
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        .btn-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #666;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .mission-card {
+                width: 90%;
+                left: 5% !important;
+                right: auto !important;
+                top: auto !important;
+                bottom: 20px !important;
+                transform: none !important;
+            }
+
+            .ui-header {
+                top: 20px;
+                left: 20px;
+            }
+
+            .ui-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Nav (Standard) -->
+    <nav class="navbar" style="position: absolute; top:0; z-index:200; background: transparent; border: none;">
+        <div class="container">
+            <a href="index.html" class="logo" style="opacity: 0; pointer-events: none;"><img src="assets/logo.png"
+                    alt="7 Summits"></a>
+            <!-- Hiding logo since we have header, or keep it consistent -->
+        </div>
+    </nav>
+
+    <!-- Back Button -->
+    <a href="weekend.html"
+        style="position: absolute; top: 30px; right: 30px; z-index: 300; color: white; text-decoration: none; font-family: 'Oswald'; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.3); padding: 10px 20px; background: rgba(0,0,0,0.5);">Close
+        Map ✕</a>
+
+    <div class="map-wrapper">
+
+        <!-- Header -->
+        <div class="ui-header">
+            <h1>MISSION MAP</h1>
+            <p>SELECT A STAGE TO VIEW INTEL</p>
+        </div>
+
+        <!-- FULL SCREEN SVG MAP -->
+        <!-- viewBox matches the design coordinates. preserveAspectRatio ensures it scales nicely uniformly -->
+        <svg class="map-svg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice">
+
+            <!-- DEFINITONS -->
+            <defs>
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
+                    <feMerge>
+                        <feMergeNode in="coloredBlur" />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+            </defs>
+
+            <!-- MAP PATH -->
+            <!-- D1(200, 400) -> D2(500, 250) -> D3(800, 400) -->
+            <!-- Path ends at 400 now for symmetry -->
+            <path d="M 200 400 Q 350 325 500 250 T 800 400" class="path-line" />
+
+            <!-- DAY 1 NODE -->
+            <g class="map-group" onclick="selectMission(1)" onmouseenter="selectMission(1)" id="group-1">
+                <circle cx="200" cy="400" r="30" class="pulse-circle" />
+                <circle cx="200" cy="400" r="8" class="map-marker" />
+                <text x="200" y="440" text-anchor="middle" class="map-label">DAY 1: BASECAMP</text>
+            </g>
+
+            <!-- DAY 2 NODE -->
+            <g class="map-group" onclick="selectMission(2)" onmouseenter="selectMission(2)" id="group-2">
+                <!-- Lowered to 250 (was 200) -->
+                <circle cx="500" cy="250" r="30" class="pulse-circle" />
+                <circle cx="500" cy="250" r="8" class="map-marker" />
+                <text x="500" y="210" text-anchor="middle" class="map-label">DAY 2: THE CLIMB</text>
+            </g>
+
+            <!-- DAY 3 NODE -->
+            <g class="map-group" onclick="selectMission(3)" onmouseenter="selectMission(3)" id="group-3">
+                <!-- Moved to 400 to match Day 1 -->
+                <circle cx="800" cy="400" r="30" class="pulse-circle" />
+                <circle cx="800" cy="400" r="8" class="map-marker" />
+                <text x="800" y="440" text-anchor="middle" class="map-label">DAY 3: THE RETURN</text>
+            </g>
+
+        </svg>
+
+        <!-- HTML OVERLAY CARD (Floating) -->
+        <div id="mission-card" class="mission-card">
+            <h4 id="card-day"
+                style="color: var(--color-primary); margin: 0; font-family: 'Oswald'; letter-spacing: 2px; font-size: 0.8rem;">
+                FRIDAY</h4>
+            <h2 id="card-title" style="font-family: 'Saira Stencil One'; font-size: 1.5rem; margin: 3px 0 6px 0;">
+                CONTEXT
+                & FOUNDATION</h2>
+            <p id="card-desc"
+                style="font-family: 'Inter'; font-size: 0.85rem; line-height: 1.4; color: #ccc; margin-bottom: 0;">
+                We strip away the titles and the noise. You arrive at basecamp, lock away your phone, and gather around
+                the fire. The question isn't "what do you do?", it's "what is your Everest?".
+            </p>
+            <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
+                <div style="margin-bottom: 8px;">
+                    <strong
+                        style="color:var(--color-primary); font-family:'Oswald'; letter-spacing:1px; display:block; margin-bottom:3px; font-size: 0.8rem;">RUNNING
+                        ORDER:</strong>
+                    <!-- 2-Column Grid to save vertical space -->
+                    <div id="card-schedule"
+                        style="font-family: 'Inter'; font-size: 0.75rem; color: #aaa; line-height: 1.3; display: grid; grid-template-columns: 1fr 1fr; gap: 2px 15px;">
+                        <!-- Schedule injected here -->
+                    </div>
+                </div>
+                <div>
+                    <strong
+                        style="color:white; font-family:'Oswald'; letter-spacing:1px; font-size: 0.8rem;">OUTCOME:</strong>
+                    <span id="card-takeaway" style="color: #fff; display: block; margin-top: 1px; font-size: 0.85rem;">A
+                        clearly defined "Everest" goal and a stripped-down mindset.</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const missions = {
+            1: {
+                day: "FRIDAY | DAY ONE",
+                title: "CONTEXT & FOUNDATION",
+                desc: "We strip away the titles and the noise. You arrive at Sun Valley Lodge and settle in. Then, we head to The Argo for a private screening, an introduction to the team, and to face the core question: 'What is your Everest?'.",
+                schedule: [
+                    "16:00 // ARRIVAL @ SV LODGE",
+                    "18:00 // MOVE TO THE ARGO",
+                    "18:30 // PRIVATE SCREENING",
+                    "20:00 // TEAM & SUMMITS INTRO",
+                    "21:00 // 'WHAT IS YOUR EVEREST?'"
+                ],
+                takeaway: "A clearly defined 'Everest' goal and a stripped-down mindset ready for the climb.",
+                posClass: "card-pos-1"
+            },
+            2: {
+                day: "SATURDAY | DAY TWO",
+                title: "THE CLIMB & BREAKTHROUGH",
+                desc: "The physical work begins. We hit the world famous Sun Valley Trails. This isn't just a hike; it's a crucible. On the trail, defenses drop and real conversations happen.",
+                schedule: [
+                    "07:00 // FUELING & MOBILITY",
+                    "08:00 // THE TRAILS (HIKE)",
+                    "12:00 // SUMMIT LUNCH",
+                    "16:30 // WORKSHOP: EXECUTION",
+                    "19:00 // THE FEAST",
+                    "21:00 // STEVE AZAR LIVE"
+                ],
+                takeaway: "Deep connection with your 'Rope Team' and the realization that you can go further than you thought.",
+                posClass: "card-pos-2"
+            },
+            3: {
+                day: "SUNDAY | DAY THREE",
+                title: "THE PLAN & RETURN",
+                desc: "We don't leave the magic on the mountain. We turn the weekend's insights into a tactical 90-day execution plan. You define your 'Rope Team' for accountability.",
+                schedule: [
+                    "08:00 // RECOVERY YOGA",
+                    "09:00 // WORKSHOP: ROPE TEAMS",
+                    "11:00 // CLOSING CEREMONY",
+                    "13:00 // FAREWELL LUNCH"
+                ],
+                takeaway: "A tactical 90-day Roadmap and a committed accountability system to ensure execution.",
+                posClass: "card-pos-3"
+            }
+        };
+
+        function selectMission(id) {
+            // 1. Update SVG Active State
+            document.querySelectorAll('.map-group').forEach(g => g.classList.remove('active'));
+            document.getElementById('group-' + id).classList.add('active');
+
+            // 2. Update HTML Card Content
+            const data = missions[id];
+
+            // 3. Position the Card
+            const card = document.getElementById('mission-card');
+
+            // Remove old pos classes
+            card.classList.remove('card-pos-1', 'card-pos-2', 'card-pos-3');
+            // Add new pos class
+            card.classList.add(data.posClass);
+
+            document.getElementById('card-day').innerText = data.day;
+            document.getElementById('card-title').innerText = data.title;
+            document.getElementById('card-desc').innerText = data.desc;
+            document.getElementById('card-takeaway').innerText = data.takeaway;
+
+            // Generate Schedule HTML
+            const scheduleContainer = document.getElementById('card-schedule');
+            scheduleContainer.innerHTML = data.schedule.map(item => `<div>${item}</div>`).join('');
+
+            // 4. Show Card
+            card.classList.add('active');
+        }
+
+        // Initialize with Day 1 - REMOVED per user request (Wait for hover)
+        // setTimeout(() => selectMission(1), 500);
+
+    </script>
+</body>
+
+</html>
