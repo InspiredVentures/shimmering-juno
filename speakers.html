@@ -270,7 +270,10 @@
                 padding: 8px 20px;
                 border-radius: 20px;
                 font-size: 0.8rem;
-                z-index: 1000;
+                border-radius: 20px;
+                font-size: 0.8rem;
+                z-index: 900;
+                /* Lower than navbar (1000) so it scrolls under */
                 pointer-events: none;
                 animation: pulse 2s infinite;
                 text-transform: uppercase;
@@ -367,10 +370,8 @@
                 transform: none !important;
             }
 
-            /* Ensure Tom gets the standard "Above Head" layout on mobile */
-            .speaker[data-name="Tom Flick"] {
-                flex-direction: column-reverse;
-            }
+            /* Ensure Tom gets the standard layout on mobile */
+            /* Removed column-reverse override to align with others */
 
             .name-plate h3 {
                 font-size: 1.5rem;
@@ -928,8 +929,8 @@
                         const speakerCenter = speaker.offsetLeft + (speaker.clientWidth / 2);
                         const distance = Math.abs(centerPoint - speakerCenter);
 
-                        // If within 100px of center, active
-                        if (distance < 100) {
+                        // If within 150px of center (wider threshold for better feel), active
+                        if (distance < 150) {
                             speaker.classList.add('mobile-active');
                         } else {
                             speaker.classList.remove('mobile-active');
