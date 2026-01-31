@@ -949,8 +949,8 @@
                 // 2. IntersectionObserver for 'Center' Detection (More robust than scroll listener)
                 const centerObserverOptions = {
                     root: container, // Use the scroll container as root
-                    rootMargin: '0px -50% 0px -50%', // Create a 0-width line in the exact horizontal center
-                    threshold: 0 // Trigger as soon as one pixel crosses the center line
+                    rootMargin: '0px -25% 0px -25%', // Create a wider "active zone" (middle 50%) for better hit rate
+                    threshold: 0 // Trigger as soon as they enter this zone
                 };
 
                 const centerObserver = new IntersectionObserver((entries) => {
